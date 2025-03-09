@@ -1,0 +1,1082 @@
+[
+    {
+        "question": "What is the largest mammogram dataset available?",
+        "answer": "The largest mammogram dataset available is the EMory BrEast Imaging Dataset (EMBED).",
+        "generated_answer": " Based on the information provided in the document, the EMory BrEast imaging Dataset (EMBED) is the largest mammogram dataset with a total of 3.4 million screening mammographic images."
+    },
+    {
+        "question": "Which is the smallest dataset?",
+        "answer": "Nijmegen dataset with only 40 images.",
+        "generated_answer": " The smallest dataset among those provided in the document is the EMBED dataset with a total of 3.4 million mammographic images. However, if we are looking for the dataset with the fewest number of individual images, then it would be the KAU-BCMD dataset with a total of 5664 mammogram images (2 views per case for 1416 cases)."
+    },
+    {
+        "question": "Which is the oldest dataset?",
+        "answer": "The oldest dataset is the Mammographic Image Analysis Society (MIAS) database, which was created in 1994.",
+        "generated_answer": " The oldest dataset mentioned in the document is \"The mammographic images analysis society digital mammogram database\" with a publication year of 1994."
+    },
+    {
+        "question": "Which is the most recent dataset?",
+        "answer": "The most recent dataset is the DMID dataset, which was published in 2024.",
+        "generated_answer": " The most recent dataset mentioned in the document is \"EMBED: A Racially Diverse, Granular Dataset of 3.4 Million Screening and Diagnostic Mammographic Images.\" It was published on 2023."
+    },
+    {
+        "question": "What is the most common format of mammogram datasets?",
+        "answer": "The most common format of mammogram datasets is DICOM.",
+        "generated_answer": " The most common formats of mammogram datasets mentioned in the provided information are dcm (Digital Imaging and Communications in Medicine) and csv (Comma-Separated Values). These formats are used for storing and transferring medical imaging data and associated metadata, respectively. Therefore, the most common format for mammogram datasets is a combination of dcm images and csv files."
+    },
+    {
+        "question": "What is the most common task performed on mammogram datasets?",
+        "answer": "The most common task performed on mammogram datasets is breast cancer detection.",
+        "generated_answer": " The most common task performed on mammogram datasets is Breast Cancer Detection. This is a fundamental application of mammography and is crucial for early diagnosis and treatment of breast cancer. Many of the mammogram datasets mentioned in the document support this task, including those from Cancer Imaging Archive, EMBED, and KAU-BCMD."
+    },
+    {
+        "question": "What is the most common type of data in mammogram datasets?",
+        "answer": "The most common type of data in mammogram datasets is 2D images.",
+        "generated_answer": " Mammogram_Images are the most common type of data in mammogram datasets. They make up all the datasets mentioned in the document, with varying numbers of images per dataset."
+    },
+    {
+        "question": "What is the most common type of metadata in mammogram datasets?",
+        "answer": "The most common type of metadata in mammogram datasets includes BIRADS catergory, type of tumor (Benign and Malignant), Mammogram views and so on.",
+        "generated_answer": " The most common types of metadata in mammogram datasets are dcm (Digital Imaging and Communications in Medicine) and xlsx (Microsoft Excel Spreadsheet). These metadata provide essential information about the mammogram images, such as patient information, acquisition parameters, and image annotations. Different datasets may have additional types of metadata depending on their specific research focus. For instance, some datasets might include txt or jpg files for textual annotations or auxiliary image information."
+    },
+    {
+        "question": "List me all the publicly available mammogram datasets.",
+        "answer": "The list of datasets that are publicly available are: DDSM, CBIS-DDSM, RBIS-DDSM, Inbreast, Vindr-Mammo, MIAS, RSNA, CMMD, KAU-BCMD, BCS-DBT, and DMID",
+        "generated_answer": " Based on the information provided in the document, here are the publicly available mammogram datasets mentioned:\n\n1. Digital mammography dataset for breast cancer diagnosis research (DMID) - Contains mammogram images and metadata. Collected from India. Available at https://figshare.com/articles/_b_Digital_mammography_Dataset_for_Breast_Cancer_Diagnosis_Research_DMID_b_DMID_rar/24522883\n2. The EMory BrEast imaging Dataset (EMBED) - Contains mammogram images. Collected from the USA. Available upon signing an agreement at https://aws.amazon.com/marketplace/pp/prodview-unw4li5rkivs2#overview\n3. King Abdulaziz University Breast Cancer Mammogram Dataset (KAU-BCMD) - Contains mammogram images and metadata. Collected from Saudi Arabia. Available at https://www.kaggle.com/datasets/asmaasaad/king-abdulaziz-university-mammogram-dataset\n4. Breast Cancer Screening DBT (Detection of masses and architectural distortions in digital breast tomosynthesis) - Contains mammogram images, radiomic features, metadata, clinical data, and annotation boxes. Collected from various sources. Available at https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/\n5. CBIS-DDSM (A curated mammography data set for use in computer-aided detection and diagnosis research) - Contains mammogram images and radiomic features. Collected from the USA. Available at https://www.cancerimagingarchive.net/collection/cbis-ddsm/\n\nThese datasets can be used for various applications such as breast cancer detection, breast density estimation, breast tumor classification, multimodal learning, and synthetic data generation."
+    },
+    {
+        "question": "List me all the datasets that are available upon signing agreements.",
+        "answer": "The list of datasets that are available upon signing agreements are: EMBED, OPTIMAM, and Vindr-Mammo. However, Vindr-Mammo is also publicly available in another site.",
+        "generated_answer": " The following mammogram datasets are available upon signing agreements:\n\n1. Multi_Modal_Learning (VinDr-Mammo): Accessible at <https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png>. Published in 2022, it contains mammogram images, metadata, and is collected from Vietnam.\n2. Tumor_Localization, Breast_Density_Estimation, Synthetic_Data_Generation (EMBED): Available at <https://aws.amazon.com/marketplace/pp/prodview-unw4li5rkivs2>. Published in 2023, it contains mammogram images and is collected from the USA.\n3. OPTIMAM Mammography Image Database: Accessible at <https://medphys.royalsurrey.nhs.uk/omidb/>. Published in 2020, it contains mammogram images and clinical data and is collected from the UK."
+    },
+    {
+        "question": "Which datasets aren't available anymore?",
+        "answer": "The datasets that aren't available anymore are: Bancoweb, Mammogrid, MiracleDB, Magic-5, LLNL, Nijmegen, Malaga, and DREAM dataset.",
+        "generated_answer": " Based on the information provided in the document, there are no datasets mentioned that are not accessible or unavailable anymore. All datasets have data availability mentioned, even if it requires signing an agreement or is only accessible through specific links."
+    },
+    {
+        "question": "What is the most common type of clinical data in mammogram datasets?",
+        "answer": "The most common type of clinical data in mammogram datasets includes age, gender, ethnicity, biopsy results, cancer stage, and treatment history.",
+        "generated_answer": " The most common types of clinical data in mammogram datasets are typically metadata, which may include patient information, imaging acquisition parameters, and BIRADS (Breast Imaging Reporting and Data System) category labels. However, some datasets also include additional clinical data like age, sex, and tumor size. The exact type and availability of clinical data vary between different mammogram datasets."
+    },
+    {
+        "question": "What is the most common type of metadata in mammogram datasets?",
+        "answer": "The most common type of metadata in mammogram datasets includes BIRADS catergory, type of tumor (Benign and Malignant), Mammogram views and so on.",
+        "generated_answer": " The most common types of metadata in mammogram datasets are usually related to the technical parameters and patient information. These can include details such as patient age, sex, body mass index (BMI), breast density, compression force, exposure time, X-ray energy, date of exam, and machine type. Additionally, location information, such as the hospital or clinic where the mammogram was taken, may also be included as metadata."
+    },
+    {
+        "question": "Which datasets contain radiological reports?",
+        "answer": "The DMID dataset contains radiological reports.",
+        "generated_answer": " The King Abdulaziz University Breast Cancer Mammogram Dataset (KAU-BCMD) and the Digital mammography dataset for breast cancer diagnosis research (DMID) both have metadata files, but they do not specifically mention the availability of radiological reports in the provided information. However, you can check the associated articles or contact the data providers for more detailed information if needed."
+    },
+    {
+        "question": "Which dataset has the racially most diverse data?",
+        "answer": "The EMBED dataset has the racially most diverse data.",
+        "generated_answer": " Based on the information provided in the document, the EMBED dataset is the one that has the racially most diverse data as it is described as a \"RaciallyDiverse\" dataset."
+    },
+    {
+        "question": "Give me a comparison between EMBED and DMID dataset.",
+        "answer": "The EMBED dataset is the largest mammogram dataset available, with 3.4 million images, while the DMID dataset is the most recent, published in 2024, with only 510 images. The EMBED dataset has a racially diverse data with mammogram images, clinical data, and metadata, while the DMID dataset contains mammogram images, metadata, and radiological reports.",
+        "generated_answer": " The EMBED (Emory Breast imaging Dataset) and DMID (Digital mammography dataset for breast cancer diagnosis) are both large datasets of mammogram images used for research in the field of breast cancer detection and diagnosis. However, there are some key differences between the two:\n\n1. **Data Availability**: EMBED is available upon signing an agreement, while DMID is accessible without needing to sign an agreement. An accessible version of EMBED is also available on Kaggle.\n\n2. **Size**: EMBED contains 3.4 million mammogram images, while DMID contains a smaller number of images with breast mass segmentation analysis.\n\n3. **Data Origin**: EMBED is collected from the USA, while DMID is collected from India.\n\n4. **Types of Data and Files**: Both datasets contain mammogram images, but EMBED only provides dcm files while DMID has dcm, xlsx, and txt files. DMID also includes breast mass segmentation analysis in addition to the mammogram images.\n\n5. **Associated Articles**: EMBED was published in 2023 and the article is available at https://pubs.rsna.org/doi/10.1148/ryai.220047, while DMID was published in 2024 with the article available at https://link.springer.com/article/10.1007/s13534-023-00339-y.\n\nIn summary, both EMBED and DMID are valuable datasets for breast cancer research, but they differ in size, data availability, data origin, types of files, and associated articles."
+    },
+    {
+        "question": "Is the EMBED dataset publicly available?",
+        "answer": "No, only 20% of it is available upon signing agreements.",
+        "generated_answer": " The EMBED dataset is not publicly available in its entirety. Only a portion of it, which includes 20% of the total 2D and C-view mammogram images, is accessible for research use upon signing an agreement. The full dataset is available at the given link only upon signing an agreement."
+    },
+    {
+        "question": "How many mammogram images are included in the EMBED dataset?",
+        "answer": "This dataset contains 3,383,659 screening and diagnostic mammogram images from 115,910 patients. Among these, 20% of the total 2D and C-view dataset is available for research use. This 20% contains Total 480,606 dicom images, Total 676,009 png images (20%) and Total 34,004 spot magnified images. It also has 4 files of clinical data and metadata.",
+        "generated_answer": " The EMBED dataset includes 3,383,659 mammogram images."
+    },
+    {
+        "question": "Tell something about EMBED dataset.",
+        "answer": "Stands for EMory BrEast imaging Dataset. This dataset contains 3,383,659 screening and diagnostic mammogram images from 115,910 patients. Among these, 20% of the total 2D and C-view dataset is available for research use. This 20% contains Total 480,606 dicom images, Total 676,009 png images (20%) and Total 34,004 spot magnified images. It also has 4 files of clinical data and metadata.",
+        "generated_answer": " The EMBED (EMory BrEast imaging Dataset) is a large-scale mammographic dataset containing 3,383,659 screening and diagnostic mammogram images from 115,910 patients. It can be used for various research purposes such as Breast_Cancer_Detection, Breast_Density_Estimation, Breast_Cancer_Type_Classification, Tumor_Localization, and Synthetic_Data_Generation. The dataset is accessible via the link: <https://pubs.rsna.org/doi/10.1148/ryai.220047>. Please note that access to the data may require signing an agreement."
+    },
+    {
+        "question": "What type of task can I perform with the EMBED dataset?",
+        "answer": "Breast_Cancer_Detection, Breast_Cancer_Risk_Prediction, Mammographic_Report_Generation, Breast_Cancer_Type_Classification, Breast_Tumor_Classification, Tumor_Localization, Breast_Density_Estimation, Synthetic_Data_Generation",
+        "generated_answer": " With the EMBED dataset, you can perform tasks such as Breast_Cancer_Detection, Breast_Cancer_Risk_Prediction, Mammographic_Report_Generation, Breast_Cancer_Type_Classification, Breast_Tumor_Classification, Tumor_Localization, Synthetic_Data_Generation, and possibly others. The exact tasks and their specific applications depend on the research objectives and methods used."
+    },
+    {
+        "question": "What is the size of the EMBED dataset?",
+        "answer": "The EMBED dataset is 5.5 TB in size.",
+        "generated_answer": " The EMBED dataset contains 3,383,659 mammogram images in total. Among these, 20% are available for research use, which amounts to 676,733 images. Therefore, the size of the available subset of the EMBED dataset can be calculated by multiplying the number of available images by the typical file size of a DICOM mammogram image. The exact size may vary depending on the specific mammogram images, but for illustrative purposes, let's assume an average file size of 2 MB per DICOM mammogram image.\n\nSize_of_available_subset = Number_of_available_images * Average_file_size\n= 676,733 images * 2 MB/image\n= 1,353,466 MB (\u2248 1.3 TB)\n\nThis calculation assumes that all the available images are of the same size; in reality, there may be some variation. Keep in mind that this value represents only a subset of the entire EMBED dataset and does not account for any associated metadata or other files."
+    },
+    {
+        "question": "What is the format of the EMBED dataset?",
+        "answer": "The EMBED dataset is in DICOM format.",
+        "generated_answer": " The EMBED dataset consists of mammogram images in DICOM (Digital Imaging and Communications in Medicine) format."
+    },
+    {
+        "question": "Where is the EMBED dataset hosted?",
+        "answer": "Available at https://aws.amazon.com/marketplace/pp/prodview-unw4li5rkivs2#overview",
+        "generated_answer": " The EMBED dataset is available at https://aws.amazon.com/marketplace/pp/prodview-unw4li5rkivs2 for signing an agreement, and its associated article can be found at https://pubs.rsna.org/doi/10.1148/ryai.220047."
+    },
+    {
+        "question": "What is the article associated with EMBED dataset?",
+        "answer": "The EMory BrEast imaging Dataset (EMBED): A Racially Diverse, Granular Dataset of 3.4 Million Screening and Diagnostic Mammographic Images",
+        "generated_answer": " The article associated with the EMBED dataset is titled \"The EMory BrEast imaging Dataset (EMBED): A racially diverse, granular dataset of 3.4 million screening and diagnostic mammographic images\" and was published in 2023. You can access the article at this link: <https://pubs.rsna.org/doi/10.1148/ryai.220047>. This dataset contains 3,383,659 screening and diagnostic mammogram images from 115,910 patients and can be used for various applications such as breast cancer detection, breast cancer risk prediction, mammographic report generation, breast cancer type classification, breast tumor classification, tumor localization, breast density estimation, synthetic data generation, multi-modal learning, and synthetic data generation."
+    },
+    {
+        "question": "What is the link to the article associated with EMBED dataset?",
+        "answer": "https://pubs.rsna.org/doi/10.1148/ryai.220047",
+        "generated_answer": " The link to the article associated with the EMBED dataset is: <https://pubs.rsna.org/doi/10.1148/ryai.220047>"
+    },
+    {
+        "question": "When was the EMBED dataset published?",
+        "answer": "The EMBED dataset was published in 2023",
+        "generated_answer": " The EMBED dataset was published in 2023."
+    },
+    {
+        "question": "Where is the data of EMBED dataset collected from?",
+        "answer": "The data of EMBED dataset is collected from USA.",
+        "generated_answer": " The EMBED dataset is collected from the USA."
+    },
+    {
+        "question": "Tell me something about the DREAM dataset.",
+        "answer": "Stands for Dialogue on Reverse Engineering Assessment and Methods (DREAM). This dataset contains 144,231 screening mammograms from 85,580 women from the United States and 166,578 screening mammograms from 68,008 women from Sweden.",
+        "generated_answer": " The DREAM dataset is a collection of mammogram images that contains 144,231 screening mammograms. It is accessible upon signing an agreement and can be found at the link: <https://aws.amazon.com/marketplace/pp/prodview-unw4li5rkivs2#overview>. The dataset is associated with an article published in 2023, titled \"The EMory BrEast imaging Dataset (EMBED): A RaciallyDiverse, Granular Dataset of 3.4 Million Screening and Diagnostic Mammographic Images,\" which is available at <https://pubs.rsna.org/doi/10.1148/ryai.220047>. The dataset contains mammogram images in dcm format, which were collected from the USA. It is important to note that access to this dataset requires signing an agreement."
+    },
+    {
+        "question": "What can i use the DREAM dataset for?",
+        "answer": "Breast_Cancer_Detection, Breast_Tumor_Classification",
+        "generated_answer": " The DREAM dataset can be used for various tasks related to breast imaging analysis. Here are some of the potential applications mentioned in the document:\n\n1. Breast Cancer Detection\n2. Breast Cancer Risk Prediction\n3. Mammographic Report Generation\n4. Breast Cancer Type Classification\n5. Breast Tumor Classification\n6. Tumor Localization\n7. Breast Density Estimation\n8. Synthetic Data Generation.\n\nThese tasks align with the broader field of medical image analysis and machine learning for breast cancer diagnosis and research."
+    },
+    {
+        "question": "Is the DREAM dataset available?",
+        "answer": "No, the DREAM dataset is not available anymore. But the metadata is available at https://www.synapse.org/Synapse:syn1918762",
+        "generated_answer": " Yes, the DREAM dataset is available upon signing an agreement. The data link to access it is https://aws.amazon.com/marketplace/pp/prodview-unw4li5rkivs2#overview. However, it's important to note that access may require specific permissions or approval from the dataset provider."
+    },
+    {
+        "question": "What is the associated article with DREAM dataset?",
+        "answer": "Evaluation of Combined Artificial Intelligence and Radiologist Assessment to Interpret Screening Mammograms",
+        "generated_answer": " The associated article with the DREAM dataset is titled \"The EMory BrEast imaging Dataset (EMBED): A RaciallyDiverse, Granular Dataset of 3.4 Million Screening and Diagnostic Mammographic Images\" and was published in 2023. The article is available at <https://pubs.rsna.org/doi/10.1148/ryai.220047>."
+    },
+    {
+        "question": "When was the article associated with DREAM dataset published?",
+        "answer": "The article associated with DREAM dataset was published in 2020.",
+        "generated_answer": " The article associated with the DREAM dataset was published in the year 2023."
+    },
+    {
+        "question": "Where is the article associated with DREAM dataset available?",
+        "answer": "The article is available at https://jamanetwork.com/journals/jamanetworkopen/article-abstract/2761795",
+        "generated_answer": " The article associated with the DREAM dataset is published on PubMed and can be accessed at this link: https://pubs.rsna.org/doi/10.1148/ryai.220047"
+    },
+    {
+        "question": "Where was the DREAM dataset collected from?",
+        "answer": "The data of DREAM dataset is collected from USA and Sweden.",
+        "generated_answer": " The DREAM dataset was collected from the USA."
+    },
+    {
+        "question": "Tell me something about DDSM dataset",
+        "answer": "Stands for Digital Database for Screening Mammography. The dataset contains 2620 scanned film mammograms (images), 339 images with abnormalities, 373 normal cases, 223 cancer cases.",
+        "generated_answer": " The DDSM (Digital Database for Screening Mammography) is a curated dataset of mammogram images and associated radiomic features. It's an updated version of the original CBIS-DDSM, containing 2620 scanned film mammograms converted into dicom images, making a total of 10,239 images. This dataset can be used for various tasks such as Breast Cancer Detection, Breast Tumor Classification, Image Segmentation, Mammographic Report Generation, Multi-Modal Learning, and Synthetic Data Generation. The data is available at the link: <https://ieee-dataport.org/documents/re-curated-breast-imaging-subset-ddsm-dataset-rbis-ddsm>. No associated article was mentioned in the document for this dataset."
+    },
+    {
+        "question": "What can I use the DDSM dataset for?",
+        "answer": "Breast_Cancer_Detection, Lesion_Localization",
+        "generated_answer": " The DDSM dataset can be used for various tasks such as Breast Cancer Detection, Breast Tumor Classification, Image Segmentation, Mammographic Report Generation, Multi-Modal Learning, and Synthetic Data Generation. It contains 2620 mammogram images derived from the original DDSM dataset, which can be accessed at https://ieee-dataport.org/documents/re-curated-breast-imaging-subset-ddsm-dataset-rbis-ddsm."
+    },
+    {
+        "question": "Is the DDSM dataset available?",
+        "answer": "Yes, the DDSM dataset is publicly available at http://www.eng.usf.edu/cvprg/Mammography/Database.html and a mini version is available at https://www.kaggle.com/datasets/skooch/ddsm-mammography",
+        "generated_answer": " Yes, the DDSM dataset, specifically the re-curated version named RBIS-DDSM, is accessible. It can be found at the link <https://ieee-dataport.org/documents/re-curated-breast-imaging-subset-ddsm-dataset-rbis-ddsm>. However, for the original version of DDSM, it is available at <https://www.physionet.org/content/vindr-mammo/1.0.0/> upon signing an agreement, and there is also an accessible version available at <https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png>."
+    },
+    {
+        "question": "What is the associated article with DDSM dataset?",
+        "answer": "Current Status of the Digital Database for Screening Mammography",
+        "generated_answer": " The associated article with the RBIS-DDSM dataset is \"A curated mammography data set for use in computer-aided detection and diagnosis research\" which was published on 2017 and can be accessed at <https://www.nature.com/articles/sdata2017177>."
+    },
+    {
+        "question": "When was the article associated with DDSM dataset published?",
+        "answer": "The article associated with DDSM dataset was published in 1998.",
+        "generated_answer": " The article associated with the DDSM dataset was published in 2017."
+    },
+    {
+        "question": "Where is the article associated with DDSM dataset available?",
+        "answer": "The article is available at https://link.springer.com/chapter/10.1007/978-94-011-5318-8_75",
+        "generated_answer": " The article associated with the DDSM dataset is published on Nature.com. You can access it using this link: https://www.nature.com/articles/sdata2017177."
+    },
+    {
+        "question": "Where was the DDSM dataset collected from?",
+        "answer": "The data of DDSM dataset is collected from USA.",
+        "generated_answer": " The DDSM dataset, specifically the RBIS-DDSM subset, was collected from the USA."
+    },
+    {
+        "question": "Tell me something about CBIS-DDSM dataset",
+        "answer": "Stands for Curated Breast Imaging Subset of DDSM. It's an updated version of DDSM. This dataset contains 2620 scanned film mammograms converted into dicom images making a total of 10,239 images.",
+        "generated_answer": " The CBIS-DDSM (Cancer Imaging Archive - Digital Database for Screening Mammography) is a standardized mammogram dataset that contains 849 images. It is an updated and extended version of the original DDSM dataset, derived from the same source, and can be used for various applications such as breast cancer detection, breast tumor classification, image segmentation, mammographic report generation, multi-modal learning, and synthetic data generation. The dataset is accessible through the link: <https://ieee-dataport.org/documents/re-curated-breast-imaging-subset-ddsm-dataset-rbis-ddsm>. It is important to note that while there is no associated article mentioned for this dataset in the provided information, there are articles available for other related datasets that may provide additional context and background."
+    },
+    {
+        "question": "What can I use the CBIS-DDSM dataset for?",
+        "answer": "Breast_Cancer_Detection, Breast_Tumor_Classification, Image_Segmentation, Mammographic_Report_Generation, Multi_Modal_Learning, Synthetic_Data_Generation",
+        "generated_answer": " The CBIS-DDSM dataset can be used for various tasks in the field of breast cancer research and image processing, including but not limited to Breast Cancer Detection, Breast Tumor Classification, Image Segmentation, Mammographic Report Generation, Multi-Modal Learning, and Synthetic Data Generation. It contains 849 mammogram images derived from the Digital Database for Screening Mammography. You can access it at this link: https://ieee-dataport.org/documents/re-curated-breast-imaging-subset-ddsm-dataset-rbis-ddsm. There is no associated article mentioned in the document for this dataset."
+    },
+    {
+        "question": "Is the CBIS-DDSM dataset available?",
+        "answer": "Yes, the CBIS-DDSM dataset is publicly available at https://www.cancerimagingarchive.net/collection/cbis-ddsm/",
+        "generated_answer": " Yes, the CBIS-DDSM dataset is accessible and can be found at the link: https://www.cancerimagingarchive.net/collection/cbis-ddsm/. The associated article for this dataset was published in 2017. The types of data in the dataset include mammogram images and radiomic features, and the files are in dcm and csv formats. The dataset contains 849 mammogram images and can be used for various tasks such as breast cancer detection, breast tumor classification, image segmentation, mammographic report generation, multi-modal learning, and synthetic data generation. It was collected from the USA."
+    },
+    {
+        "question": "What is the associated article with CBIS-DDSM dataset?",
+        "answer": "A curated mammography data set for use in computer-aided detection and diagnosis research",
+        "generated_answer": " The associated article with the CBIS-DDSM dataset is \"A curated mammography data set for use in computer-aided detection and diagnosis research,\" published on Nature.com in 2017. You can access the article at this link: https://www.nature.com/articles/sdata2017177."
+    },
+    {
+        "question": "When was the article associated with CBIS-DDSM dataset published?",
+        "answer": "The article associated with CBIS-DDSM dataset was published in 2017.",
+        "generated_answer": " The article associated with the CBIS-DDSM dataset was published in the year 2017."
+    },
+    {
+        "question": "Where is the article associated with CBIS-DDSM dataset available?",
+        "answer": "The article is available at https://www.nature.com/articles/sdata2017177",
+        "generated_answer": " The article associated with the CBIS-DDSM dataset is available at this link: https://www.nature.com/articles/sdata2017177."
+    },
+    {
+        "question": "Where was the CBIS-DDSM dataset collected from?",
+        "answer": "The data of CBIS-DDSM dataset is collected from USA.",
+        "generated_answer": " The CBIS-DDSM dataset was collected from the USA."
+    },
+    {
+        "question": "What kind of data are available in CBIS-DDSM dataset?",
+        "answer": "The data of CBIS-DDSM dataset includes 2D Mammogram_Images, and Radiomic_Features.",
+        "generated_answer": " The CBIS-DDSM dataset includes mammogram images and radiomic features. The files are available in dcm and csv formats. This updated version of the dataset, named RBIS-DDSM, contains 849 mammogram images and can be used for various applications such as breast cancer detection, breast tumor classification, image segmentation, mammographic report generation, multi-modal learning, and synthetic data generation. The data was collected from the USA."
+    },
+    {
+        "question": "WHen was the CBIS-DDSM dataset published?",
+        "answer": "CBIS-DDSM does not have any associated article.",
+        "generated_answer": " The CBIS-DDSM dataset was published in the year 2017."
+    },
+    {
+        "question": "What kind of files are available in CBIS-DDSM dataset?",
+        "answer": "The files included in CBIS-DDSM dataset includes dicom and csv files.",
+        "generated_answer": " The CBIS-DDSM dataset contains dcm and csv files."
+    },
+    {
+        "question": "Where was the CBIS-DDSM dataset collected from?",
+        "answer": "It is a curated version of DDSM dataset. DDSM was collected from USA.",
+        "generated_answer": " The CBIS-DDSM dataset was collected from the USA."
+    },
+    {
+        "question": "Tell me something about RBIS-DDSM dataset",
+        "answer": "Stands for Re-curated Breast Imaging Subset of the Digital Database for Screening Mammography. It's an updated, extended, and standardized version of CBIS-DDSM. It contains 849 mammogram images.",
+        "generated_answer": " The RBIS-DDSM dataset is an updated and extended version of the CBIS-DDSM dataset. It was re-curated from the Digital Database for Screening Mammography (CBIS-DDSM) and contains 849 mammogram images. These images can be used for various applications such as breast cancer detection, breast tumor classification, image segmentation, mammographic report generation, multi-modal learning, and synthetic data generation. The dataset is accessible and available at the link: <https://ieee-dataport.org/documents/re-curated-breast-imaging-subset-ddsm-dataset-rbis-ddsm>. It was derived from data collected in the USA and contains mammogram images and radiomic features, with file types being dcm and csv."
+    },
+    {
+        "question": "What can I use the RBIS-DDSM dataset for?",
+        "answer": "Breast_Cancer_Detection, Breast_Tumor_Classification, Image_Segmentation, Mammographic_Report_Generation, Multi_Modal_Learning, Synthetic_Data_Generation",
+        "generated_answer": " The RBIS-DDSM dataset can be used for various applications in the field of breast cancer research and medical image processing, such as:\n\n1. Breast Cancer Detection\n2. Breast Tumor Classification\n3. Image Segmentation\n4. Mammographic Report Generation\n5. Multi-Modal Learning\n6. Synthetic Data Generation\n7. Tumor Localization\n\nThis dataset contains 849 mammogram images and can be accessed at https://ieee-dataport.org/documents/re-curated-breast-imaging-subset-ddsm-dataset-rbis-ddsm. It's an updated, extended, and standardized version of the CBIS-DDSM dataset."
+    },
+    {
+        "question": "Is the RBIS-DDSM dataset available?",
+        "answer": "Yes, the RBIS-DDSM dataset is publicly available at https://ieee-dataport.org/documents/re-curated-breast-imaging-subset-ddsm-dataset-rbis-ddsm",
+        "generated_answer": " Yes, the RBIS-DDSM dataset is accessible. The link to access it is <https://ieee-dataport.org/documents/re-curated-breast-imaging-subset-ddsm-dataset-rbis-ddsm>. However, please note that some datasets in the given document may not be freely available and require signing an agreement for access. The RBIS-DDSM dataset specifically does not have this requirement mentioned in the provided information."
+    },
+    {
+        "question": "What is the associated article with RBIS-DDSM dataset?",
+        "answer": "RBIS-DDSM does not have any associated article.",
+        "generated_answer": " The document does not provide information about an associated article specifically for the RBIS-DDSM dataset. The article mentioned in the document that describes the creation and characteristics of the RBIS-DDSM dataset was published in 2017, but there is no link or title provided for this article in the document."
+    },
+    {
+        "question": "WHen was the RBIS-DDSM dataset published?",
+        "answer": "RBIS-DDSM does not have any associated article.",
+        "generated_answer": " The RBIS-DDSM dataset was published in 2017."
+    },
+    {
+        "question": "What kind of files are available in RBIS-DDSM dataset?",
+        "answer": "The files included in RBIS-DDSM dataset includes dicom and csv files.",
+        "generated_answer": " The types of files available in the RBIS-DDSM dataset are dcm and csv."
+    },
+    {
+        "question": "Where was the RBIS-DDSM dataset collected from?",
+        "answer": "It is a re-curated version of CBIS-DDSM dataset. CBIS-DDSM was curated from DDSM, which was collected from USA.",
+        "generated_answer": " The RBIS-DDSM dataset was collected from the USA."
+    },
+    {
+        "question": "Tell me something about Inbreast dataset",
+        "answer": "The dataset contains 115 cases (410 images), 90 women with 4 images, 25 women with 2 images (Masectomy).",
+        "generated_answer": " The Inbreast dataset is a digital mammography database that was made publicly available on Kaggle in 2012. It contains 22,032 Digital Breast Tomosynthesis (DBT) volumes, which belong to 5,610 studies. These data were collected from Portugal and can be accessed through the link: <https://www.kaggle.com/datasets/ramanathansp20/inbreast-dataset>. An associated article titled \"INbreast: toward a full-field digital mammographic database\" was published in 2012 and is available at <https://www.sciencedirect.com/science/article/pii/S107663321100451X>. This dataset primarily focuses on Breast_Density_Estimation and Synthetic_Data_Generation."
+    },
+    {
+        "question": "What can I use Inbreast dataset for?",
+        "answer": "Breast_Cancer_Detection, Lesion_Localization, Image_Segmentation, Breast_Density_Estimation, Synthetic_Data_Generation",
+        "generated_answer": " The Inbreast dataset can be used for various applications including but not limited to:\n\n1. Breast Cancer Detection\n2. Breast Density Estimation\n3. Breast Cancer Type Classification\n4. Tumor Localization\n5. Multi-Modal Learning\n6. Synthetic Data Generation\n\n# Question: What is the data availability and associated article for the dataset named \"RBIS-DDSM\"?\n\nThe RBIS-DDSM dataset is accessible through signing an agreement, with the data link available at https://aws.amazon.com/marketplace/pp/prodview-unw4li5rkivs2#overview. The associated article is titled \"The EMory BrEast imaging Dataset (EMBED): A RaciallyDiverse, Granular Dataset of 3.4 Million Screening and Diagnostic Mammographic Images\", published in 2023, available at https://pubs.rsna.org/doi/10.1148/ryai.220047."
+    },
+    {
+        "question": "Is Inbreast dataset publicly available?",
+        "answer": "Yes, Inbreast dataset is publicly available at https://www.kaggle.com/datasets/ramanathansp20/inbreast-dataset",
+        "generated_answer": " According to the information provided in the document, the Inbreast dataset is publicly available and can be accessed at https://www.kaggle.com/datasets/ramanathansp20/inbreast-dataset. Therefore, the answer to your question is \"Yes\"."
+    },
+    {
+        "question": "What is the associated article with Inbreast dataset?",
+        "answer": "INbreast: toward a full-field digital mammographic database",
+        "generated_answer": " The associated article with the Inbreast dataset is \"INbreast: toward a full-field digital mammographic database\" which was published on Sciencedirect in 2012. You can access the article at this link: https://www.sciencedirect.com/science/article/pii/S107663321100451X?casa_token=scHMLQAy4ZEAAAAA:i2kUWh2XkGKwQTmJYNK6TGNZRg--dgywtj1WWtuB2-HKA-aL8lv4r6ct7FGTZchvKZvydD4ttw"
+    },
+    {
+        "question": "When was the article associated with Inbreast dataset published?",
+        "answer": "The article associated with Inbreast dataset was published in 2012.",
+        "generated_answer": " The article associated with the Inbreast dataset was published in the year 2012."
+    },
+    {
+        "question": "Where is the article associated with Inbreast dataset available?",
+        "answer": "The article is available at https://www.sciencedirect.com/science/article/pii/S107663321100451X?casa_token=scHMLQAy4ZEAAAAA:i2kUWh2XkGKwQTmJYNK6TGNZRg--dgywtj1WWtuB2-HKA-aL8lv4r6ct7FGTZchvKZvydD4ttw",
+        "generated_answer": " The article associated with the Inbreast dataset is published on ScienceDirect and can be accessed at this link: https://www.sciencedirect.com/science/article/pii/S107663321100451X?casa_token=scHMLQAy4ZEAAAAA:i2kUWh2XkGKwQTmJYNK6TGNZRg--dgywtj1WWtuB2-HKA-aL8lv4r6ct7FGTZchvKZvydD4ttw."
+    },
+    {
+        "question": "Where was the Inbreast dataset collected from?",
+        "answer": "The data of Inbreast dataset is collected from Portugal.",
+        "generated_answer": " The Inbreast dataset was collected from Portugal."
+    },
+    {
+        "question": "What are the types of data available in Inbreast dataset?",
+        "answer": "The data of Inbreast dataset Mammogram images and Metadata.",
+        "generated_answer": " The Inbreast dataset contains mammogram images and dcm files."
+    },
+    {
+        "question": "Which dataset was collected from Portugal?",
+        "answer": "The Inbreast dataset was collected from Portugal.",
+        "generated_answer": " The BCS-DBT dataset was collected from Portugal."
+    },
+    {
+        "question": "Tell me something about Vindr-Mammo dataset",
+        "answer": "The Vindr-Mammo dataset contains 20000 images from 5000 exams (4-view), 241 of these findings are marked BIRADS 5, 995 of the findings are marked BIRADS 4, and 2254 of the findings are marked BIRADS 3.",
+        "generated_answer": " The Vindr-Mammo dataset is a large-scale benchmark dataset for computer-aided detection and diagnosis in full-field digital mammography. It contains 20,000 mammogram images from 5,000 exams (4-view), with 241 findings including Tumor_Localization, Breast_Density_Estimation, and Synthetic_Data_Generation. The data is available upon signing an agreement, but an accessible version is also available at <https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png> and <https://www.physionet.org/content/vindr-mammo/1.0.0/>. The associated article was published in 2022, and more information can be found at <https://www.physionet.org/content/vindr-mammo/1.0.0/>. The types of data in the dataset are mammogram images and metadata, with file formats including dcm, png, and csv. The data was collected from Vietnam."
+    },
+    {
+        "question": "What can I use Vindr-Mammo dataset for?",
+        "answer": "Breast_Cancer_Detection, Breast_Cancer_Risk_Prediction, Mammographic_Report_Generation, Breast_Cancer_Type_Classification, Breast_Tumor_Classification, Tumor_Localization, Breast_Density_Estimation, Synthetic_Data_Generation, Anomaly_Detection, Multi_Modal_Learning",
+        "generated_answer": " The Vindr-Mammo dataset is primarily used for computer-aided detection and diagnosis in full-field digital mammography. It contains mammogram images, metadata, and is available in both original DICOM format and accessible PNG format. You can use this dataset for research purposes related to mammography image analysis, machine learning models for breast cancer detection and diagnosis, and other medical imaging applications. The dataset is collected from Vietnam."
+    },
+    {
+        "question": "Is Vindr-Mammo dataset publicly available?",
+        "answer": "Original version is available at https://www.physionet.org/content/vindr-mammo/1.0.0/ upon signing agreement and the accessible version is available at https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png",
+        "generated_answer": " Part of the Vindr-Mammo dataset is publicly available in an accessible version, but obtaining the original data requires signing an agreement. The publicly available version can be found at <https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png>. For more information, please refer to the article published on PhysioNet in 2022 (<https://www.physionet.org/content/vindr-mammo/1.0.0/>)."
+    },
+    {
+        "question": "What is the associated article with Vindr-Mammo dataset?",
+        "answer": "VinDr-Mammo: A large-scale benchmark dataset for computer-aided detection and diagnosis in full-field digital mammography",
+        "generated_answer": " The associated article with the Vindr-Mammo dataset is titled \"VinDr-Mammo: A large-scale benchmark dataset for computer-aided detection and diagnosis in full-field digital mammography.\" It was published in 2022 and can be accessed at the following link: <https://www.physionet.org/content/vindr-mammo/1.0.0/>. The dataset contains 20,000 images from 5,000 exams with labels for Tumor_Localization, Breast_Density_Estimation, and Synthetic_Data_Generation. The data is available upon signing an agreement, but an accessible version is available at <https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png>."
+    },
+    {
+        "question": "When was the article associated with Vindr-Mammo dataset published?",
+        "answer": "The article associated with Vindr-Mammo dataset was published in 2022.",
+        "generated_answer": " The article associated with the Vindr-Mammo dataset was published in 2022."
+    },
+    {
+        "question": "Where is the article associated with Vindr-Mammo dataset available?",
+        "answer": "The article is available at https://www.physionet.org/content/vindr-mammo/1.0.0/",
+        "generated_answer": " The article associated with the Vindr-Mammo dataset is available at https://www.physionet.org/content/vindr-mammo/1.0.0/."
+    },
+    {
+        "question": "Where was the Vindr-Mammo dataset collected from?",
+        "answer": "The data of Vindr-Mammo dataset is collected from Vietnam.",
+        "generated_answer": " The Vindr-Mammo dataset was collected from Vietnam."
+    },
+    {
+        "question": "What are the types of data available in Vindr-Mammo dataset?",
+        "answer": "The data of Vindr-Mammo dataset includes Mammogram images and Metadata.",
+        "generated_answer": " The Vindr-Mammo dataset contains mammogram images and metadata. The types of files in this dataset include dcm (Digital Imaging and Communications in Medicine) and png (Portable Network Graphics). This dataset was collected from Vietnam and is published on Physionet and Kaggle. It contains 20,000 images from 5,000 exams, with 4-view mammograms and associated findings like Tumor_Localization, Breast_Density_Estimation, and Synthetic_Data_Generation."
+    },
+    {
+        "question": "Tell me something about OMI-DB dataset.",
+        "answer": "Stands for Oncology Medical Image DataBase. This dataset contains 34,104 2D mammography images from 2,623 individuals.",
+        "generated_answer": " The OMI-DB (Oncology Medical Image Database) is a dataset that contains 34,104 2D mammography images from 2,623 individuals. It can be used for various tasks such as Breast_Cancer_Detection. The dataset is accessible at the link: <https://ieee-dataport.org/documents/re-curated-breast-imaging-subset-ddsm-dataset-rbis-ddsm>. It was published in 2014 and contains mammogram images in dcm format. The data was collected from the USA."
+    },
+    {
+        "question": "What can I use for OMI-DB dataset for?",
+        "answer": "OMI-DB can be used for Breast_Cancer_Detection.",
+        "generated_answer": " The OMI-DB dataset can be used for various applications in the field of breast imaging and cancer detection. Specifically, it can be used for Breast_Cancer_Detection. The dataset contains 34,104 2D mammography images from 2,623 individuals. You can access this dataset at its available data link: https://ieee-dataport.org/documents/re-curated-breast-imaging-subset-ddsm-dataset-rbis-ddsm. The associated article for this dataset was published in 2014, and you can find it at the provided link: https://www.spiedigitallibrary.org/conference-proceedings-of-spie/9039/1/The-oncology-medical-image-database-OMI-DB/10.1117/12.2041674.short"
+    },
+    {
+        "question": "Is OMI-DB dataset publicly available?",
+        "answer": "No, OMI-DB is not publicly available.",
+        "generated_answer": " The OMI-DB dataset is not publicly accessible as mentioned in the document. It's available upon signing an agreement and the data link is provided at https://aws.amazon.com/marketplace/pp/prodview-unw4li5rkivs2#overview."
+    },
+    {
+        "question": "What is the associated article with OMI-DB dataset?",
+        "answer": "The assocaited article is The oncology medical image database (OMI-DB).",
+        "generated_answer": " The associated article with the OMI-DB dataset is titled \"The oncology medical image database (OMI-DB)\" and was published in 2014. You can find it at this link: <https://www.spiedigitallibrary.org/conference-proceedings-of-spie/9039/1/The-oncology-medical-image-database-OMI-DB/10.1117/12.2041674.short>."
+    },
+    {
+        "question": "When was the article associated with OMI-DB dataset published?",
+        "answer": "The article associated with OMI-DB dataset was published in 2014.",
+        "generated_answer": " The article associated with the OMI-DB dataset was published in 2014."
+    },
+    {
+        "question": "Where is the article associated with OMI-DB dataset available?",
+        "answer": "The article is available at https://www.spiedigitallibrary.org/conference-proceedings-of-spie/9039/1/The-oncology-medical-image-database-OMI-DB/10.1117/12.2041674.short",
+        "generated_answer": " The article associated with the OMI-DB dataset is available at this link: <https://www.spiedigitallibrary.org/conference-proceedings-of-spie/9039/1/The-oncology-medical-image-database-OMI-DB/10.1117/12.2041674.short>"
+    },
+    {
+        "question": "Where was the OMI-DB dataset collected from?",
+        "answer": "The data of OMI-DB dataset is collected from UK.",
+        "generated_answer": " The OMI-DB dataset was collected from the USA."
+    },
+    {
+        "question": "What type of data is available in OMI-DB dataset?",
+        "answer": "The data of OMI-DB dataset includes Mammogram images.",
+        "generated_answer": " The OMI-DB dataset contains mammogram images."
+    },
+    {
+        "question": "Tell me something about OPTIMAM dataset.",
+        "answer": "The dataset is an extended version of OMI-DB. This dataset contains 3,072,878 images from 172,282 women. The data has 4 classes namely \u201cNormal\u201d, \u201cInterval Cancer\u201d, \u201cBenign\u201d, and  \u201cMalignant\u201d. Of the 7661 screen-detected cancers from episodes with digital images, 5097 have been marked (67% of cancers). It is an extended version of OMI-DB.",
+        "generated_answer": " The OPTIMAM dataset is an extended version of the OMI-DB dataset and contains 3,072,878 mammography images from 172,282 women. The data has four classes namely \"Normal\", \"Interval Cancer\", \"Benign\", and others. This dataset can be used for various tasks such as Breast Cancer Detection, Breast Density Estimation, Breast Cancer Type Classification, Tumor Localization, Multi-Modal Learning, and Synthetic Data Generation. However, access to the data is not directly provided in the text you have given. The dataset was published in an article available at https://www.spiedigitallibrary.org/conference-proceedings-of-spie/9039/1/The-oncology-medical-image-database-OMI-DB/10.1117/12.2041674.short in 2014."
+    },
+    {
+        "question": "What can I use OPTIMAM dataset for?",
+        "answer": "OPTIMAM can be used for Breast_Cancer_Detection, Breast_Cancer_Risk_Prediction, Breast_Cancer_Type_Classification, Synthetic_Data_Generation, Tumor_Localization.",
+        "generated_answer": " The OPTIMAM dataset can be used for various applications in breast cancer research, particularly in the field of computer-aided detection and diagnosis. Some specific tasks it can be used for include:\n\n1. Breast Cancer Detection: This is the primary use case for mammography datasets like OPTIMAM. The goal is to develop algorithms that can identify malignant masses or calcifications in mammograms.\n2. Tumor Localization: Once a mass or suspicious area has been detected, localizing it accurately within the breast is crucial for successful intervention. This task involves developing methods to pinpoint the exact location of tumors in mammograms.\n3. Breast Density Estimation: Assessing breast density can help radiologists and clinicians better understand a woman's risk for breast cancer and choose appropriate screening strategies. OPTIMAM, with its associated metadata, can be used to study breast density patterns and develop automated methods for density estimation.\n4. Synthetic Data Generation: In addition to real mammogram images, synthetic data generated using deep learning techniques can help augment the dataset, making machine learning models more robust and effective. OPTIMAM's availability makes it an ideal choice for such research.\n\nIt is important to note that accessing the dataset requires signing an agreement. More information about the dataset can be found in the associated article at https://www.nature.com/articles/sdata2017177."
+    },
+    {
+        "question": "Is OPTIMAM dataset publicly available?",
+        "answer": "No, OPTIMAM is not publicly available. It is available upon signing agreements.",
+        "generated_answer": " The information provided indicates that the OPTIMAM dataset is not publicly available as it can only be accessed upon signing an agreement. However, there is a link to the associated article which provides more details about the dataset."
+    },
+    {
+        "question": "Where is the OPTIMAM dataset available?",
+        "answer": "Available at https://medphys.royalsurrey.nhs.uk/omidb/",
+        "generated_answer": " The OPTIMAM mammography image database is available at the link: <https://medphys.royalsurrey.nhs.uk/omidb/>. Please note that access to this data may require signing an agreement."
+    },
+    {
+        "question": "Which article is associated with OPTIMAM dataset?",
+        "answer": "The associated article is OPTIMAM Mammography Image Database: A Large-Scale Resource of Mammography Images and Clinical Data.",
+        "generated_answer": " The article associated with the OPTIMAM dataset is \"OPTIMAM Mammography Image Database: A Large-Scale Resource of Mammography Images and Clinical Data\" which was published on 2020 and can be accessed at <https://pubs.rsna.org/doi/full/10.1148/ryai.2020200103>."
+    },
+    {
+        "question": "When was the article assocaited with OPTIMAM dataset published?",
+        "answer": "The article associated with OPTIMAM dataset was published in 2020.",
+        "generated_answer": " The article associated with the OPTIMAM dataset was published on 2020."
+    },
+    {
+        "question": "Where is the article of OPTIMAM dataset available?",
+        "answer": "The article is available at https://pubs.rsna.org/doi/full/10.1148/ryai.2020200103",
+        "generated_answer": " The article of the OPTIMAM dataset is available at this link: <https://pubs.rsna.org/doi/full/10.1148/ryai.2020200103>"
+    },
+    {
+        "question": "What kind of data are available in OPTIMAM dataset?",
+        "answer": "The data of OPTIMAM dataset includes Mammogram images and Clinical data.",
+        "generated_answer": " The OPTIMAM dataset contains mammogram images and clinical data. Specifically, it has 3,072,878 mammogram images from 172,282 women. The data can be used for various applications such as breast cancer detection, lesion localization, and breast cancer type classification. The files in the dataset are in dcm format for the images and csv format for the clinical data."
+    },
+    {
+        "question": "Where was the OPTIMAM dataset collected from?",
+        "answer": "The data of OPTIMAM dataset is collected from UK.",
+        "generated_answer": " The OPTIMAM dataset was collected from the UK."
+    },
+    {
+        "question": "Tell me something about MIAS dataset.",
+        "answer": "Stands for Mammographic Image Analysis Society (MIAS) database. This dataset contains 322 images.",
+        "generated_answer": " The MIAS (Medical Imaging and Analysis System) dataset is not explicitly mentioned in the provided document. However, I can provide you with information about some mammogram datasets that are similar to MIAS in terms of their use for medical research, particularly those related to breast cancer detection and diagnosis.\n\nThe first one is the \"Emory Breast imaging Dataset (EMBED),\" which contains 3.4 million screening and diagnostic mammographic images from a racially diverse population in the USA. This dataset can be used for various tasks such as BIRADS_Category_Classification, Breast_Cancer_Detection, Tumor_Localization, and Breast_Tumor_Classification.\n\nAnother dataset is called \"RBIS-DDSM,\" which stands for Re-curated Breast Imaging Subset of the Digital Database for Screening Mammography. It's an updated version of CBIS-DDSM and contains mammogram images along with radiomic features. This dataset can be used for multi-modal learning, synthetic data generation, and other research tasks related to breast cancer detection and diagnosis.\n\nThe \"King Abdulaziz University Breast Cancer Mammogram Dataset (KAU-BCMD)\" is another popular dataset that contains mammogram images along with metadata and can be used for various tasks such as breast cancer detection, BIRADS_Category_Classification, mammographic report generation, and breast tumor classification.\n\nThese datasets may not be identical to MIAS in terms of their size or specific focus, but they share similarities in that they are used for research related to mammography and breast cancer diagnosis."
+    },
+    {
+        "question": "What can I do with MIAS dataset?",
+        "answer": "MIAS can be used for Breast_Cancer_Detection, Lesion_Localization, Breast_Cancer_Type_Classification.",
+        "generated_answer": " You can use the MIAS (Mammographic Imaging Analysis Society) dataset for various applications related to breast imaging, specifically for breast cancer detection, lesion localization, and breast cancer type classification. The dataset contains mammogram images and clinical data. It is accessible and the link to access it is available at https://www.cancerimagingarchive.net/collection/mias/."
+    },
+    {
+        "question": "Is MIAS dataset publicly available?",
+        "answer": "Yes, MIAS dataset is publicly available at https://www.repository.cam.ac.uk/items/b6a97f0c-3b9b-40ad-8f18-3d121eef1459",
+        "generated_answer": " The MIAS dataset is accessible, but it is not entirely free and open to the public without signing an agreement. It is recommended to check their official website or contact them directly for more information on data access terms."
+    },
+    {
+        "question": "What is the associated article with MIAS dataset?",
+        "answer": "The associated article is The Mammographic Image Analysis Society digital mammogram database.",
+        "generated_answer": " The associated article with the MIAS (Mammographic Imaging Analysis Society) dataset is \"OPTIMAM Mammography Image Database: A Large-Scale Resource of Mammography Images and Clinical Data\" which was published on 2020. You can find the article at this link: <https://pubs.rsna.org/doi/full/10.1148/ryai.2020200103>"
+    },
+    {
+        "question": "When was the article associated with MIAS dataset published?",
+        "answer": "The article associated with MIAS dataset was published in 1994.",
+        "generated_answer": " The article associated with the MIAS dataset was published in the year 2020."
+    },
+    {
+        "question": "Where is the article assopciated with MIAS dataset available?",
+        "answer": "The article is available at https://cir.nii.ac.jp/crid/1572261551129161728",
+        "generated_answer": " The article associated with the MIAS dataset is published on RSNA Journals and can be accessed using this link: <https://pubs.rsna.org/doi/full/10.1148/ryai.2020200103>"
+    },
+    {
+        "question": "What type of data is available in MIAS dataset?",
+        "answer": "The data of MIAS dataset includes Mammogram images and Metadata.",
+        "generated_answer": " The MIAS (Mammographic Imaging Analysis Society) dataset contains mammogram images and clinical data. Specifically, the types of data in this dataset are \"Mammogram_Images\" and \"Clinical_Data\"."
+    },
+    {
+        "question": "Where was the MIAS dataset collected from?",
+        "answer": "The data of MIAS dataset is collected from UK.",
+        "generated_answer": " The MIAS dataset, also known as the \"Emory Breast imaging Dataset (EMBED),\" was collected from the USA."
+    },
+    {
+        "question": "Tell me something about RSNA dataset.",
+        "answer": "Stands for Royal Society of North America. The dataset contains 54713 image files (54706 in the training set), 1158 cancer images, 53548 non_cancer images, 11427 patients negative, 486 patients positive.",
+        "generated_answer": " The RSNA dataset, also known as the Royal Society of North America dataset, is a large-scale mammogram dataset that is available for computer-aided detection and diagnosis research. It contains 54,713 image files, with 54,706 images in the training set. The dataset includes both cancer and non-cancer images, with 11,427 patients identified as negative and 486 patients identified as positive. This dataset can be used for various tasks such as breast cancer detection and class balancing. It is available to access at the link <https://www.kaggle.com/competitions/rsna-breast-cancer-detection/data> without requiring any signing agreement, but an accessible version of it can also be found at <https://www.physionet.org/content/vindr-mammo/1.0.0/>. The dataset was published in 2022 and the associated articles for this dataset are available at the links mentioned above."
+    },
+    {
+        "question": "What can I use RSNA dataset for?",
+        "answer": "RSNA can be used for Breast_Cancer_Detection, Class_Balancing",
+        "generated_answer": " The RSNA dataset, specifically the VinDr-Mammo dataset, can be used for various applications in the field of computer-aided detection and diagnosis in full-field digital mammography. Some specific tasks it can be used for are:\n\n1. Breast Cancer Detection\n2. Breast Cancer Type Classification\n3. Tumor Localization\n4. Multi-Modal Learning\n5. Synthetic Data Generation\n\nIt is important to note that accessing the original version of this dataset requires signing an agreement, but there is an accessible version available at <https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png>. For more information and publications related to this dataset, please refer to the data link or article provided in the relevant information section above."
+    },
+    {
+        "question": "is the RSNA dataset publicly available?",
+        "answer": "Yes, RSNA dataset is publicly available at https://www.kaggle.com/competitions/rsna-breast-cancer-detection/data",
+        "generated_answer": " Based on the information provided in the document, the RSNA dataset is accessible but not publicly available as it requires signing an agreement to access it. However, there is an accessible version of the dataset available on Kaggle at the link <https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png>."
+    },
+    {
+        "question": "What is the associated article with RSNA dataset?",
+        "answer": "There is no associated article with RSNA dataset.",
+        "generated_answer": " The associated article with the RSNA dataset is titled \"VinDr-Mammo: A large-scale benchmark dataset for computer-aided detection and diagnosis in full-field digital mammography\". It was published on the website of Physionet in 2022, and you can find it at this link: https://www.physionet.org/content/vindr-mammo/1.0.0/."
+    },
+    {
+        "question": "When was the RSNA dataset published?",
+        "answer": "RSNA dataset was published in 2022.",
+        "generated_answer": " The RSNA dataset was published in 2022."
+    },
+    {
+        "question": "Where was the RSNA dataset collected from?",
+        "answer": "The data of RSNA dataset is collected from USA and Australia.",
+        "generated_answer": " The RSNA dataset was collected from the USA."
+    },
+    {
+        "question": "What kind of data are available in RSNA dataset?",
+        "answer": "The data of RSNA dataset includes Mammogram_Images and Metadata.",
+        "generated_answer": " The RSNA (Radiological Society of North America) dataset includes mammogram images and metadata. Specifically, the multi-modal learning subset of the VinDr-Mammo dataset, which is part of RSNA, contains digital mammography images in DICOM format, as well as accessible PNG versions, and corresponding metadata in CSV format."
+    },
+    {
+        "question": "Tell me something about CMMD dataset.",
+        "answer": "Stands for Chinese MaMmography Database. This dataset contains 3,728 mammographies from 1,775 patients. Patients' molecular subtypes were included for 749 of these patients (1,498 mammographies). There are a total of 5202 images.",
+        "generated_answer": " The Chinese Mammography Database (CMMD) is an online mammography database that contains biopsy-confirmed types for machine diagnosis of breast cancer. It was published in 2021 and the data link is available at https://www.cancerimagingarchive.net/collection/cmmd/. The dataset includes mammogram images along with clinical data. The data was collected from China. It contains 115 cases (410 images), with 90 women having 4 images each and 25 women having 2 images (Masectomy). The types of data in the dataset are Mammogram_Images and Clinical_Data, and the types of files are dcm and xlsx. It can be used for various applications such as Breast_Cancer_Type_Classification and Synthetic_Data_Generation."
+    },
+    {
+        "question": "What can I use CMMD dataset for?",
+        "answer": "CMMD can be used for Mammographic_Report_Generation, Breast_Cancer_Detection, Image_Segmentation, Multi_Modal_Learning, Breast_Cancer_Type_Classification, Synthetic_Data_Generation",
+        "generated_answer": " The KAU-BCMD (King Abdulaziz University Breast Cancer Mammogram Dataset) can be used for various tasks related to mammography, including:\n\n1. BIRADS_Category_Classification: This involves classifying the breast density and identifying the lesions based on the Breast Imaging Reporting and Data System (BIRADS).\n2. Breast_Cancer_Detection: Detecting potential breast cancers from mammogram images.\n3. Tumor_Localization: Identifying the precise location of a tumor in a mammogram image.\n4. Breast_Tumor_Classification: Classifying breast tumors based on their characteristics, such as shape, size, and texture.\n5. Standardized version of CBIS-DDSM: The KAU-BCMD is an updated, extended, and standardized version of the CBIS-DDSM dataset. It can be used for various tasks mentioned in its description, including Breast_Cancer_Detection, Breast_Tumor_Classification, Image_Segmentation, Mammographic_Report_Generation, Multi_Modal_Learning, and Synthetic_Data_Generation.\n\nThe dataset contains 1416 mammogram cases, each with 2 views of both breasts, making a total of 5664 images, along with 205 ultrasound cases with 405 corresponding images. It is available at https://ieee-dataport.org/documents/re-curated-breast-imaging-subset-ddsm-dataset-rbis-ddsm. The associated article for this dataset can be found at https://www.mdpi.com/2306-5729/6/11/111, which was published in 2021."
+    },
+    {
+        "question": "Is the CMMD dataset publicly available?",
+        "answer": "Yes, CMMD dataset is publicly available at https://www.cancerimagingarchive.net/collection/cmmd/#citations",
+        "generated_answer": " The Multi-Modal Mammography Dataset (CMMD) is not mentioned explicitly in the provided information as being publicly available or not. However, some of the datasets listed do have public access, such as RBIS-DDSM, VinDr-Mammo, and King Abdulaziz University Breast Cancer Mammogram Dataset (KAU-BCMD). It is best to check the specific data availability statement for CMMD if it is publicly available or not."
+    },
+    {
+        "question": "What is the associated article with CMMD dataset?",
+        "answer": "The associated article is The Chinese Mammography Database (CMMD): An online mammography database with biopsy confirmed types for machine diagnosis of breast.",
+        "generated_answer": " The associated article with the CMMD (Chinese Mammography Database) dataset is \"The Chinese Mammography Database (CMMD): An online mammography database with biopsy confirmed types for machine diagnosis of breast cancer\" which was published in 2021 and can be accessed at this link: https://onlinelibrary.wiley.com/doi/full/10.1155/2019/2717454"
+    },
+    {
+        "question": "When was the article associated with CMMD dataset published?",
+        "answer": "The article associated with CMMD dataset was published in 2021.",
+        "generated_answer": " The article associated with the CMMD dataset was published in 2021."
+    },
+    {
+        "question": "Where is the article associated with CMMD dataset available?",
+        "answer": "The article is available at https://onlinelibrary.wiley.com/doi/full/10.1155/2019/2717454",
+        "generated_answer": " The article associated with the CMMD dataset is available at this link: <https://onlinelibrary.wiley.com/doi/full/10.1155/2019/2717454>."
+    },
+    {
+        "question": "Where was the CMMD dataset collected from?",
+        "answer": "The data of CMMD dataset is collected from China.",
+        "generated_answer": " The KAU-BCMD (King Abdulaziz University Breast Cancer Mammogram Dataset) was collected from Saudi Arabia."
+    },
+    {
+        "question": "What kind of data are available in CMMD dataset?",
+        "answer": "The data of CMMD dataset includes Mammogram_Images and Clinical Data.",
+        "generated_answer": " The CMMD (Chinese Mammography Database) dataset contains mammogram images and clinical data."
+    },
+    {
+        "question": "Tell me something about KAU-BCMD dataset.",
+        "answer": "Stands for King Abdulaziz University Breast Cancer Mammogram Dataset. First significant mammogram dataset from Saudi Arabia. 1416 cases each with 2 views of both breasts making a total of 5664 images. Also contains 205 ultrasound cases corresponding to a part of the mammogram cases, with 405 images as a total.",
+        "generated_answer": " The KAU-BCMD (King Abdulaziz University Breast Cancer Mammogram Dataset) is a mammography dataset from Saudi Arabia, which includes 1416 cases, each with two views of both breasts, making a total of 5664 images. Additionally, there are 205 ultrasound cases corresponding to a part of the mammogram cases, with 405 images in total. This dataset can be used for various tasks such as BIRADS_Category_Classification, Breast_Cancer_Detection, Tumor_Localization, and Breast_Tumor_Classification. The data is accessible through the link: https://www.kaggle.com/datasets/asmaasaad/king-abdulaziz-university-mammogram-dataset. The associated article was published in 2021, and it can be found at: https://www.mdpi.com/2306-5729/6/11/111."
+    },
+    {
+        "question": "What can I use KAU-BCMD dataset for?",
+        "answer": "KAU-BCMD can be used for BIRADS_Category_Classification, Breast_Cancer_Detection, Tumor_Localization, Breast_Tumor_Classification",
+        "generated_answer": " The KAU-BCMD dataset can be used for various tasks such as BIRADS_Category_Classification, Breast_Cancer_Detection, Tumor_Localization, and Breast_Tumor_Classification. It contains mammogram images along with corresponding metadata in xlsx format. The dataset is accessible from the link: <https://www.kaggle.com/datasets/asmaasaad/king-abdulaziz-university-mammogram-dataset>."
+    },
+    {
+        "question": "Is the KAU-BCMD dataset publicly available?",
+        "answer": "Yes, KAU-BCMD dataset is publicly available at https://www.kaggle.com/datasets/asmaasaad/king-abdulaziz-university-mammogram-dataset",
+        "generated_answer": " Yes, the KAU-BCMD dataset is publicly available. It can be accessed at this link: <https://www.kaggle.com/datasets/asmaasaad/king-abdulaziz-university-mammogram-dataset>."
+    },
+    {
+        "question": "What is the associated article with KAU-BCMD dataset?",
+        "answer": "The associated article is King Abdulaziz University Breast Cancer Mammogram Dataset (KAU-BCMD).",
+        "generated_answer": " The associated article with the KAU-BCMD dataset is \"King Abdulaziz University Breast Cancer Mammogram Dataset (KAU-BCMD) Data\" published on 2021 and available at https://www.mdpi.com/2306-5729/6/11/111."
+    },
+    {
+        "question": "When was the article associated with KAU-BCMD dataset published?",
+        "answer": "The article associated with KAU-BCMD dataset was published in 2021.",
+        "generated_answer": " The article associated with the KAU-BCMD dataset was published in the year 2021."
+    },
+    {
+        "question": "Where is the article associated with KAU-BCMD dataset available?",
+        "answer": "The article is available at https://www.mdpi.com/2306-5729/6/11/111",
+        "generated_answer": " The article associated with the KAU-BCMD dataset is available at this link: https://www.mdpi.com/2306-5729/6/11/111"
+    },
+    {
+        "question": "Where was the KAU-BCMD dataset collected from?",
+        "answer": "The data of KAU-BCMD dataset is collected from Saudi Arabia.",
+        "generated_answer": " The KAU-BCMD dataset was collected from Saudi Arabia."
+    },
+    {
+        "question": "What kind of data are available in KAU-BCMD dataset?",
+        "answer": "The data of KAU-BCMD dataset includes Mammogram_Images and Metadata.",
+        "generated_answer": " The KAU-BCMD dataset includes mammogram images and metadata. Each case in the dataset consists of two views of both breasts, making a total of 5664 images for 1416 cases. Additionally, there are 205 ultrasound cases with corresponding mammogram cases and 405 images in total. The dataset can be used for various tasks such as BIRADS_Category_Classification, Breast_Cancer_Detection, Tumor_Localization, and Breast_Tumor_Classification. It is accessible at https://www.kaggle.com/datasets/asmaasaad/king-abdulaziz-university-mammogram-dataset."
+    },
+    {
+        "question": "Tell me something about BCS-DBT dataset.",
+        "answer": "Contains Digital Breast Tomosynthesis (3D) Images. 22,032 reconstructed DBT volumes belonging to 5,610 studies from 5,060 patients. 5,129 normal studies, 280 studies where additional imaging was needed, 112 benign biopsied studies, 89 studies with cancer.",
+        "generated_answer": " The BCS-DBT dataset is a mammography dataset containing Digital Breast Tomosynthesis (3D) Images. It consists of 22,032 reconstructed DBT volumes belonging to 5,610 studies and 849 mammogram images derived from the CBIS-DDSM dataset. This dataset can be used for various tasks such as Breast Cancer Detection, Breast Tumor Classification, Image Segmentation, Mammographic Report Generation, Multi-Modal Learning, and Synthetic Data Generation. It is accessible through the link: https://ieee-dataport.org/documents/re-curated-breast-imaging-subset-ddsm-dataset-rbis-ddsm, and there is no associated paper provided for this dataset."
+    },
+    {
+        "question": "Which dataset has 3D Mammogram Images?",
+        "answer": "The BCS-DBT dataset has 3D Mammogram Images.",
+        "generated_answer": " The EMBED dataset does not specifically mention that it contains 3D mammogram images. It only mentions 2D and C-view mammogram images. However, the Cancer Imaging Archive dataset mentioned includes digital breast tomosynthesis (DBT) data which is a type of 3D mammography. Therefore, the Cancer Imaging Archive dataset would be the answer to your question."
+    },
+    {
+        "question": "What can I use BCS-DBT dataset for?",
+        "answer": "BCS-DBT can be used for Breast_Cancer_Detection, Breast_Density_Estimation, Breast_Cancer_Type_Classification, Tumor_Localization, Multi_Modal_Learning, Synthetic_Data_Generation",
+        "generated_answer": " The BCS-DBT (Breast Cancer Screening Digital Breast Tomosynthesis) dataset can be used for various applications, including Breast_Cancer_Detection and Synthetic_Data_Generation. It contains Digital Breast Tomosynthesis (3D) images, making it suitable for research in advanced imaging techniques and 3D data analysis. Please note that you can access this dataset at the link: <https://www.kaggle.com/datasets/ramanathansp20/inbreast-dataset>. However, ensure you read the associated article titled \"INbreast: toward a full-field digital mammographic database,\" which is published on ScienceDirect and available at <https://www.sciencedirect.com/science/article/pii/S107663321100451X?casa_token=scHMLQAy4ZEAAAAA:i2kUWh2XkGKwQTmJYNK6TGNZRg--dgywtj1WWtuB2-HKA-aL8lv4r6ct7FGTZchvKZvydD4ttw> for more information about the dataset."
+    },
+    {
+        "question": "Is the BCS-DBT dataset publicly available?",
+        "answer": "Yes, BCS-DBT dataset is publicly available at https://www.cancerimagingarchive.net/collection/breast-cancer-screening-dbt/",
+        "generated_answer": " Based on the information provided in the document, the BCS-DBT dataset is accessible but it does not appear to be publicly available for direct download. The data link points to a marketplace where access to the data requires signing an agreement."
+    },
+    {
+        "question": "What is the associated article with BCS-DBT dataset?",
+        "answer": "The associated article is Detection of masses and architectural distortions in digital breast tomosynthesis: a publicly available dataset of 5,060 patients and a deep learning model.",
+        "generated_answer": " The associated article with the BCS-DBT dataset is \"INbreast: toward a full-field digital mammographic database\" which was published on Sciencedirect in 2012 and can be accessed at this link: https://www.sciencedirect.com/science/article/pii/S107663321100451X?casa_token=scHMLQAy4ZEAAAAA:i2kUWh2XkGKwQTmJYNK6TGNZRg--dgywtj1WWtuB2-HKA-aL8lv4r6ct7FGTZchvKZvydD4ttw."
+    },
+    {
+        "question": "When was the article associated with BCS-DBT dataset published?",
+        "answer": "The article associated with BCS-DBT dataset was published in 2020.",
+        "generated_answer": " The article associated with the BCS-DBT dataset was published in 2012."
+    },
+    {
+        "question": "Where is the article associated with BCS-DBT dataset available?",
+        "answer": "The article is available at https://arxiv.org/abs/2011.07995",
+        "generated_answer": " The article associated with the BCS-DBT dataset is available at https://www.sciencedirect.com/science/article/pii/S107663321100451X."
+    },
+    {
+        "question": "Where was the BCS-DBT dataset collected from?",
+        "answer": "The data of BCS-DBT dataset is collected from USA.",
+        "generated_answer": " The BCS-DBT dataset was collected from Portugal."
+    },
+    {
+        "question": "What kind of data are available in BCS-DBT dataset?",
+        "answer": "The data of BCS-DBT dataset includes 3D Mammogram_Images, Radiomic_Features, Metadata, Clinical_Data, Annotation_Boxes.",
+        "generated_answer": " The BCS-DBT dataset contains Mammogram\\_Images and Radiomic\\_Features."
+    },
+    {
+        "question": "Tell me something about DMID dataset.",
+        "answer": "This dataset contains 510 images. Among them, 274 are abnormal images, including benign and malignant cases.",
+        "generated_answer": " The DMID (Digital Mammography Dataset for Breast Cancer Diagnosis Research) contains 510 mammogram images, among which 274 are abnormal including benign and malignant cases. It can be used for various tasks such as Breast Cancer Detection, BIRADS Category Classification, and Mammographic Report Generation. The dataset is accessible, and the link to access it is available at figshare.com. The data was collected from India."
+    },
+    {
+        "question": "What can I use DMID dataset for?",
+        "answer": "DMID can be used for Breast_Cancer_Detection, BIRADS_Category_Classification, Mammographic_Report_Generation.",
+        "generated_answer": " You can use the DMID dataset for various applications such as Breast Cancer Detection, BIRADS Category Classification, and Mammographic Report Generation. It contains 510 mammogram images, among which 274 are abnormal (including both benign and malignant cases)."
+    },
+    {
+        "question": "Is the DMID dataset publicly available?",
+        "answer": "Yes, DMID dataset is publicly available at https://figshare.com/articles/dataset/_b_Digital_mammography_Dataset_for_Breast_Cancer_Diagnosis_Research_DMID_b_DMID_rar/24522883",
+        "generated_answer": " Based on the information provided in the document, the DMID dataset is not publicly available as a whole but individual files can be accessed from figshare with proper citation to the associated article. The dataset contains mammogram images and metadata, and it was collected from India."
+    },
+    {
+        "question": "What is the associated article with DMID dataset?",
+        "answer": "The associated article is Digital mammography dataset for breast cancer diagnosis research (DMID) with breast mass segmentation analysis.",
+        "generated_answer": " The associated article with the DMID dataset is titled \"Digital mammography dataset for breast cancer diagnosis research (DMID)\" and was published in the year 2024. It is available at this link: https://link.springer.com/article/10.1007/s13534-023-00339-y."
+    },
+    {
+        "question": "When was the article associated with DMID dataset published?",
+        "answer": "The article associated with DMID dataset was published in 2024.",
+        "generated_answer": " The article associated with the DMID dataset was published in the year 2024."
+    },
+    {
+        "question": "Where is the article associated with DMID dataset available?",
+        "answer": "The article is available at https://link.springer.com/article/10.1007/s13534-023-00339-y",
+        "generated_answer": " The article associated with the DMID dataset is available at this link: https://link.springer.com/article/10.1007/s13534-023-00339-y"
+    },
+    {
+        "question": "Where was the DMID dataset collected from?",
+        "answer": "The data of DMID dataset is collected from India.",
+        "generated_answer": " The DMID dataset was collected from India."
+    },
+    {
+        "question": "What kind of data are available in DMID dataset?",
+        "answer": "The data of DMID dataset includes Mammogram_Images, Metadata, and Radiological_Reports.",
+        "generated_answer": " The DMID (Digital mammography Dataset for Breast Cancer Diagnosis Research) contains mammogram images and metadata. The types of files in the dataset include dcm, xlsx, and txt."
+    },
+    {
+        "question": "Tell me somethiong about Bancoweb dataset.",
+        "answer": "This dataset contains 1400 images from 320 cases.",
+        "generated_answer": " The BancoWeb dataset contains 1400 mammogram images from 320 cases. It is used for breast cancer detection, but the data itself is not accessible. The associated article was published in 2010 and can be found at this link: https://link.springer.com/article/10.1007/s10278-010-9297-2. The mammogram images are in TIFF format, and the data was collected from Brazil."
+    },
+    {
+        "question": "What can I use Bancoweb dataset for?",
+        "answer": "Bancoweb can be used for Breast_Cancer_Detection",
+        "generated_answer": " The BancoWeb dataset can be used for various tasks related to breast health analysis, including but not limited to:\n\n1. Breast Cancer Detection\n2. Breast Density Estimation\n3. Multi-Modal Learning\n4. Synthetic Data Generation\n\nHowever, the dataset is not accessible as of now, and more information about it can be found in the article published on SpringerLink in 2010."
+    },
+    {
+        "question": "Is Bancoweb dataset publicly available?",
+        "answer": "No, Bancoweb is not publicly available.",
+        "generated_answer": " Based on the information provided in the document, the BancoWeb dataset is not publicly accessible."
+    },
+    {
+        "question": "What is the associated article with Bancoweb dataset?",
+        "answer": "The article associated with Bancoweb dataset is Online Mammographic Images Database for Development and Comparison of CAD Schemes.",
+        "generated_answer": " The associated article with the BancoWeb dataset is titled \"Online Mammographic Images Database for Development and Comparison of CAD Schemes\" and was published in the journal \"Computer Methods and Programs in Biomedicine\" in 2010. The link to access the article is: https://link.springer.com/article/10.1007/s10278-010-9297-2"
+    },
+    {
+        "question": "When was the article associated with Bancoweb dataset published?",
+        "answer": "The article associated with Bancoweb dataset was published in 2010.",
+        "generated_answer": " The article associated with the BancoWeb dataset was published in the year 2010."
+    },
+    {
+        "question": "Where is the article associated with Bancoweb dataset available?",
+        "answer": "The article is available at https://link.springer.com/article/10.1007/s10278-010-9297-2",
+        "generated_answer": " The article associated with the BancoWeb dataset is published online and can be accessed at this link: https://link.springer.com/article/10.1007/s10278-010-9297-2."
+    },
+    {
+        "question": "Where was the Bancoweb dataset collected from?",
+        "answer": "The data of Bancoweb dataset is collected from Brazil.",
+        "generated_answer": " The BancoWeb dataset was collected from Brazil."
+    },
+    {
+        "question": "What kind of data are available in Bancoweb dataset?",
+        "answer": "The data of Bancoweb dataset includes Mammogram_Images.",
+        "generated_answer": " The BancoWeb dataset contains mammogram images. Specifically, it includes 1400 mammography images from 320 cases. The dataset can be used for breast cancer detection and is not currently accessible to the public. The associated article was published in 2010 and is available at https://link.springer.com/article/10.1007/s10278-010-9297-2."
+    },
+    {
+        "question": "Tell me something about MircacleDB dataset.",
+        "answer": "This dataset contains 204 mammography images collected from 196 patients.",
+        "generated_answer": " I apologize for any confusion, but the document provided does not contain information about a \"MircacleDB\" dataset. The datasets mentioned in the document are EMBED, KAU-BCMD, DMID, and RBIS-DDSM. These datasets have various types of mammogram data, including mammogram images, metadata, and in some cases, synthetic data or annotations. They come from different locations such as USA and Saudi Arabia, and can be used for various tasks such as breast cancer detection, BIRADS category classification, tumor localization, and mammographic report generation. If you have information about a \"MircacleDB\" dataset that is not in this document, please provide more details so I can assist you accurately."
+    },
+    {
+        "question": "What can I do with MiracleDB?",
+        "answer": "MiracleDB can be used for Breast_Cancer_Detection.",
+        "generated_answer": " Based on the information provided in the document, MiracleDB does not appear to be a specific mammogram dataset or database mentioned. The given text discusses several datasets and databases, such as OMI-DB, EMBED, RBIS-DDSM, and KAU-BCMD, which can be used for various tasks like Breast_Cancer_Detection, Breast_Cancer_Risk_Prediction, Breast_Cancer_Type_Classification, Tumor_Localization, Multi_Modal_Learning, Synthetic_Data_Generation, and Annotation_Box.\n\nHowever, there is no mention of a database or dataset called MiracleDB in the document, so it's unclear what you can do with MiracleDB based on the given information."
+    },
+    {
+        "question": "Is MiracleDB publicly available?",
+        "answer": "No, MiracleDB is not publicly available.",
+        "generated_answer": " Based on the information provided in the document, there is no mention of a dataset named \"MiracleDB\" being publicly available. All the datasets listed have specific availability notes, and none of them indicate that they are publicly available without signing an agreement or accessing through certain links. Therefore, MiracleDB does not appear to be among these datasets."
+    },
+    {
+        "question": "What is the associated article with MiracleDB dataset?",
+        "answer": "The associated article is A web-accessible mammographic image database dedicated to combined training and evaluation of radiologists and machines.",
+        "generated_answer": " I apologize for any confusion, but there seems to be a mistake in your question as there is no mention of a \"MiracleDB\" dataset in the provided information. Each dataset mentioned includes its associated article and link for further reference. If you meant one of those datasets, please specify it in your query."
+    },
+    {
+        "question": "When was the article associated with MiracleDB dataset published?",
+        "answer": "The article associated with MiracleDB dataset was published in 2009.",
+        "generated_answer": " I'm sorry, but there is no MiracleDB dataset mentioned in the provided document. The datasets discussed in the text are Breast_Density_Estimation, Tumor_Localization, Multi_Modal_Learning, and Breast_Tumor_Classification, each with their respective publication dates and articles available online."
+    },
+    {
+        "question": "Where is the article associated with MiracleDB dataset available?",
+        "answer": "The article is available at https://ieeexplore.ieee.org/abstract/document/5394465",
+        "generated_answer": " The MiracleDB dataset is not mentioned in the provided information. The given text only discusses several mammogram datasets along with their availability, types of data, and related articles."
+    },
+    {
+        "question": "What kind of data are available in MiracleDB dataset?",
+        "answer": "The data of MiracleDB dataset includes Mammogram_Images.",
+        "generated_answer": " Based on the information provided in the document, there is no mention of a \"MiracleDB\" dataset. The datasets discussed in the document are EMBED, KAU-BCMD, INbreast-dataset, and BCS-DBT, each with specific types of data such as mammogram images, metadata, and clinical data."
+    },
+    {
+        "question": "Where was the MiracleDB dataset collected from?",
+        "answer": "The data of MiracleDB dataset is collected from Greece.",
+        "generated_answer": " I'm sorry, but there seems to be a misunderstanding as there is no mention of a \"MiracleDB\" dataset in the provided document. The datasets mentioned are EMBED, INbreast-dataset, KAU-BCMD, and DMID along with their respective data availability and types. If you meant to ask about one of those, please let me know and I'll be happy to help answer any questions related to it."
+    },
+    {
+        "question": "Tell me something about Magic-5 dataset.",
+        "answer": "This dataset contains 3369 images from 967 cases.",
+        "generated_answer": " The Magic-5 dataset is a mammographic database of digitized images for research, originating from Italy. It contains 3369 mammogram images from 967 cases and can be used for breast cancer detection. However, the data is not accessible without additional information or signing an agreement."
+    },
+    {
+        "question": "What can I use Magic-5 dataset for?",
+        "answer": "Magic-5 can be used for Breast_Cancer_Detection.",
+        "generated_answer": " The Magic-5 dataset can be used for breast cancer detection. It contains 3369 images from 967 cases. However, the data is not accessible publicly. The associated article for this dataset was published in 2008 and is available at https://www.spiedigitallibrary.org/conference-proceedings-of-spie/6915/1/Toward-a-standard-reference-database-for-computer-aided-mammography/10.1117/12.770325.short."
+    },
+    {
+        "question": "Is Magic-5 dataset publicly available?",
+        "answer": "No, Magic-5 is not publicly available.",
+        "generated_answer": " Based on the information provided in the document, the Magic-5 dataset is not publicly available. It can only be accessed upon signing an agreement."
+    },
+    {
+        "question": "What is the associated article with Magic-5 dataset?",
+        "answer": "The associated article is MAGIC-5: an Italian mammographic database of digitised images for research.",
+        "generated_answer": " The associated article with the Magic-5 dataset is \"MAGIC-5: an Italian mammographic database of digitised images for research,\" published in 2008. You can access the article at this link: <https://www.spiedigitallibrary.org/conference-proceedings-of-spie/6915/1/Toward-a-standard-reference-database-for-computer-aided-mammography/10.1117/12.770325.short>."
+    },
+    {
+        "question": "When was the article associated with Magic-5 dataset published?",
+        "answer": "The article associated with Magic-5 dataset was published in 2002.",
+        "generated_answer": " The article associated with the Magic-5 dataset was published in the year 2008."
+    },
+    {
+        "question": "Where is the article associated with Magic-5 dataset available?",
+        "answer": "The article is available at https://www.researchgate.net/profile/Roberto-Bellotti-3/publication/5320442_MAGIC-5_An_Italian_mammographic_database_of_digitised_images_for_research/links/09e4150a2b4d4393bd000000/MAGIC-5-An-Italian-mammographic-database-of-digitised-images-for-research.pdf",
+        "generated_answer": " The article associated with the Magic-5 dataset is available at the following link: https://www.spiedigitallibrary.org/conference-proceedings-of-spie/6915/1/Toward-a-standard-reference-database-for-computer-aided-mammography/10.1117/12.770325.short"
+    },
+    {
+        "question": "Where was the Magic-5 dataset collected from?",
+        "answer": "The data of Magic-5 dataset is collected from Italy.",
+        "generated_answer": " The Magic-5 dataset was collected from the USA."
+    },
+    {
+        "question": "What kind of data are available in Magic-5 dataset?",
+        "answer": "The data of Magic-5 dataset includes Mammogram_Images.",
+        "generated_answer": " The Magic-5 dataset contains mammogram images and can be used for breast cancer detection. However, the data is not accessible without further information."
+    },
+    {
+        "question": "Tell me something about LLNL dataset.",
+        "answer": "This dataset contains 198 images from 50 cases.",
+        "generated_answer": " I'm sorry for any confusion, but the document provided does not contain information specifically about an LLNL (Lawrence Livermore National Laboratory) mammogram dataset. The datasets mentioned in the document are from Emory University, King Abdulaziz University, and the Cancer Imaging Archive. These datasets can be used for various tasks related to mammography, such as breast cancer detection, breast density estimation, tumor localization, and multi-modal learning, among others. If you have more information about a specific LLNL mammogram dataset, please let me know and I will do my best to help you with that."
+    },
+    {
+        "question": "What can I use LLNL dataset for?",
+        "answer": "LLNL can be used for Breast_Cancer_Detection.",
+        "generated_answer": " The LLNL (Lawrence Livermore National Laboratory) dataset is not explicitly mentioned in the provided information. However, based on the given context, it seems that the datasets discussed can be used for various tasks such as Breast_Cancer_Detection, Breast_Density_Estimation, Breast_Cancer_Type_Classification, Tumor_Localization, Multi_Modal_Learning, and Synthetic_Data_Generation. If the LLNL dataset is related to mammograms or breast cancer research, it might fall under one or more of these categories as well. Please check the specific documentation or article associated with the LLNL dataset for accurate information."
+    },
+    {
+        "question": "Is LLNL dataset publicly available?",
+        "answer": "No, LLNL is not publicly available.",
+        "generated_answer": " Based on the information provided in the document, the Multi_Modal_Learning dataset from LLNL is not publicly available but can be obtained upon signing an agreement. An accessible version of the dataset is available at <https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png>."
+    },
+    {
+        "question": "What is the associated article with LLNL dataset?",
+        "answer": "The associated article is Toward a standard reference database for computer-aided mammography",
+        "generated_answer": " The associated article with the LLNL dataset is \"Automatic mass segmentation in mammographic images.\" It was published on [2008]. The article is available at [https://dugi-doc.udg.edu/handle/10256/4909]."
+    },
+    {
+        "question": "When was the article associated with LLNL dataset published?",
+        "answer": "The article associated with LLNL dataset was published in 2008.",
+        "generated_answer": " The article associated with the LLNL dataset was published in 2008."
+    },
+    {
+        "question": "Where is the article associated with LLNL dataset available?",
+        "answer": "The article is available at https://www.spiedigitallibrary.org/conference-proceedings-of-spie/6915/1/Toward-a-standard-reference-database-for-computer-aided-mammography/10.1117/12.770325.short",
+        "generated_answer": " The article associated with the LLNL dataset is not provided in the given text. However, the data link for the LLNL dataset is available at <https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png>. If you are looking for an article related to the LLNL dataset, I would recommend checking out the articles associated with other datasets mentioned in the text or looking up scientific publications about the LLNL mammography dataset using reputable sources such as PubMed."
+    },
+    {
+        "question": "Where was the LLNL dataset collected from?",
+        "answer": "The data of LLNL dataset is collected from USA.",
+        "generated_answer": " The LLNL dataset was collected from Spain."
+    },
+    {
+        "question": "What kind of data are available in LLNL dataset?",
+        "answer": "The data of LLNL dataset includes Mammogram_Images.",
+        "generated_answer": " The LLNL dataset, which is the VinDr-Mammo dataset, includes mammogram images and associated metadata. The files in this dataset come in dcm, png, and csv formats. This large-scale benchmark dataset can be used for various applications such as computer-aided detection and diagnosis in full-field digital mammography. It is important to note that access to the original version of this dataset requires signing an agreement, but a more accessible version is available at [kaggle](https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png)."
+    },
+    {
+        "question": "Tell me something about Nijmegen dataset.",
+        "answer": "This dataset contains 40 images from 21 cases.",
+        "generated_answer": " I apologize for the confusion, but the document provided does not contain information about a dataset named \"Nijmegen\". The datasets mentioned in the text are \"Breast\\_Density\\_Estimation\", \"Tumor\\_Localization\", \"Multi\\_Modal\\_Learning\", and \"Annotation\\_Box\" with their respective availability links, types of data, files, collection locations, and uses. If you have more information about the Nijmegen dataset or if it is related to any of the mentioned datasets, please provide that context for a precise response."
+    },
+    {
+        "question": "What can I use Nijmegen dataset for?",
+        "answer": "Nijmegen can be used for Breast_Cancer_Detection.",
+        "generated_answer": " The Nijmegen dataset, as described in the provided information, can be used for various tasks related to breast imaging analysis. Specifically, it can be utilized for:\n\n1. Breast Cancer Detection\n2. Breast Density Estimation\n3. Breast Cancer Type Classification\n4. Multi-Modal Learning (possibly combining mammography and other modalities)\n5. Synthetic Data Generation (for augmenting the existing dataset or generating new data for research purposes)\n\nKeep in mind that while the dataset is accessible, you might need to comply with specific requirements or conditions for using it, depending on the data usage policies. For more details, please refer to the associated article and data link mentioned in the provided information."
+    },
+    {
+        "question": "Is Nijmegen dataset publicly available?",
+        "answer": "No, Nijmegen is not publicly available.",
+        "generated_answer": " Based on the information provided in the document, the Nijmegen dataset is not publicly available as it is mentioned that \"Data Availability: Upon signing agreement. Data Link: Available at https://aws.amazon.com/marketplace/pp/prodview-unw4li5rkivs2#overview\". Therefore, access to this dataset requires a signed agreement."
+    },
+    {
+        "question": "What is the associated article with Nijmegen dataset?",
+        "answer": "The associated article is A computerized system for detection and segmentation of clustered microcalcifications.",
+        "generated_answer": " The associated article with the Nijmegen dataset is titled \"A computerized system for detection and segmentation of clustered microcalcifications\" and was published in 1996. It is available at the link: <http://dspace.fcu.edu.tw/handle/2377/2738>."
+    },
+    {
+        "question": "When was the article associated with Nijmegen dataset published?",
+        "answer": "The article associated with Nijmegen dataset was published in 1996.",
+        "generated_answer": " The article associated with the Nijmegen dataset was published in 1996."
+    },
+    {
+        "question": "Where is the article associated with Nijmegen dataset available?",
+        "answer": "The article is available at http://dspace.fcu.edu.tw/handle/2377/2738",
+        "generated_answer": " The associated article for the Nijmegen dataset is not accessible online freely. It was published in 1996 and the given article link may not be active anymore. I recommend contacting the original authors or the institution where they work to obtain a copy of the article."
+    },
+    {
+        "question": "Where was the Nijmegen dataset collected from?",
+        "answer": "The data of Nijmegen dataset is collected from Taiwan.",
+        "generated_answer": " The Nijmegen dataset was collected from Greece."
+    },
+    {
+        "question": "What kind of data are available in Nijmegen dataset?",
+        "answer": "The data of Nijmegen dataset includes Mammogram_Images.",
+        "generated_answer": " The Nijmegen dataset is not explicitly mentioned in the provided information. However, based on the context of the given text, it seems that the discussion focuses on mammogram datasets available from various sources such as INbreast, RBIS-DDSM, EMBED, VinDr-Mammo, and KAU-BCMD. Since Nijmegen is not listed among these datasets, no information about the type of data available in Nijmegen dataset is provided in the text."
+    },
+    {
+        "question": "Tell me something about Malaga dataset.",
+        "answer": "This dataset contains 320 images from 89 cases.",
+        "generated_answer": " The Malaga dataset is a mammogram dataset that contains 320 images from 89 cases. It was collected in Taiwan and can be used for breast cancer detection. However, the data availability for this dataset is not accessible directly, but it can be obtained upon signing an agreement. An accessible version of this dataset is available on Kaggle at the link: <https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png>. The associated article for this dataset is \"Automatic mass segmentation in mammographic images,\" published in 2008, and the article is available at <https://dugi-doc.udg.edu/handle/10256/4909>."
+    },
+    {
+        "question": "What can I use Malaga dataset for?",
+        "answer": "Malaga can be used for Breast_Cancer_Detection.",
+        "generated_answer": " The Malaga dataset can be used for Breast Cancer Detection."
+    },
+    {
+        "question": "Is Malaga dataset publicly available?",
+        "answer": "No, Malaga is not publicly available.",
+        "generated_answer": " Based on the information provided in the document, the Multi_Modal_Learning dataset is not publicly available in its original version, but an accessible version is available at <https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png>. Therefore, the Malaga dataset is considered accessible, but it requires signing an agreement to access the original version."
+    },
+    {
+        "question": "What is the associated article with Malaga dataset?",
+        "answer": "The associated article is Automatic mass segmentation in mammographic images.",
+        "generated_answer": " The associated article with the Malaga dataset is \"Automatic mass segmentation in mammographic images\" and it was published on 2008. You can access the article at this link: <https://dugi-doc.udg.edu/handle/10256/4909>."
+    },
+    {
+        "question": "When was the article associated with Malaga dataset published?",
+        "answer": "The article associated with Malaga dataset was published in 2008.",
+        "generated_answer": " The article associated with the Malaga dataset was published in the year 2008."
+    },
+    {
+        "question": "Where is the article associated with Malaga dataset available?",
+        "answer": "The article is available at https://dugi-doc.udg.edu/handle/10256/4909",
+        "generated_answer": " The article associated with the Malaga dataset is available at the following link: <https://dugi-doc.udg.edu/handle/10256/4909>"
+    },
+    {
+        "question": "Where was the Malaga dataset collected from?",
+        "answer": "The data of Malaga dataset is collected from Spain.",
+        "generated_answer": " The Malaga dataset was collected from Taiwan."
+    },
+    {
+        "question": "Tell me something about the Mammogrid dataset.",
+        "answer": "The dataset was collected from UK, Switzerland, and Italy. However, no further information is available regarding its contents.",
+        "generated_answer": " I'm sorry for any confusion, but there seems to be no information provided in the given document about a \"Mammogrid\" dataset. The document only mentions several other datasets, including \"Breast_Tumor_Classification,\" \"Mammographic_Report_Generation,\" \"Tumor_Localization,\" \"Breast_Density_Estimation,\" \"Synthetic_Data_Generation,\" \"EMBED,\" and \"DREAM\" datsets. If you meant to ask about one of these datasets, please let me know which one."
+    },
+    {
+        "question": "What can I use Mammogrid dataset for?",
+        "answer": "Mammogrid can be used for Breast_Cancer_Detection.",
+        "generated_answer": " The Mammogrid dataset is not listed in the provided information. However, based on the context of the given datasets, which include Breast_Cancer_Detection, Breast_Tumor_Classification, Tumor_Localization, and others, it can be inferred that you may use a Mammogrid dataset for those specific tasks if such a dataset exists. Mammogrid is not explicitly mentioned as one of the datasets, but it's worth noting that mammography grids (used to improve image quality) could potentially be incorporated into some of these existing datasets as additional features. For further clarification or confirmation, you may need to consult the specific documentation or research papers related to the Mammogrid dataset."
+    },
+    {
+        "question": "Is Mammogrid dataset publicly available?",
+        "answer": "No, Mammogrid is not publicly available.",
+        "generated_answer": " Based on the information provided in the document, there is no mention of a \"Mammogrid\" dataset. The datasets mentioned are \"Mammographic_Report_Generation\" (DMID), \"Breast_Tumor_Classification\" (KAU-BCMD), \"Tumor_Localization\", \"Breast_Density_Estimation\", \"Synthetic_Data_Generation\", and \"Multi_Modal_Learning\" (VinDr-Mammogram). If you meant to ask about the availability of one of those datasets, please specify which one."
+    },
+    {
+        "question": "What is the associated article with Mammogrid dataset?",
+        "answer": "The associated article is MammoGrid: a prototype distributed mammographic database for Europe.",
+        "generated_answer": " I couldn't find any information about a \"Mammogrid\" dataset in the provided text. However, I can help you find the associated articles for the datasets named DMID, Breast Tumor Classification, EMBED (DREAM), Nijmegen, and Mammographic images analysis society digital mammogram database. Here are their associated articles with the given links:\n\n1. Digital mammography dataset for breast cancer diagnosis research (DMID): https://link.springer.com/article/10.1007/s13534-023-00339-y\n2. King Abdulaziz University Breast Cancer Mammogram Dataset (KAU-BCMD): https://www.mdpi.com/2306-5729/6/11/111\n3. The EMory BrEast imaging Dataset (EMBED): A RaciallyDiverse, Granular Dataset of 3.4 Million Screening and Diagnostic Mammographic Images: https://pubs.rsna.org/doi/10.1148/ryai.220047\n4. A web-accessible mammographic image database dedicated to combined training and evaluation of radiologists and machines: https://ieeexplore.ieee.org/abstract/document/5394465\n5. The mammographic images analysis society digital mammogram database: http://dspace.fcu.edu.tw/handle/2377/2738\n\nThese articles provide more context and details about the datasets, including their purposes, data types, file formats, collection locations, and other relevant information."
+    },
+    {
+        "question": "When was the article associated with Mammogrid dataset published?",
+        "answer": "The article associated with Mammogrid dataset was published in 2007.",
+        "generated_answer": " The article associated with the Mammographic_Report_Generation dataset was published in the year 2024."
+    },
+    {
+        "question": "Where is the article associated with Mammogrid dataset available?",
+        "answer": "The article is available at https://www.sciencedirect.com/science/article/pii/S0009926007001651?casa_token=-E26snreQ0cAAAAA:-R0727xsBGX71Pb3SovXb13mLue-io3wqbE6FcBdRhQsNxCg1z0_5yDTD_Qgl-upkf1EQNpsNA",
+        "generated_answer": " I'm unable to directly answer that question as there is no mention of a \"Mammogrid\" dataset in the provided information. Each dataset mentioned includes details about its associated article and the link where it can be accessed."
+    },
+    {
+        "question": "Where was the Mammogrid dataset collected from?",
+        "answer": "The data of Mammogrid dataset is collected from UK, Switzerland, and Italy.",
+        "generated_answer": " The Mammogrid dataset is not mentioned in the provided information. The information only covers the DMID, Breast\\_Tumor\\_Classification, Tumor\\_Localization, Breast\\_Density\\_Estimation, Synthetic\\_Data\\_Generation datasets and their respective details such as data availability, types of data and files, and collection locations."
+    },
+    {
+        "question": "What kind of data are available in Mammogrid dataset?",
+        "answer": "The data of Mammogrid dataset includes Mammogram_Images.",
+        "generated_answer": " I'm unable to find any information about a \"Mammogrid\" dataset in the provided text. The datasets mentioned in the text are named DMID, Breast_Tumor_Classification, Tumor_Localization, Breast_Density_Estimation, Synthetic_Data_Generation, and VinDr-Mammo. If you have more information about \"Mammogrid,\" please provide it so I can help answer your question."
+    },
+    {
+        "question": "Which datasets were collected from the USA?",
+        "answer": "EMBED, DREAM, DDSM, CBIS-DDSM, RBIS-DDSM, RSNA, BCS-DBT, LLNL datasets were collected from the USA.",
+        "generated_answer": " The following mammogram datasets were collected from the USA: DREAM, RSNA Pneumonia Detection, and CMMD."
+    },
+    {
+        "question": "Which datasets were collected from UK?",
+        "answer": "OMI-DB, OPTIMAM, MIAS, Mammogrid datasets were collected from UK.",
+        "generated_answer": " The datasets \"Europe Data\" and \"VinDr-Mammo\" were collected from the UK."
+    },
+    {
+        "question": "Which datasets were collected from China?",
+        "answer": "CMMD dataset was collected from China.",
+        "generated_answer": " The Breast Cancer Type Classification (Inbreast) dataset was collected from China. It contains mammogram images and clinical data for a total of 115 cases, with varying numbers of images per case depending on the breast cancer type. The dataset can be used for tasks such as BIRADS Category Classification, Breast Cancer Detection, Tumor Localization, and Breast Tumor Classification. The data is available at https://www.cancerimagingarchive.net/collection/cmmd/."
+    },
+    {
+        "question": "Which datasets were collected from Portugal?",
+        "answer": "Inbreast dataset was collected from Portugal.",
+        "generated_answer": " The document mentions two datasets that were collected from Portugal. They are \"Breast_Density_Estimation\" and \"BCS-DBT\". Both datasets are accessible and the links to access them are provided in the document."
+    },
+    {
+        "question": "Which datasets were collected from Vietnam?",
+        "answer": "Vindr-Mammo dataset was collected from Vietnam.",
+        "generated_answer": " The VinDr-Mammo dataset was collected from Vietnam."
+    },
+    {
+        "question": "Which datasets were collected from Saudi Arabia?",
+        "answer": "KAU-BCMD dataset was collected from Saudi Arabia.",
+        "generated_answer": " The KAU-BCMD dataset was collected from Saudi Arabia. It contains mammogram images and metadata, with a total of 5664 images for 1416 cases, each with two views of both breasts. Additionally, there are 205 ultrasound cases corresponding to some mammogram cases, with a total of 405 images. This dataset can be used for various tasks including BIRADS Category Classification, Breast Cancer Detection, Tumor Localization, and Breast Tumor Classification."
+    },
+    {
+        "question": "Which datasets were collected from Greece?",
+        "answer": "MiracleDB dataset was collected from Greece.",
+        "generated_answer": " The Nijmegen dataset was collected from Greece. It contains 40 mammogram images from 21 cases and can be used for Breast_Cancer_Detection. However, it is not accessible directly as per the provided information."
+    },
+    {
+        "question": "Which datasets were collected from Italy?",
+        "answer": "Magic-5 dataset was collected from Italy.",
+        "generated_answer": " The Mammogram\\_Images datasets named \"Mammogrid\" and \"MAGIC-5\" were collected from Italy."
+    },
+    {
+        "question": "Which datasets were collected from Spain?",
+        "answer": "Malaga dataset was collected from Spain.",
+        "generated_answer": " The datasets named \"Malaga\" and \"LLNL\" were collected from Spain."
+    },
+    {
+        "question": "Which datasets were collected from Taiwan?",
+        "answer": "Nijmegen dataset was collected from Taiwan.",
+        "generated_answer": " The document mentions only one dataset named \"Malaga\" that was collected from Taiwan. It contains 320 images from 89 cases, and can be used for breast cancer detection."
+    },
+    {
+        "question": "Which datasets were collected from Brazil?",
+        "answer": "Bancoweb dataset was collected from Brazil.",
+        "generated_answer": " The BancoWeb and Miracle DB datasets were collected from Brazil."
+    },
+    {
+        "question": "Which datasets were collected from India?",
+        "answer": "DMID dataset was collected from India.",
+        "generated_answer": " The Mammographic_Report_Generation dataset was collected from India."
+    },
+    {
+        "question": "Which datasets were collected from Switzerland?",
+        "answer": "A part of Mammogrid dataset was collected from Switzerland.",
+        "generated_answer": " The datasets that were collected from Switzerland are the Europe Data dataset."
+    },
+    {
+        "question": "Which datasets were collected from Australia?",
+        "answer": "A part of RSNA dataset was collected from Australia.",
+        "generated_answer": " The CMMD (Chinese MaMmography Database) was not collected from Australia. However, the dataset named \"RSNA\" was collected from both USA and Australia."
+    },
+    {
+        "question": "Which datasets were collected from Sweden?",
+        "answer": "A part of DREAM dataset was collected from Sweden.",
+        "generated_answer": " The document mentions two datasets that were collected from Sweden. The first one is the \"DDSM\" dataset with 68,008 women and 166,578 mammograms. The second one is not explicitly mentioned in the given information but can be identified as the \"Swedish\" dataset based on the context."
+    },
+    {
+        "question": "Which datasets were collected from Europe?",
+        "answer": "The list of datasets collected from Europe are OMI-DB, OPTIMAM, MIAS, Inbreast, Mammogrid, MiracleDB, Magic-5, and some parts of DREAM dataset.",
+        "generated_answer": " The mammogram datasets that were collected from Europe are the \"Europe Data\" dataset and the BCS-DBT (Breast Cancer Surveillance Database Tomosynthesis) dataset. The Europe Data was collected from the UK, Italy, and Switzerland, while the BCS-DBT dataset contains Digital Breast Tomosynthesis (3D) Images collected from Portugal."
+    },
+    {
+        "question": "Which datasets were collected from Asia?",
+        "answer": "The list of datasets collected from Asia are CMMD, Nijmegen, DMID, KAU-BCMD, Vindr-Mammo.",
+        "generated_answer": " The KAU-BCMD dataset was collected from Saudi Arabia, which is part of the Asian continent. The Malaga and BCS-DBT datasets were collected from Spain and Portugal, respectively, which are not part of Asia. Therefore, only the KAU-BCMD dataset was collected from Asia."
+    },
+    {
+        "question": "Which datasets were collected from South America?",
+        "answer": "The list of datasets collected from South America are Bancoweb.",
+        "generated_answer": " The following datasets were collected from South America:\n\n1. INbreast-dataset: Collected from Portugal, but it is located in South America as Portugal is a part of Europe but geographically it is in Southwestern Europe and is bordered by the Atlantic Ocean to the west and south, and by the Mediterranean Sea to the southeast.\n2. BancoWeb: Collected from Brazil.\n3. Miracle DB: Collected from Taiwan, but it is not located in South America. However, Taiwan is an island nation situated in the western Pacific Ocean near the eastern coast of Asia. It's often considered part of East Asia, but geographically speaking, it's closer to South America than to Europe or North America.\n\nTherefore, only the INbreast-dataset and BancoWeb were collected from South America."
+    },
+    {
+        "question": "Which datasets were collected from Middle East?",
+        "answer": "The list of datasets collected from Middle East are KAU-BCMD.",
+        "generated_answer": " The KAU-BCMD dataset and the LLNL dataset were collected from Saudi Arabia and Spain respectively in the Middle East region. Both datasets contain mammogram images and can be used for various applications including breast cancer detection, BIRADS category classification, tumor localization, breast density estimation, synthetic data generation, and mammographic report generation. The KAU-BCMD dataset is accessible at <https://www.kaggle.com/datasets/asmaasaad/king-abdulaziz-university-mammogram-dataset> and the LLNL dataset is available at <https://www.kaggle.com/datasets/ramanathansp20/inbreast-dataset>."
+    },
+    {
+        "question": "Which datasets were collected from Africa?",
+        "answer": "No datasets from Africa were found as of present in the database.",
+        "generated_answer": " Based on the information provided in the document, there is no mammogram dataset mentioned that was collected from Africa. The datasets mentioned in the document are from Saudi Arabia, Portugal, USA, and Taiwan."
+    }
+]
