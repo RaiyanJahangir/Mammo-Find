@@ -112,12 +112,12 @@ def retrieve_documents(query, top_k=15):
 
 # Initialize the LLM model
 temp=0
-model = OllamaLLM(model="mistral",temperature=temp)
+model = OllamaLLM(model="mistral-nemo:latest",temperature=temp)
 
 # Define the chat template
 template = """ 
 You are an AI assistant that provides information about mammogram datasets. 
-The users will ask you different questions about the datasets and you will answer them.
+You will answer them from the relevant document to ensure the response is precise, medically relevant, and well-organized.
 
 Here is the conversation history: {conversation_context}  
 
