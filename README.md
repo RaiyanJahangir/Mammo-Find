@@ -5,14 +5,14 @@ An LLM-based Web Visualization tool for Mammogram dataset recommendations
 
 - You will need Python 3.11.7
 
-- You will need Ollama installed in your pc and have some LLMs downloaded
+- You will need Ollama installed on your pc and have some LLMs downloaded
 
 ### Clone the git repository
 ```
 git clone https://github.com/RaiyanJahangir/Dataset-Recommender.git
 ```
 
-### Go to the root directory of the projects
+### Go to the root directory of the project
 ```
 cd Dataset-Recommender
 ```
@@ -50,18 +50,18 @@ pip install -r requirements.txt
 
 For Windows
 ```
-python Graph_Generator.ipynb
+jupyter nbconvert --to notebook --execute --inplace Graph_Generator.ipynb
 ```
 
 For Linux
 ```
-python3 Graph_Generator.ipynb
+jupyter nbconvert --to notebook --execute --inplace Graph_Generator.ipynb
 ```
 
 ### After running the notebook, check index.html to see the generated graph
 
 ### Then start the Flask Server by running app.py
-This code activates the flask server and connects the LLM to the web interface for chatting.
+This code activates the Flask server and connects the LLM to the web interface for chatting.
 
 For Windows
 ```
