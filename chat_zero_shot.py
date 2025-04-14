@@ -47,7 +47,7 @@ def query_rag(query_text: str, model_name: str):
 
     return response_text
 
-def extract_meaningful_nodes(text, top_n=5):
+def extract_meaningful_nodes(text, top_n=10):
     """Extract key phrases as nodes using sentence similarity."""
     sentences = [s.strip() for s in text.split(". ") if s.strip()]  # Split into sentences and clean up
     if len(sentences) == 0:

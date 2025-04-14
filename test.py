@@ -1,245 +1,139 @@
-# from fpdf import FPDF
+import json
+import subprocess
+from flask import Flask, jsonify, render_template_string
+from langchain.prompts import ChatPromptTemplate
+from langchain_ollama import OllamaEmbeddings, OllamaLLM
 
-# pdf = FPDF()
-# pdf.add_page()
-# pdf.set_font("Arial", size=12)
-# text_string = "This is the string to be saved as PDF."
-# pdf.cell(200, 10, txt=text_string, ln=True, align='C')
-# pdf.output("string_as_pdf.pdf")
+def extract_key_phrases(text):
+    """
+    Uses an Ollama model via the CLI to extract meaningful key phrases from the text.
+    The model is expected to return a JSON with two arrays: 'nodes' and 'edges'.
+    Example JSON format:
+      {
+          "nodes": [
+              {"id": "root", "label": "Main Idea", "shape": "box", "color": "#ffd700"},
+              {"id": "node_0", "label": "key phrase 1", "shape": "ellipse", "color": "#87CEEB"},
+              ...
+          ],
+          "edges": [
+              {"from": "root", "to": "node_0", "color": "#898980", "weight": 1},
+              ...
+          ]
+      }
+    """
+    prompt = f"""
+Extract the most important keywords, key phrases, or ideas from the following text.
+Do not just split sentences; extract the concepts that capture the meaning.
+Then output a mindmap as a JSON object with two arrays: 'nodes' and 'edges'.
+The 'nodes' array should include:
+  - A central node with id "root" and label "Main Idea" (use shape "box" and color "#ffd700").
+  - For each key phrase, add a node with a unique id ("node_0", "node_1", ...) and label set to the phrase.
+    Use shape "ellipse" and color "#87CEEB" for these nodes.
+The 'edges' array should include an edge from the central node "root" to each key phrase node.
+Output only valid JSON.
 
-# import spacy
-# import pandas as pd
-# import networkx as nx
-# from itertools import combinations
-
-# def extract_nodes_edges(text):
-#     nlp = spacy.load("en_core_web_sm")
-#     doc = nlp(text)
+Text: {text}
+"""
+    # Change the model name to match your installed Ollama model.
+    model_name = "mistral-nemo:latest"
     
-#     # Extract meaningful entities (nodes)
-#     nodes = set()
-#     edges = []
-    
-#     prev_entity = None
-    
-#     for ent in doc.ents:
-#         nodes.add(ent.text)
-        
-#         if prev_entity:
-#             edges.append((prev_entity, ent.text))
-        
-#         prev_entity = ent.text
-    
-#     # Create DataFrames
-#     nodes_df = pd.DataFrame({'Node': list(nodes)})
-#     edges_df = pd.DataFrame(edges, columns=['Source', 'Target'])
-    
-#     return nodes_df, edges_df
+    # Run the Ollama CLI with the specified prompt.
+    # The command might vary; here we assume a command line interface like:
+    #     ollama chat <model_name> --prompt "<prompt>"
+    try:
+        # model = OllamaLLM(model=model_name)
+        # response_text = model.invoke(prompt)
+        result = subprocess.run(
+            ["ollama", "run", model_name, "--prompt", prompt],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        output = result.stdout.strip()
+        # Attempt to load the output as JSON.
+        mindmap_data = json.loads(output)
+    except Exception as e:
+        print("Error calling Ollama or parsing its output:", e)
+        # Fallback to a static example.
+        mindmap_data = {
+            "nodes": [
+                {"id": "root", "label": "Main Idea", "shape": "box", "color": "#ffd700"},
+                {"id": "node_0", "label": "Example Key Phrase", "shape": "ellipse", "color": "#87CEEB"}
+            ],
+            "edges": [
+                {"from": "root", "to": "node_0", "color": "#898980", "weight": 1}
+            ]
+        }
+    return mindmap_data
 
-# # Example response text
-# response_text = """
-# Here are the key differences between the EMBED (EMory BrEast imaging Dataset) and DMID (Digital mammography dataset for breast cancer diagnosis research) datasets:
-
-# **EMBED**:
-# - **Data Availability**: Available upon signing an agreement.
-# - **Data Link**: https://aws.amazon.com/marketplace/pp/prodview-unw4li5rkivs2#overview
-# - **Associated Article**: The EMory BrEast imaging Dataset (EMBED): A Racially Diverse, Granular Dataset of 3.4 Million Screening and Diagnostic Mammographic Images (published on: 2023)
-# - **Types of data**: Mammogram_Images
-# - **Types of files**: dcm
-# - **Data collected from**: USA
-# - **Name**: EMBED
-# - **Information**: Stands for EMory BrEast imaging Dataset. This dataset contains approximately 3.4 million screening and diagnostic mammographic images.
-
-# **DMID**:
-# - **Data Availability**: Accessible
-# - **Data Link**: https://figshare.com/articles/dataset/_b_Digital_mammography_Dataset_for_Breast_Cancer_Diagnosis_Research_DMID_b_DMID_rar/24522883
-# - **Associated Article**: Digital mammography dataset for breast cancer diagnosis research (DMID) with breast mass segmentation analysis (published on: 2024)
-# - **Types of data**: Mammogram_Images, Metadata
-# - **Types of files**: dcm, xlsx, txt
-# - **Data collected from**: India
-# - **Name**: DMID
-# - **Information**: This dataset contains a total of 510 images. Among them, 274 are abnormal images, including benign and malignant cases.
-
-# **Differences**:
-# 1. **Size**: EMBED is significantly larger (~3.4 million images) compared to DMID (510 images).
-# 2. **Origin**: EMBED was collected from the USA, while DMID was collected from India.
-# 3. **Data Availability**: EMBED requires signing an agreement for access, whereas DMID is accessible without any restrictions.
-# 4. **Associated Article**: The articles associated with each dataset were published in different years (2023 for EMBED and 2024 for DMID).
-# 5. **File Types**: While both datasets contain dcm files, DMID also includes xlsx and txt files for metadata.
-# 6. **Purpose**: Although both can be used for breast cancer detection, the larger size and racially diverse nature of EMBED make it suitable for more granular analysis, while DMID might be better suited for specific tasks like mass segmentation due to its associated article's focus on that topic.
-# """
-
-# nodes_df, edges_df = extract_nodes_edges(response_text)
-
-# print("Nodes DataFrame:")
-# print(nodes_df)
-# print("\nEdges DataFrame:")
-# print(edges_df)
-
-# import spacy
-# import pandas as pd
-# import networkx as nx
-# from itertools import combinations
-
-# # Load spaCy model for Named Entity Recognition (NER)
-# nlp = spacy.load("en_core_web_trf")
-
-# def extract_entities(text):
-#     """Extracts meaningful entities (nodes) from the text."""
-#     doc = nlp(text)
-#     entities = [ent.text for ent in doc.ents]  # Extract named entities
-#     if not entities:  # If no named entities, use noun chunks as backup
-#         entities = [chunk.text for chunk in doc.noun_chunks]
-#     return list(set(entities))  # Remove duplicates
-
-# def generate_edges(nodes):
-#     """Generates edges between nodes (if they co-occur in the same text)."""
-#     edges = list(combinations(nodes, 2))  # Create pairs of nodes
-#     return edges
-
-# def create_graph_dataframe(text):
-#     """Processes LLM response, extracts nodes and edges, and creates a dataframe."""
-#     nodes = extract_entities(text)
-#     edges = generate_edges(nodes)
-    
-#     df = pd.DataFrame(edges, columns=["Node1", "Node2"])
-#     return df
-
-# # Example LLM response
-# llm_response = """
-# # Here are the key differences between the EMBED (EMory BrEast imaging Dataset) and DMID (Digital mammography dataset for breast cancer diagnosis research) datasets:
-
-# # **EMBED**:
-# # - **Data Availability**: Available upon signing an agreement.
-# # - **Data Link**: https://aws.amazon.com/marketplace/pp/prodview-unw4li5rkivs2#overview
-# # - **Associated Article**: The EMory BrEast imaging Dataset (EMBED): A Racially Diverse, Granular Dataset of 3.4 Million Screening and Diagnostic Mammographic Images (published on: 2023)
-# # - **Types of data**: Mammogram_Images
-# # - **Types of files**: dcm
-# # - **Data collected from**: USA
-# # - **Name**: EMBED
-# # - **Information**: Stands for EMory BrEast imaging Dataset. This dataset contains approximately 3.4 million screening and diagnostic mammographic images.
-
-# # **DMID**:
-# # - **Data Availability**: Accessible
-# # - **Data Link**: https://figshare.com/articles/dataset/_b_Digital_mammography_Dataset_for_Breast_Cancer_Diagnosis_Research_DMID_b_DMID_rar/24522883
-# # - **Associated Article**: Digital mammography dataset for breast cancer diagnosis research (DMID) with breast mass segmentation analysis (published on: 2024)
-# # - **Types of data**: Mammogram_Images, Metadata
-# # - **Types of files**: dcm, xlsx, txt
-# # - **Data collected from**: India
-# # - **Name**: DMID
-# # - **Information**: This dataset contains a total of 510 images. Among them, 274 are abnormal images, including benign and malignant cases.
-
-# # **Differences**:
-# # 1. **Size**: EMBED is significantly larger (~3.4 million images) compared to DMID (510 images).
-# # 2. **Origin**: EMBED was collected from the USA, while DMID was collected from India.
-# # 3. **Data Availability**: EMBED requires signing an agreement for access, whereas DMID is accessible without any restrictions.
-# # 4. **Associated Article**: The articles associated with each dataset were published in different years (2023 for EMBED and 2024 for DMID).
-# # 5. **File Types**: While both datasets contain dcm files, DMID also includes xlsx and txt files for metadata.
-# # 6. **Purpose**: Although both can be used for breast cancer detection, the larger size and racially diverse nature of EMBED make it suitable for more granular analysis, while DMID might be better suited for specific tasks like mass segmentation due to its associated article's focus on that topic.
-# # """
-
-# # Create the graph dataframe
-# df_graph = create_graph_dataframe(llm_response)
-# print(df_graph)
-# # print(df_graph['Node2'].unique())
-
-# Optional: Create a graph using networkx
-# G = nx.from_pandas_edgelist(df_graph, "Node1", "Node2")
-# nx.draw(G, with_labels=True, node_color="lightblue", edge_color="gray")
-
-
-import pandas as pd
-import networkx as nx
-from sentence_transformers import SentenceTransformer, util
-
-# Load the sentence transformer model
-model = SentenceTransformer("all-MiniLM-L6-v2")
-
-def extract_meaningful_nodes(text, top_n=5):
-    """Extract key phrases as nodes using sentence similarity."""
-    sentences = [s.strip() for s in text.split(". ") if s.strip()]  # Split into sentences and clean up
-    if len(sentences) == 0:
-        return []  # If no sentences found, return empty list
-
-    embeddings = model.encode(sentences, convert_to_tensor=True)
-
-    # Compute similarity between all pairs
-    similarity_matrix = util.pytorch_cos_sim(embeddings, embeddings)
-
-    # Select the top N most distinct sentences as key nodes
-    scores = similarity_matrix.mean(dim=1)  # Average similarity per sentence
-    top_indices = scores.argsort(descending=True)[:min(top_n, len(sentences))]  # Prevent out-of-range
-
-    nodes = [sentences[i] for i in top_indices]
-    
-    print("Extracted Nodes:", nodes)  # Debugging: Print extracted nodes
-    return list(set(nodes))  # Remove duplicates
-
-def generate_edges(nodes):
-    """Creates edges based on co-occurrence of nodes."""
-    if len(nodes) < 2:
-        return []  # No edges possible if fewer than 2 nodes
-    edges = [(nodes[i], nodes[j]) for i in range(len(nodes)) for j in range(i+1, len(nodes))]
-    return edges
-
-def create_graph_dataframe(text):
-    """Processes text, extracts nodes and edges, and creates a DataFrame."""
-    nodes = extract_meaningful_nodes(text)
-    
-    if not nodes:
-        print("No meaningful nodes found.")  # Debugging output
-        return pd.DataFrame(columns=["Node1", "Node2"])  # Return empty DataFrame
-
-    edges = generate_edges(nodes)
-
-    if not edges:
-        print("Only one node found, no edges can be formed.")  # Debugging output
-        return pd.DataFrame(columns=["Node1", "Node2"])  # Return empty DataFrame
-
-    df = pd.DataFrame(edges, columns=["Node1", "Node2"])
-    return df
-
-# Example LLM Response (Try changing this text to test different cases)
-llm_response = """
-Here are the key differences between the EMBED (EMory BrEast imaging Dataset) and DMID (Digital mammography dataset for breast cancer diagnosis research) datasets:
-
-**EMBED**:
-- **Data Availability**: Available upon signing an agreement.
-- **Data Link**: https://aws.amazon.com/marketplace/pp/prodview-unw4li5rkivs2#overview
-- **Associated Article**: The EMory BrEast imaging Dataset (EMBED): A Racially Diverse, Granular Dataset of 3.4 Million Screening and Diagnostic Mammographic Images (published on: 2023)
-- **Types of data**: Mammogram_Images
-- **Types of files**: dcm
-- **Data collected from**: USA
-- **Name**: EMBED
-- **Information**: Stands for EMory BrEast imaging Dataset. This dataset contains approximately 3.4 million screening and diagnostic mammographic images.
-
-**DMID**:
-- **Data Availability**: Accessible
-- **Data Link**: https://figshare.com/articles/dataset/_b_Digital_mammography_Dataset_for_Breast_Cancer_Diagnosis_Research_DMID_b_DMID_rar/24522883
-- **Associated Article**: Digital mammography dataset for breast cancer diagnosis research (DMID) with breast mass segmentation analysis (published on: 2024)
-- **Types of data**: Mammogram_Images, Metadata
-- **Types of files**: dcm, xlsx, txt
-- **Data collected from**: India
-- **Name**: DMID
-- **Information**: This dataset contains a total of 510 images. Among them, 274 are abnormal images, including benign and malignant cases.
-
-**Differences**:
-1. **Size**: EMBED is significantly larger (~3.4 million images) compared to DMID (510 images).
-2. **Origin**: EMBED was collected from the USA, while DMID was collected from India.
-3. **Data Availability**: EMBED requires signing an agreement for access, whereas DMID is accessible without any restrictions.
-4. **Associated Article**: The articles associated with each dataset were published in different years (2023 for EMBED and 2024 for DMID).
-5. **File Types**: While both datasets contain dcm files, DMID also includes xlsx and txt files for metadata.
-6. **Purpose**: Although both can be used for breast cancer detection, the larger size and racially diverse nature of EMBED make it suitable for more granular analysis, while DMID might be better suited for specific tasks like mass segmentation due to its associated article's focus on that topic.
+# Example input text to be processed.
+text = """
+Artificial Intelligence (AI) has rapidly transformed industries.
+Machine Learning is a subset of AI that provides systems the ability to automatically learn.
+Natural Language Processing enables machines to understand human language.
+Deep Learning techniques have revolutionized pattern recognition.
+Ethics and transparency are critical as AI continues to expand.
 """
 
-# Generate graph DataFrame
-df_graph = create_graph_dataframe(llm_response)
-print(df_graph)
+# Generate the mindmap data using the Ollama model.
+mindmap_data = extract_key_phrases(text)
 
-# Create and visualize graph
-if not df_graph.empty:
-    G = nx.from_pandas_edgelist(df_graph, "Node1", "Node2")
-    nx.draw(G, with_labels=True, node_color="lightblue", edge_color="gray")
-else:
-    print("Graph is empty. No edges to visualize.")
+# Initialize the Flask application.
+app = Flask(__name__)
 
+# HTML template for displaying the mindmap using vis-network.
+html_template = """
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mindmap Display</title>
+    <!-- Vis-Network CSS and JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.css"
+          integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js"
+            integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #mynetwork {
+        width: 100vw;
+        height: 100vh;
+        border: 1px solid lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mynetwork"></div>
+    <script>
+      // Mindmap data passed from Flask.
+      var mindmap = {{ mindmap|tojson }};
+      var container = document.getElementById("mynetwork");
+      var options = {
+        physics: { stabilization: { enabled: true, iterations: 1000 }},
+        interaction: { hover: true }
+      };
+      var network = new vis.Network(container, mindmap, options);
+    </script>
+  </body>
+</html>
+"""
+
+# Main route renders the HTML with the embedded mindmap.
+@app.route('/')
+def index():
+    return render_template_string(html_template, mindmap=mindmap_data)
+
+# Optional route to fetch the mindmap data as JSON.
+@app.route('/mindmap')
+def get_mindmap():
+    return jsonify(mindmap_data)
+
+if __name__ == '__main__':
+    app.run(debug=True)

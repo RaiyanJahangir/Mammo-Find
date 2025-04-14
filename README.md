@@ -9,12 +9,12 @@ An LLM-based Web Visualization tool for Mammogram dataset recommendations
 
 ### Clone the git repository
 ```
-git clone https://github.com/RaiyanJahangir/Mammo-Find.git
+git clone https://github.com/RaiyanJahangir/Dataset-Recommender.git
 ```
 
 ### Go to the root directory of the projects
 ```
-cd Mammo-Find
+cd Dataset-Recommender
 ```
 
 ### Create a virtual environment 
@@ -33,7 +33,7 @@ python3.11 -m venv myenv
 
 For Windows
 ```
-myenv\Scripts\activate
+myenv/Scripts/activate
 ```
 
 For Linux
