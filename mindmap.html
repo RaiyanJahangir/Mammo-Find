@@ -13,30 +13,30 @@
                 integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ=="
                 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-        #mynetwork {
-            width: 100vw;
-            height: 100vh;
-            border: 1px solid lightgray;
-        }
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            #mynetwork {
+                width: 100vw;
+                height: 100vh;
+                border: 1px solid lightgray;
+            }
         </style>
     </head>
     <body>
         <div id="mynetwork"></div>
         <script>
-        // Mindmap data passed from Flask.
-        var mindmap = {"edges": [{"color": "#898980", "from": "root", "to": "node_0", "weight": 1}, {"color": "#898980", "from": "root", "to": "node_1", "weight": 1}, {"color": "#898980", "from": "root", "to": "node_2", "weight": 1}], "nodes": [{"color": "#ffd700", "id": "root", "label": "Mammogram Datasets", "shape": "box"}, {"color": "#87CEEB", "id": "node_0", "label": "European Data/Article (2007)", "shape": "ellipse"}, {"color": "#87CEEB", "id": "node_1", "label": "MAGIC-5 (2002)", "shape": "ellipse"}, {"color": "#87CEEB", "id": "node_2", "label": "MammoGrid (2007)", "shape": "ellipse"}]};
-        var container = document.getElementById("mynetwork");
-        var options = {
-            physics: { stabilization: { enabled: true, iterations: 1000 }},
-            interaction: { hover: true }
-        };
-        var network = new vis.Network(container, mindmap, options);
+            var mindmap = {"edges": [{"color": "#898980", "from": "root", "to": "node_0", "weight": 1}, {"color": "#898980", "from": "root", "to": "node_1", "weight": 1}], "nodes": [{"color": "#ffd700", "id": "root", "label": "Breast Cancer Dataset", "shape": "box"}, {"color": "#87CEEB", "id": "node_0", "label": "Saudi Arabia", "shape": "box"}, {"color": "#87CEEB", "id": "node_1", "label": "Breast Cancer Mammogram Dataset", "shape": "box"}]};
+            var container = document.getElementById("mynetwork");
+            var options = {
+                physics: { stabilization: { enabled: true, iterations: 1000 } },
+                interaction: { hover: true }
+            };
+            var network = new vis.Network(container, mindmap, options);
         </script>
+        
     </body>
     </html>
     

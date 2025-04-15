@@ -1,187 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mammo-Find</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 110vh;
-            background-color: #f4f4f9;
-        }
-        .chat-container {
-            width: 600px; /* Increased width */
-            height: 95%;  /* Increased height */
-            background: #ffffff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-        /* .chat-display {
-            flex: 1;
-            padding: 16px;
-            overflow-y: auto;
-            background: #f9f9f9;
-            border-bottom: 1px solid #ddd;
-        } */
-        .chat-display {
-            flex: 1;
-            padding: 16px;
-            padding-bottom: 50px; /* Add extra bottom padding to account for the input box height */
-            overflow-y: auto; /* Enable vertical scrolling */
-            background: #f9f9f9;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .chat-display .message {
-            margin-bottom: 12px;
-        }
-        .chat-display .message.user {
-            text-align: right;
-            color: #007BFF;
-        }
-        .chat-display .message.bot {
-            text-align: left;
-            color: #333;
-        }
-        .chat-input {
-            position: fixed; /* Stick to the bottom of the viewport */
-            bottom: 0; 
-            left: 0;
-            width: 100%; /* Full width of the container */
-            background: #f9f9f9; /* Light background for contrast */
-            padding: 8px; /* Padding around the input and button */
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow */
-            display: flex; /* Align input and button side by side */
-            box-sizing: border-box; /* Include padding in width calculations */
-            z-index: 1000; /* Keep above other elements */
-            overflow: hidden; /* Prevent content from spilling out */
-        }
-        .chat-input input {
-            flex: 1; /* Allow input to take up all remaining space */
-            padding: 12px; /* Adjust padding */
-            font-size: 16px; /* Increased font size for better usability */
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            outline: none;
-            box-sizing: border-box; /* Include padding in width calculations */
-        }
-        .chat-input button {
-            margin-left: 8px;
-            padding: 12px 20px; /* Adjust button size */
-            font-size: 16px; /* Match font size with input */
-            background: #007BFF; /* Blue background */
-            color: #ffffff; /* White text color */
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            flex-shrink: 0; /* Prevent the button from shrinking */
-            box-sizing: border-box; /* Include padding in width calculations */
-        }
-        .chat-input button:hover {
-            background: #0056b3;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mammo-Find</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+    }
+    /* Chat container now fills the whole viewport */
+    .chat-container {
+      width: 100vw;
+      height: 100vh;
+      background: #ffffff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    /* LLM and Prompt Type selection area at the top */
+    .select-container {
+      display: flex;
+      align-items: center;
+      padding: 8px;
+      background: #f1f1f1;
+      border-bottom: 1px solid #ddd;
+    }
+    .select-container label {
+      margin-right: 4px;
+      font-size: 16px;
+    }
+    .select-container select {
+      font-size: 16px;
+      padding: 6px;
+      border-radius: 4px;
+      margin-right: 16px;
+    }
+    /* Chat display takes up remaining space above input */
+    .chat-display {
+      flex: 1;
+      padding: 16px;
+      padding-bottom: 50px; /* Extra bottom padding for input box */
+      overflow-y: auto;
+      background: #f9f9f9;
+      border-bottom: 1px solid #ddd;
+    }
+    .chat-display .message {
+      margin-bottom: 12px;
+    }
+    .chat-display .message.user {
+      text-align: right;
+      color: #007BFF;
+    }
+    .chat-display .message.bot {
+      text-align: left;
+      color: #333;
+    }
+    /* Chat input fixed at the bottom of the container */
+    .chat-input {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #f9f9f9;
+      padding: 8px;
+      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      box-sizing: border-box;
+      z-index: 1000;
+    }
+    .chat-input input {
+      flex: 1;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      outline: none;
+      box-sizing: border-box;
+    }
+    .chat-input button {
+      margin-left: 8px;
+      padding: 12px 20px;
+      font-size: 16px;
+      background: #007BFF;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      flex-shrink: 0;
+      box-sizing: border-box;
+    }
+    .chat-input button:hover {
+      background: #0056b3;
+    }
+  </style>
 </head>
 <body>
-    <div class="chat-container">
-        <div id="chatDisplay" class="chat-display"></div>
-        <div class="chat-input">
-            <input id="userInput" type="text" placeholder="Type your message here...">
-            <button onclick="sendMessage()">Send</button>
-        </div>
+  <div class="chat-container">
+    <!-- Combined dropdowns for LLM and Prompt Type -->
+    <div class="select-container">
+      <label for="llmSelect">Choose LLM model:</label>
+      <select id="llmSelect">
+        <option value="mistral-nemo:latest" selected>Mistral-Nemo</option>
+        <option value="llama3.2:3b-instruct-q4_K_M">Llama3.2</option>
+        <option value="medllama2:latest">Medllama2</option>
+        <option value="tinyllama">Tinyllama</option>
+        <option value="gemma:7b-instruct">Gemma:7b</option>
+        <!-- Add additional options as needed -->
+      </select>
+
+      <label for="promptTypeSelect">Prompt Type:</label>
+      <select id="promptTypeSelect">
+        <option value="zero_shot" selected>Zero Shot</option>
+        <option value="n_shot">N Shot</option>
+      </select>
     </div>
-
-    <script>
-        const chatDisplay = document.getElementById('chatDisplay');
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const inputBox = document.getElementById('userInput');
-
-            // Listen for the Enter key press
-            inputBox.addEventListener('keydown', (event) => {
-                if (event.key === 'Enter') {
-                    sendMessage(); // Call the sendMessage function when Enter is pressed
-                    event.preventDefault(); // Prevent default behavior (like form submission)
-                }
-            });
-        });
-
-        async function sendMessage() {
-            const inputBox = document.getElementById('userInput');
-            const userMessage = inputBox.value.trim();
-
-            if (userMessage) {
-                // Add user message to the chat display
-                addMessage(userMessage, 'user');
-                inputBox.value = ''; // Clear input box
-
-                try {
-                    // Send the user's message to the Flask server
-                    const response = await fetch('http://127.0.0.1:8080/chat', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            prompt: userMessage // Sending the user's input as a prompt
-                        })
-                    });
-
-                    // Parse the server's response
-                    if (response.ok) {
-                        const data = await response.json();
-                        const botResponse = data.response; // Response from the Flask backend
-
-                        // Add bot response to the chat display
-                        addMessage(botResponse, 'bot');
-                    } else {
-                        throw new Error(`Server responded with status ${response.status}`);
-                    }
-                } catch (error) {
-                    // Handle errors (e.g., server unavailable)
-                    addMessage('Server not active');
-                }
-            }
-
-            inputBox.value = ''; // Clear input box
-        }
-
-        async function getChatInfo() {
-            const response = await fetch('http://127.0.0.1:8080/chat', {
-                method: 'GET',
-            });
-
-            const data = await response.json();
-            addMessage(data.response, 'bot'); // This will log "Welcome to the chat! Please send a POST request with your prompt."
-        }
-
-        // Function to scroll to the bottom of the chat display
-        function scrollToBottom() {
-            const chatDisplay = document.querySelector('.chat-display');
-            chatDisplay.scrollTop = chatDisplay.scrollHeight; // Scroll to the bottom
-        }
-
-
-        function addMessage(message, sender) {
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('message', sender);
-            messageElement.textContent = message;
-            chatDisplay.appendChild(messageElement);
-            chatDisplay.scrollTop = chatDisplay.scrollHeight; // Auto-scroll to the bottom
-
-            // Automatically scroll to the bottom
-            scrollToBottom();
-        }
-    </script>
     
+    <div id="chatDisplay" class="chat-display"></div>
+    
+    <div class="chat-input">
+      <input id="userInput" type="text" placeholder="Type your message here...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    const chatDisplay = document.getElementById('chatDisplay');
+
+    // Scroll function for chat display
+    function scrollToBottom() {
+      chatDisplay.scrollTop = chatDisplay.scrollHeight;
+    }
+
+    // Function to add messages to chat display
+    function addMessage(message, sender) {
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('message', sender);
+      messageElement.textContent = message;
+      chatDisplay.appendChild(messageElement);
+      scrollToBottom();
+    }
+
+    // Listen for Enter key on input box
+    document.addEventListener('DOMContentLoaded', () => {
+      const inputBox = document.getElementById('userInput');
+      inputBox.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          sendMessage();
+          event.preventDefault();
+        }
+      });
+    });
+
+    async function sendMessage() {
+      const inputBox = document.getElementById('userInput');
+      const userMessage = inputBox.value.trim();
+      if (!userMessage) return;
+  
+      // Add user message to chat display
+      addMessage(userMessage, 'user');
+      inputBox.value = '';
+  
+      // Retrieve the selected LLM model from the dropdown
+      const llmSelect = document.getElementById('llmSelect');
+      const selectedModel = llmSelect.value;
+  
+      // Retrieve the selected prompt type from the new dropdown
+      const promptTypeSelect = document.getElementById('promptTypeSelect');
+      const selectedPromptType = promptTypeSelect.value;
+  
+      try {
+        // Send the user's message along with model and prompt type to the Flask server
+        const response = await fetch('http://127.0.0.1:8080/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            prompt: userMessage,
+            model: selectedModel,
+            prompt_type: selectedPromptType
+          })
+        });
+  
+        if (response.ok) {
+          const data = await response.json();
+          const botResponse = data.response;
+          addMessage(botResponse, 'bot');
+        } else {
+          throw new Error(`Server responded with status ${response.status}`);
+        }
+      } catch (error) {
+        addMessage('Server not active', 'bot');
+        console.error('Error:', error);
+      }
+    }
+  </script>
 </body>
-</html
+</html>
