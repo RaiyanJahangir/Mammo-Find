@@ -46,7 +46,8 @@ source myenv/bin/activate
 pip install -r requirements.txt
 ```
 
-## 6) To run and check the tool, follow the instruction below. For evaluating results, skip this step.
+## 6) Run and check the tool. 
+If you want to directly evaluate results, skip this step. 
 
 ### Start the Flask Server 
 This code activates the Flask server and connects the LLM to the web interface for chatting.
