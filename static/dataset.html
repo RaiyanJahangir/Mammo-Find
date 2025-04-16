@@ -7,13 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Mammo-Find</title>
-    <link rel="icon" type="image/png" href="static/img/icon.png">
+    <link rel="icon" type="image/png" href="img/icon.png">
 
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="style.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -30,8 +30,8 @@
 
             <ul class="list-unstyled components">
                 <!-- <i class="fas fa-file-alt"></i> -->
-                <li class="active">
-                  <a href="index.html"><img src="static/img/graph.png" alt="Features" height="60px" width="60px"> Graph</a>
+                <li>
+                  <a href="index.html"><img src="img/graph.png" alt="Features" height="60px" width="60px"> Graph</a>
                   </li>
                     <!-- 
                   <li>
@@ -54,8 +54,8 @@
                         <li><a href="entity.html#section3"><img src="img/statistics.png" alt="Features" height="45px" width="50px"> Statistics</a></li>
                       </ul>
                   </li> -->
-                  <li>
-                    <a href="dataset.html"><img src="static/img/dataset.png" alt="Dataset" height="60px" width="60px"> Information</a>
+                  <li class="active">
+                    <a href="dataset.html"><img src="img/dataset.png" alt="Dataset" height="60px" width="60px">Information</a>
                   </li>
             </ul>
         </nav>
@@ -75,57 +75,49 @@
                         <i class="fas fa-align-justify"></i>
                     </button>
 
-                    <strong><h3> Mammo-Find: Mammogram Dataset Recommender </h3> </strong>
+                    <strong><h3>Mammo-Find: A Tool For Mammogram Dataset Recommendations </h3> </strong>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a href="static/about.html"><img src="static/img/icon2.png" height="50px" width="50px" class="rounded-image" alt="about" title="About"></a>
+                                <a href="about.html"><img src="img/icon2.png" height="50px" width="50px" class="rounded-image" alt="about" title="About"></a>
                             </li>
 
                             <li class="nav-item" style="margin-left: 8px;">
-                                <a href="static/contact.html"><img src="static/img/contact.png" height="50px" width="50px" class="rounded-image" alt="Contact" title="Contact"></a>
+                                <a href="contact.html"><img src="img/contact.png" height="50px" width="50px" class="rounded-image" alt="Contact" title="Contact"></a>
                             </li>
 
                         </ul>
                     </div>
                 </div>
             </nav>
+        
 
-    
-    
-            <div class="container">
-                <!-- Network Graph Section -->
-                <div class="section network-graph" style="position: relative;">
-                    <h4 class="header">Network Graph</h4>
-            
-                    
-                    <!-- Network Graph iframe -->
-                    <iframe id="network-iframe" src="static/mindmap.html"></iframe>
-                </div>
-            
-                <!-- Chatbox Section -->
-                <div class="section chatbox">
-                    <h4 class="header">Ask Questions</h4>
-                    <iframe src="static/chatbox.html"></iframe>
-                </div>
+
+          <!-- Main Page Content Starts from here -->
+          <center><h3>Information on Mammogram Datasets</h3></center>
+          <div class="row">
+            <div class="col-sm-12">
+              <center>
+                <iframe src="https://docs.google.com/spreadsheets/d/1lnjFFjWt3p_LB4Q88GxBWgdTCm4DQrTy5DzcnsdlpmE/edit?usp=drive_link;widget=true&amp;headers=false" width=100% height="600px"></iframe>
+              </center>
             </div>
-            
-
+          </div>
+          <br>
+          <br>   
+          <!-- Main Page Content ENDS here -->   
         </div>
     </div>
-
-
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <strong><p style="color: black;">&copy; <span id="currentYear"></span> All rights reserved.</p></strong>
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <strong><p style="color: black;">&copy; <span id="currentYear"></span> All rights reserved.</p></strong>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
     
-
+    
 
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -143,86 +135,26 @@
         });
     document.getElementById("currentYear").textContent = new Date().getFullYear();
     </script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+    }
+
   
-    <script>
-        function refreshIframe() {
-        var iframe = document.getElementById("network-iframe");
-        // Append a unique query string using current timestamp
-        iframe.src = "mindmap.html?t=" + new Date().getTime();
-        }
-        
-        // Example: Use an interval to check for changes and refresh if needed
-        setInterval(refreshIframe, 10000); // refresh every 10 seconds
-    </script>
+
+    .container {
+    display: block; /* Reset display to block for footer */
+    text-align: center; /* Center-align text */
+    }
 
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: row; /* Arrange sections side by side */
-            justify-content: space-between; /* Space out sections */
-            align-items: flex-start; /* Align items at the top */
-            gap: 10px; /* Space between sections */
-            padding: 0px;
-            /* margin:0px; */
-            height: 80%; /* Ensure the container fills the height of the viewport */
-            width: 100%; /* Ensure the container spans the full width of the viewport */
-            box-sizing: border-box; /* Include padding in width calculations */
-        }
+</style>
 
 
-        
-
-        .section.network-graph {
-            flex: 5; /* Allocate more space to the Network Graph section */
-            max-width: 50%; /* Limit maximum width to 70% of the container */
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            background-color: #ffffff;
-            overflow: hidden;
-        }
-
-        .section.chatbox {
-            flex:4; /* Allocate less space to the Chatbox section */
-            max-width: 50%; /* Limit maximum width to 30% of the container */
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            background-color: #ffffff;
-            overflow: hidden;
-        }
-
-        .header {
-            color: darkblue;
-            text-align: center;
-            margin: 16px 0;
-        }
-
-        footer .container {
-            display: block; /* Reset display to block for footer */
-            text-align: center; /* Center-align text */
-        }
-
-        iframe {
-            width: 100%;
-            height: 600px; /* Set a consistent height for both sections */
-            border: none;
-        }
-
-        .legend {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-    </style>
 
 </body>
 

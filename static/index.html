@@ -7,13 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Mammo-Find</title>
-    <link rel="icon" type="image/png" href="static/img/icon.png">
+    <link rel="icon" type="image/png" href="img/icon.png">
 
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="style.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -31,7 +31,7 @@
             <ul class="list-unstyled components">
                 <!-- <i class="fas fa-file-alt"></i> -->
                 <li class="active">
-                  <a href="index.html"><img src="static/img/graph.png" alt="Features" height="60px" width="60px"> Graph</a>
+                  <a href="index.html"><img src="img/graph.png" alt="Features" height="60px" width="60px"> Graph</a>
                   </li>
                     <!-- 
                   <li>
@@ -55,7 +55,7 @@
                       </ul>
                   </li> -->
                   <li>
-                    <a href="dataset.html"><img src="static/img/dataset.png" alt="Dataset" height="60px" width="60px"> Information</a>
+                    <a href="dataset.html"><img src="img/dataset.png" alt="Dataset" height="60px" width="60px"> Information</a>
                   </li>
             </ul>
         </nav>
@@ -79,11 +79,11 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a href="static/about.html"><img src="static/img/icon2.png" height="50px" width="50px" class="rounded-image" alt="about" title="About"></a>
+                                <a href="about.html"><img src="img/icon2.png" height="50px" width="50px" class="rounded-image" alt="about" title="About"></a>
                             </li>
 
                             <li class="nav-item" style="margin-left: 8px;">
-                                <a href="static/contact.html"><img src="static/img/contact.png" height="50px" width="50px" class="rounded-image" alt="Contact" title="Contact"></a>
+                                <a href="contact.html"><img src="img/contact.png" height="50px" width="50px" class="rounded-image" alt="Contact" title="Contact"></a>
                             </li>
 
                         </ul>
@@ -100,13 +100,13 @@
             
                     
                     <!-- Network Graph iframe -->
-                    <iframe id="network-iframe" src="static/mindmap.html"></iframe>
+                    <iframe id="network-iframe" src="mindmap.html"></iframe>
                 </div>
             
                 <!-- Chatbox Section -->
                 <div class="section chatbox">
                     <h4 class="header">Ask Questions</h4>
-                    <iframe src="static/chatbox.html"></iframe>
+                    <iframe src="chatbox.html"></iframe>
                 </div>
             </div>
             
@@ -144,7 +144,7 @@
     document.getElementById("currentYear").textContent = new Date().getFullYear();
     </script>
   
-    <script>
+    <!-- <script>
         function refreshIframe() {
         var iframe = document.getElementById("network-iframe");
         // Append a unique query string using current timestamp
@@ -153,8 +153,24 @@
         
         // Example: Use an interval to check for changes and refresh if needed
         setInterval(refreshIframe, 10000); // refresh every 10 seconds
-    </script>
+    </script> -->
+  
+    <script>
+        // Open an SSE connection to the Flask endpoint
+        const evtSource = new EventSource("/file_updates");
+        evtSource.onmessage = function(event) {
+        console.log("SSE event received:", event.data);
+        if (event.data === "changed") {
+            // Refresh the iframe by updating its source with a cache-buster to ensure a new request is made.
+            var iframe = document.getElementById("network-iframe");
+            iframe.src = "mindmap.html?t=" + new Date().getTime();
+        }
+        };
 
+        evtSource.onerror = function(event) {
+        console.error("SSE error:", event);
+        };
+    </script>
 
     <style>
         body {
