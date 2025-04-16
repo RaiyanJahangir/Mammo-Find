@@ -96,7 +96,7 @@ After running the code, the tool will open in your browser.
 
 
 ## 9) Passing queries to models and generating answers
-### Zero-shot prompting
+### 9a) Zero-shot prompting
 For Windows
 ```
 python query_data_zero_shot.py
@@ -107,7 +107,7 @@ For Linux
 python3 query_data_zero_shot.py
 ```
 
-### N-shot prompting
+### 9b) N-shot prompting
 For Windows
 ```
 python query_data_n_shot.py
@@ -121,7 +121,7 @@ python3 query_data_n_shot.py
 Check the output folder.
 
 ## 10) Record performance
-### Zero-shot prompting
+### 10a) Zero-shot prompting
 For Windows
 ```
 python evaluate_model_zero_shot.py
@@ -132,7 +132,7 @@ For Linux
 python3 evaluate_model_zero_shot.py
 ```
 
-### N-shot prompting
+### 10b) N-shot prompting
 For Windows
 ```
 python evaluate_model_n_shot.py
@@ -144,3 +144,8 @@ python3 evaluate_model_n_shot.py
 ```
 
 Check the evaluation folder
+
+## 11) Deactivate Virtual Environment and wrap up
+```
+deactivate
+```
