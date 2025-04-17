@@ -2,10 +2,11 @@
 An LLM-based Web Visualization tool for Mammogram dataset recommendations 
 
 ## 1) Installations
+- Install [Git](https://git-scm.com/downloads) 
 
-- Install [Python 3.11.7](https://www.python.org/downloads/release/python-3117/) and follow the installation instructions.
+- Install [Python 3.11.7](https://www.python.org/downloads/release/python-3117/) 
 
-- Install [Ollama](https://ollama.com/) and follow the installation instructions.
+- Install [Ollama](https://ollama.com/)
 
 - You can pull the following models beforehand from your command prompt, since they are used in the given version of the tool:
 
@@ -24,7 +25,7 @@ The other models are:
 - tinyllama
 - medllama2:latest
 - gemma:7b-instruct
-- Other models you want to use
+- Models you want to use
   
 ## 2) Clone the git repository
 ```
@@ -76,8 +77,8 @@ For Linux
 python3 populate_database.py
 ```
 
-## 8) Run and check the tool. 
-If you want to directly evaluate results, skip this step. 
+## 8) Run and check the tool 
+If you want to evaluate results directly, skip this step. 
 
 ### Start the Flask Server 
 This code activates the Flask server and connects the LLM to the web interface for chatting.
@@ -118,7 +119,7 @@ For Linux
 python3 query_data_n_shot.py
 ```
 
-Check the output folder.
+Check the output folder to see models' responses
 
 ## 10) Record performance
 ### 10a) Zero-shot prompting
@@ -143,7 +144,7 @@ For Linux
 python3 evaluate_model_n_shot.py
 ```
 
-Check the evaluation folder
+Check the evaluation folder to see models' performances
 
 ## 11) Deactivate Virtual Environment and wrap up
 ```
