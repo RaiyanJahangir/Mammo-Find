@@ -3,11 +3,11 @@ An LLM-based Web Visualization tool for Mammogram dataset recommendations
 
 ## 1) Installations
 
-- Install [Python 3.11.7](https://www.python.org/downloads/release/python-3117/)
+- Install [Python 3.11.7](https://www.python.org/downloads/release/python-3117/) and follow the installation instructions.
 
-- Install Ollama by visiting [https://ollama.com/](https://ollama.com/) and follow the installation instructions.
+- Install [Ollama](https://ollama.com/) and follow the installation instructions.
 
-- You can pull the following models beforehand from your command prompt since they are used in the given version of the tool:
+- You can pull the following models beforehand from your command prompt, since they are used in the given version of the tool:
 
 ### For embedding
 ```
