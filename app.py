@@ -117,7 +117,7 @@ def generate_graph(response, model_name):
         Output only valid JSON.
         
         During describing datasets, try to make nodes out of total number of images in dataset, filetypes, datatypes, country of origin, special properties and so on. For comparative analysis, you may make separate root nodes for each dataset with their features and feature values as other nodes or may connect the dataset name nodes with a main root node. The other nodes may be connected to feature nodes. 
-
+        Make sure the nodes never remain without edges. Atleast one edge should be there for each node.
         Example JSON format:
         {
             "nodes": [
@@ -181,164 +181,142 @@ def generate_graph(response, model_name):
     
     # HTML template for the mindmap page with SSE auto-refresh
     html_template = """
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>Mindmap Display</title>
-            <!-- Vis-Network CSS and JS -->
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.css"
-                integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA=="
-                crossorigin="anonymous" referrerpolicy="no-referrer" />
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js"
-                    integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ=="
-                    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-            <style>
-                html, body {
-                    height: 100%;
-                    margin: 0;
-                    padding: 0;
-                }
-                #mynetwork {
-                    width: 100vw;
-                    height: 100vh;
-                    border: 1px solid lightgray;
-                }
-                #controls {
-                    position: absolute;
-                    top: 10px;
-                    left: 10px;
-                    background: rgba(255, 255, 255, 0.85);
-                    padding: 8px;
-                    border-radius: 4px;
-                    z-index: 1;
-                }
-            </style>
-        </head>
-        <body>
-            <div id="controls">
-                <label for="layoutSelect">Layout:</label>
-                <select id="layoutSelect">
-                    <option value="default">Force-Directed (Default)</option>
-                    <option value="grid">Grid</option>
-                    <option value="circle">Circle</option>
-                    <option value="hierarchicalUD">Hierarchical (Up–Down)</option>
-                    <option value="hierarchicalLR">Hierarchical (Left–Right)</option>
-                    <option value="hierarchicalDU">Hierarchical (Down–Up)</option>
-                    <option value="hierarchicalRL">Hierarchical (Right–Left)</option>
-                </select>
-            </div>
-            <div id="mynetwork"></div>
-            <script>
-                // Deep copy of original data
-                var originalData = JSON.parse(JSON.stringify({{ mindmap|tojson }}));
-                var container = document.getElementById("mynetwork");
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mindmap Display</title>
+    <!-- Vis-Network CSS and JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.css"
+          integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js"
+            integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        html, body { height: 100%; margin: 0; padding: 0; }
+        #mynetwork { width: 100vw; height: 100vh; border: 1px solid lightgray; }
+        #controls {
+            position: absolute; top: 10px; left: 10px;
+            background: rgba(255, 255, 255, 0.85); padding: 8px;
+            border-radius: 4px; z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <label for="layoutSelect">Layout:</label>
+        <select id="layoutSelect">
+            <option value="default">Force-Directed (Default)</option>
+            <option value="grid">Grid</option>
+            <option value="circle">Circle</option>
+            <option value="hierarchicalUD">Hierarchical (Up–Down)</option>
+            <option value="hierarchicalLR">Hierarchical (Left–Right)</option>
+            <option value="hierarchicalDU">Hierarchical (Down–Up)</option>
+            <option value="hierarchicalRL">Hierarchical (Right–Left)</option>
+        </select>
+    </div>
+    <div id="mynetwork"></div>
+    <script>
+        // Deep copy of original data
+        const originalData = JSON.parse(JSON.stringify({{ mindmap|tojson }}));
+        const container = document.getElementById('mynetwork');
 
-                // Base physics options to avoid overlap on force-directed layouts
-                var basePhysics = {
+        // Physics to prevent overlap
+        const overlapPhysics = {
+            enabled: true,
+            solver: 'repulsion',
+            repulsion: { centralGravity: 0.2, nodeDistance: 200, springLength: 100, springConstant: 0.01 }
+        };
+
+        // Initialize network
+        let network = new vis.Network(container, originalData, {
+            physics: overlapPhysics,
+            layout: { hierarchical: false },
+            interaction: { hover: true }
+        });
+
+        function applyDefault() {
+            network.setData(originalData);
+            network.setOptions({ physics: overlapPhysics, layout: { hierarchical: false } });
+        }
+
+        function applyGrid() {
+            const nodes = originalData.nodes.map(n => ({ ...n }));
+            const cols = Math.ceil(Math.sqrt(nodes.length));
+            const spacing = 150;
+            nodes.forEach((n, i) => {
+                const row = Math.floor(i / cols), col = i % cols;
+                n.x = col * spacing;
+                n.y = row * spacing;
+                n.fixed = true;
+            });
+            network.setData({ nodes, edges: originalData.edges });
+            network.setOptions({ physics: overlapPhysics, layout: { hierarchical: false } });
+        }
+
+        function applyCircle() {
+            const nodes = originalData.nodes.map(n => ({ ...n }));
+            const radius = Math.min(container.clientWidth, container.clientHeight) / 2.5;
+            const cx = container.clientWidth / 2, cy = container.clientHeight / 2;
+            const angleStep = (2 * Math.PI) / nodes.length;
+            nodes.forEach((n, i) => {
+                const theta = i * angleStep;
+                n.x = cx + radius * Math.cos(theta);
+                n.y = cy + radius * Math.sin(theta);
+                n.fixed = true;
+            });
+            network.setData({ nodes, edges: originalData.edges });
+            network.setOptions({ physics: overlapPhysics, layout: { hierarchical: false } });
+        }
+
+        function applyHierarchical(dir) {
+            // Clone and clear positions & levels
+            const nodes = originalData.nodes.map(n => ({ ...n }));
+            nodes.forEach(n => { delete n.x; delete n.y; delete n.fixed; delete n.level; });
+            // Anchor root by its id and color
+            const rootIdx = nodes.findIndex(n => n.id === 'root' && n.color && n.color.background === '#ffd700');
+            if (rootIdx !== -1) {
+                nodes[rootIdx].level = 0;
+            }
+            network.setData({ nodes, edges: originalData.edges });
+            network.setOptions({
+                physics: {
                     enabled: true,
-                    solver: 'barnesHut',
-                    barnesHut: {
-                        avoidOverlap: 0.3,
-                        springConstant: 0
+                    solver: 'hierarchicalRepulsion',
+                    hierarchicalRepulsion: { nodeDistance: 200, centralGravity: 0.0, springConstant: 0.01, damping: 0.09 }
+                },
+                layout: {
+                    hierarchical: {
+                        enabled: true,
+                        direction: dir,
+                        sortMethod: 'directed',
+                        levelSeparation: 150,
+                        nodeSpacing: 150,
+                        treeSpacing: 200,
+                        blockShifting: true,
+                        edgeMinimization: true,
+                        parentCentralization: true
                     }
-                };
-
-                // Initial network
-                var network = new vis.Network(container, originalData, {
-                    physics: basePhysics,
-                    layout: { hierarchical: false },
-                    interaction: { hover: true }
-                });
-
-                function applyDefault() {
-                    network.setData(originalData);
-                    network.setOptions({
-                        physics: basePhysics,
-                        layout: { hierarchical: false }
-                    });
                 }
+            });
+        }
 
-                function applyGrid() {
-                    var nodes = originalData.nodes.map(function(n) { return Object.assign({}, n); });
-                    var cols = Math.ceil(Math.sqrt(nodes.length));
-                    var spacing = 150;
-                    nodes.forEach(function(n, i) {
-                        var row = Math.floor(i / cols);
-                        var col = i % cols;
-                        n.x = col * spacing;
-                        n.y = row * spacing;
-                        n.fixed = true;
-                    });
-                    network.setData({ nodes: nodes, edges: originalData.edges });
-                    network.setOptions({
-                        physics: basePhysics,
-                        layout: { hierarchical: false }
-                    });
-                }
-
-                function applyCircle() {
-                    var nodes = originalData.nodes.map(function(n) { return Object.assign({}, n); });
-                    var radius = Math.min(container.clientWidth, container.clientHeight) / 2.5;
-                    var centerX = container.clientWidth / 2;
-                    var centerY = container.clientHeight / 2;
-                    var angleStep = (2 * Math.PI) / nodes.length;
-                    nodes.forEach(function(n, i) {
-                        var angle = i * angleStep;
-                        n.x = centerX + radius * Math.cos(angle);
-                        n.y = centerY + radius * Math.sin(angle);
-                        n.fixed = true;
-                    });
-                    network.setData({ nodes: nodes, edges: originalData.edges });
-                    network.setOptions({
-                        physics: basePhysics,
-                        layout: { hierarchical: false }
-                    });
-                }
-
-                function applyHierarchical(dir) {
-                    network.setData(originalData);
-                    network.setOptions({
-                        physics: {
-                            enabled: true,
-                            solver: 'hierarchicalRepulsion',
-                            hierarchicalRepulsion: {
-                                nodeDistance: 200,
-                                centralGravity: 0.0,
-                                springConstant: 0.01,
-                                damping: 0.09
-                            }
-                        },
-                        layout: {
-                            hierarchical: {
-                                enabled: true,
-                                direction: dir,
-                                levelSeparation: 150,
-                                nodeSpacing: 150,
-                                treeSpacing: 200,
-                                blockShifting: true,
-                                edgeMinimization: true,
-                                parentCentralization: true
-                            }
-                        }
-                    });
-                }
-
-                document.getElementById('layoutSelect').addEventListener('change', function() {
-                    switch (this.value) {
-                        case 'default':      applyDefault();      break;
-                        case 'grid':         applyGrid();         break;
-                        case 'circle':       applyCircle();       break;
-                        case 'hierarchicalUD': applyHierarchical('UD'); break;
-                        case 'hierarchicalLR': applyHierarchical('LR'); break;
-                        case 'hierarchicalDU': applyHierarchical('DU'); break;
-                        case 'hierarchicalRL': applyHierarchical('RL'); break;
-                    }
-                });
-            </script>
-        </body>
-        </html>
+        document.getElementById('layoutSelect').addEventListener('change', e => {
+            switch (e.target.value) {
+                case 'default': applyDefault(); break;
+                case 'grid': applyGrid(); break;
+                case 'circle': applyCircle(); break;
+                case 'hierarchicalUD': applyHierarchical('UD'); break;
+                case 'hierarchicalLR': applyHierarchical('LR'); break;
+                case 'hierarchicalDU': applyHierarchical('DU'); break;
+                case 'hierarchicalRL': applyHierarchical('RL'); break;
+            }
+        });
+    </script>
+</body>
+</html>
 
     """
     
