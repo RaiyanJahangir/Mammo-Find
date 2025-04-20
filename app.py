@@ -11,6 +11,7 @@ from langchain_chroma import Chroma
 from get_embedding_function import get_embedding_function
 from sentence_transformers import SentenceTransformer
 import subprocess
+from markdown import markdown
 
 # Constants and configuration
 CHROMA_PATH = "chroma"
@@ -180,46 +181,165 @@ def generate_graph(response, model_name):
     
     # HTML template for the mindmap page with SSE auto-refresh
     html_template = """
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Mindmap Display</title>
-        <!-- Vis-Network CSS and JS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.css"
-            integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js"
-                integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ=="
-                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <style>
-            html, body {
-                height: 100%;
-                margin: 0;
-                padding: 0;
-            }
-            #mynetwork {
-                width: 100vw;
-                height: 100vh;
-                border: 1px solid lightgray;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="mynetwork"></div>
-        <script>
-            var mindmap = {{ mindmap|tojson }};
-            var container = document.getElementById("mynetwork");
-            var options = {
-                physics: { stabilization: { enabled: true, iterations: 1000 } },
-                interaction: { hover: true }
-            };
-            var network = new vis.Network(container, mindmap, options);
-        </script>
-        
-    </body>
-    </html>
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Mindmap Display</title>
+            <!-- Vis-Network CSS and JS -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.css"
+                integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA=="
+                crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js"
+                    integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ=="
+                    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <style>
+                html, body {
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                }
+                #mynetwork {
+                    width: 100vw;
+                    height: 100vh;
+                    border: 1px solid lightgray;
+                }
+                #controls {
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    background: rgba(255, 255, 255, 0.85);
+                    padding: 8px;
+                    border-radius: 4px;
+                    z-index: 1;
+                }
+            </style>
+        </head>
+        <body>
+            <div id="controls">
+                <label for="layoutSelect">Layout:</label>
+                <select id="layoutSelect">
+                    <option value="default">Force-Directed (Default)</option>
+                    <option value="grid">Grid</option>
+                    <option value="circle">Circle</option>
+                    <option value="hierarchicalUD">Hierarchical (Up–Down)</option>
+                    <option value="hierarchicalLR">Hierarchical (Left–Right)</option>
+                    <option value="hierarchicalDU">Hierarchical (Down–Up)</option>
+                    <option value="hierarchicalRL">Hierarchical (Right–Left)</option>
+                </select>
+            </div>
+            <div id="mynetwork"></div>
+            <script>
+                // Deep copy of original data
+                var originalData = JSON.parse(JSON.stringify({{ mindmap|tojson }}));
+                var container = document.getElementById("mynetwork");
+
+                // Base physics options to avoid overlap on force-directed layouts
+                var basePhysics = {
+                    enabled: true,
+                    solver: 'barnesHut',
+                    barnesHut: {
+                        avoidOverlap: 0.3,
+                        springConstant: 0
+                    }
+                };
+
+                // Initial network
+                var network = new vis.Network(container, originalData, {
+                    physics: basePhysics,
+                    layout: { hierarchical: false },
+                    interaction: { hover: true }
+                });
+
+                function applyDefault() {
+                    network.setData(originalData);
+                    network.setOptions({
+                        physics: basePhysics,
+                        layout: { hierarchical: false }
+                    });
+                }
+
+                function applyGrid() {
+                    var nodes = originalData.nodes.map(function(n) { return Object.assign({}, n); });
+                    var cols = Math.ceil(Math.sqrt(nodes.length));
+                    var spacing = 150;
+                    nodes.forEach(function(n, i) {
+                        var row = Math.floor(i / cols);
+                        var col = i % cols;
+                        n.x = col * spacing;
+                        n.y = row * spacing;
+                        n.fixed = true;
+                    });
+                    network.setData({ nodes: nodes, edges: originalData.edges });
+                    network.setOptions({
+                        physics: basePhysics,
+                        layout: { hierarchical: false }
+                    });
+                }
+
+                function applyCircle() {
+                    var nodes = originalData.nodes.map(function(n) { return Object.assign({}, n); });
+                    var radius = Math.min(container.clientWidth, container.clientHeight) / 2.5;
+                    var centerX = container.clientWidth / 2;
+                    var centerY = container.clientHeight / 2;
+                    var angleStep = (2 * Math.PI) / nodes.length;
+                    nodes.forEach(function(n, i) {
+                        var angle = i * angleStep;
+                        n.x = centerX + radius * Math.cos(angle);
+                        n.y = centerY + radius * Math.sin(angle);
+                        n.fixed = true;
+                    });
+                    network.setData({ nodes: nodes, edges: originalData.edges });
+                    network.setOptions({
+                        physics: basePhysics,
+                        layout: { hierarchical: false }
+                    });
+                }
+
+                function applyHierarchical(dir) {
+                    network.setData(originalData);
+                    network.setOptions({
+                        physics: {
+                            enabled: true,
+                            solver: 'hierarchicalRepulsion',
+                            hierarchicalRepulsion: {
+                                nodeDistance: 200,
+                                centralGravity: 0.0,
+                                springConstant: 0.01,
+                                damping: 0.09
+                            }
+                        },
+                        layout: {
+                            hierarchical: {
+                                enabled: true,
+                                direction: dir,
+                                levelSeparation: 150,
+                                nodeSpacing: 150,
+                                treeSpacing: 200,
+                                blockShifting: true,
+                                edgeMinimization: true,
+                                parentCentralization: true
+                            }
+                        }
+                    });
+                }
+
+                document.getElementById('layoutSelect').addEventListener('change', function() {
+                    switch (this.value) {
+                        case 'default':      applyDefault();      break;
+                        case 'grid':         applyGrid();         break;
+                        case 'circle':       applyCircle();       break;
+                        case 'hierarchicalUD': applyHierarchical('UD'); break;
+                        case 'hierarchicalLR': applyHierarchical('LR'); break;
+                        case 'hierarchicalDU': applyHierarchical('DU'); break;
+                        case 'hierarchicalRL': applyHierarchical('RL'); break;
+                    }
+                });
+            </script>
+        </body>
+        </html>
+
     """
     
     # Render the HTML using Flask's template engine with the mindmap data,
@@ -307,6 +427,8 @@ def chat():
         response = query_rag(user_message, model_name, prompt_type)
         print(f"AI: {response}\n")
         threading.Thread(target=generate_graph, args=(response, model_name)).start()
+        # Convert Markdown (with tables) into HTML:
+        # html = markdown(response, extensions=['tables','fenced_code','nl2br'])
         return jsonify({"response": response})
     else:
         return jsonify({"response": "Error: No message received"}), 400

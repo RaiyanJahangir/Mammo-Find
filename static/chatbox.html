@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mammo-Find</title>
+  <title>MammoFind</title>
   <style>
     html, body {
       margin: 0;
@@ -145,6 +145,43 @@
       chatDisplay.appendChild(messageElement);
       scrollToBottom();
     }
+  //   function addMessage(message, sender, isHTML) {
+  //     const wrapper = document.createElement('div');
+  //     wrapper.classList.add('message', sender);
+
+  //     if (sender === 'bot') {
+  //       // OPTION A: plain‑text with newlines preserved
+  //       const pre = document.createElement('pre');
+  //       pre.textContent = message;
+  //       pre.style.whiteSpace = 'pre-wrap';
+  //       pre.style.fontFamily = 'monospace';
+  //       wrapper.appendChild(pre);
+
+  //       // OPTION B: if you returned HTML (via markdown → HTML on the server):
+  //       // wrapper.innerHTML = message;  // and be sure to send back `response_html` and call addMessage(data.response_html,'bot')
+  //     } else {
+  //       wrapper.textContent = message;
+  //     }
+
+  //     chatDisplay.appendChild(wrapper);
+  //     scrollToBottom();
+  // }
+  // function addMessage(message, sender, isHTML = false) {
+  //   const wrapper = document.createElement('div');
+  //   wrapper.classList.add('message', sender);
+
+  //   if (sender === 'bot' && isHTML) {
+  //     // Insert HTML directly
+  //     wrapper.innerHTML = message;
+  //   } else {
+  //     // Plain text (user or fallback)
+  //     wrapper.textContent = message;
+  //   }
+
+  //   chatDisplay.appendChild(wrapper);
+  //   scrollToBottom();
+  // }
+
 
     // Listen for Enter key on input box
     document.addEventListener('DOMContentLoaded', () => {

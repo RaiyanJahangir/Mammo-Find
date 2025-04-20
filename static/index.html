@@ -1,245 +1,196 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MammoFind</title>
+  <link rel="icon" type="image/png" href="img/graph.png">
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" 
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" 
+        crossorigin="anonymous">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  
+  <style>
+    /* Reset and full-viewport settings */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      background: #fafafa;
+    }
 
-    <title>Mammo-Find</title>
-    <link rel="icon" type="image/png" href="img/icon.png">
+    p {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.1em;
+        font-weight: 300;
+        line-height: 1.7em;
+        color: #999;
+    }
 
+    a, a:hover, a:focus {
+        color: inherit;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
 
-    <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    .navbar {
+        padding: 15px 10px;
+        background: #fff;
+        border: none;
+        border-radius: 0;
+        /* margin-bottom: 40px; */
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    }
 
-    <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    .navbar-btn {
+        box-shadow: none;
+        outline: none !important;
+        border: none;
+    }
 
+    .line {
+        width: 100%;
+        height: 1px;
+        border-bottom: 1px dashed #ddd;
+        margin: 40px 0;
+    }
+    /* Wrapper for entire page in a vertical flex layout */
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    /* Header (navbar) has fixed height */
+    header {
+      flex: 0 0 60px; /* Adjust height as needed */
+      background: #ffffff;
+      border-bottom: 1px solid #ddd;
+    }
+    /* Main content grows to fill available space */
+    .content {
+      flex: 1 1 auto;
+      overflow: hidden;
+    }
+    /* Footer with fixed height */
+    footer {
+      flex: 0 0 40px; /* Adjust height as needed */
+      background: #6cbdcf;
+      text-align: center;
+      line-height: 40px;
+      border-top: 1px solid #ddd;
+    }
+    
+    /* Use a full-width fluid container for the main content if you have multiple sections */
+    .container-fluid {
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      border-radius: 8px;
+    }
+    .row {
+      height: 100%;
+      margin: 0;
+    }
+    /* In this example, two columns share the space equally */
+    .col {
+      height: 100%;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Ensure iframes fill their parent containers */
+    iframe {
+      flex: 1;
+      width: 100%;
+      border: none;
+    }
+    
+    /* Optional header styles inside the main content sections */
+    .section-header {
+      background: #fefefe;
+      padding: 8px;
+      text-align: center;
+      margin: 0;
+    }
+  </style>
 </head>
-
 <body>
 
-    <div class="wrapper">
-        <!-- Sidebar Holder -->
-        <nav id="sidebar">
-
-            <ul class="list-unstyled components">
-                <!-- <i class="fas fa-file-alt"></i> -->
-                <li class="active">
-                  <a href="index.html"><img src="img/graph.png" alt="Features" height="60px" width="60px"> Graph</a>
-                  </li>
-                    <!-- 
-                  <li>
-                    <a href="entities_desc.html"><img src="img/entity.png" alt="Features" height="60px" width="60px"> Entities</a>
-                    </li> -->
-
-                  <!-- <li>
-                    <a href="#FeatureSubmenu" data-toggle="collapse" aria-expanded="false"><img src="img/p_features.png" alt="Features" height="60px" width="60px"> ReACTs & Features</a>
-                    <ul class="collapse list-unstyled" id="FeatureSubmenu">
-                      <li><a href="feature.html#section1"><img src="img/net.png" alt="Features" height="45px" width="50px"> Network Graph</a></li>
-                      <li><a href="feature.html#section2"><img src="img/distribution.png" alt="Features" height="45px" width="50px"> Distribution</a></li>
-                      <li><a href="feature.html#section3"><img src="img/statistics.png" alt="Features" height="45px" width="50px"> Statistics</a></li>
-                    </ul>
-                  </li> -->
-                  <!-- <li>
-                    <a href="#EntitySubmenu" data-toggle="collapse" aria-expanded="false">><img src="img/p_entities.png" alt="Entities" height="60px" width="60px"> ReACTs & Entity</a>
-                    <ul class="collapse list-unstyled" id="EntitySubmenu">
-                        <li><a href="entity.html#section1"><img src="img/net.png" alt="Features" height="45px" width="50px"> Network Graph</a></li>
-                        <li><a href="entity.html#section2"><img src="img/distribution.png" alt="Features" height="45px" width="50px"> Distribution</a></li>
-                        <li><a href="entity.html#section3"><img src="img/statistics.png" alt="Features" height="45px" width="50px"> Statistics</a></li>
-                      </ul>
-                  </li> -->
-                  <li>
-                    <a href="dataset.html"><img src="img/dataset.png" alt="Dataset" height="60px" width="60px"> Information</a>
-                  </li>
-            </ul>
-        </nav>
-
-        <!-- Page Content Holder -->
-        <div id="content">
-
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-
-                    <button type="button" id="sidebarCollapse" class="navbar-btn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
-
-                    <strong><h3> Mammo-Find: Mammogram Dataset Recommender </h3> </strong>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a href="about.html"><img src="img/icon2.png" height="50px" width="50px" class="rounded-image" alt="about" title="About"></a>
-                            </li>
-
-                            <li class="nav-item" style="margin-left: 8px;">
-                                <a href="contact.html"><img src="img/contact.png" height="50px" width="50px" class="rounded-image" alt="Contact" title="Contact"></a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-
-    
-    
-            <div class="container">
-                <!-- Network Graph Section -->
-                <div class="section network-graph" style="position: relative;">
-                    <h4 class="header">Network Graph</h4>
-            
-                    
-                    <!-- Network Graph iframe -->
-                    <iframe id="network-iframe" src="mindmap.html"></iframe>
-                </div>
-            
-                <!-- Chatbox Section -->
-                <div class="section chatbox">
-                    <h4 class="header">Ask Questions</h4>
-                    <iframe src="chatbox.html"></iframe>
-                </div>
-            </div>
-            
-
+  <div class="wrapper">
+    <!-- Header / Navbar -->
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light" style="height:100%;">
+        <div class="container-fluid">
+          <strong><h3 style="margin:0; font-size:1.5rem; color: rgb(0, 7, 139);">Mammo-Find: Mammogram Dataset Recommender</h3></strong>
+          <div class="ml-auto">
+            <a href="index.html"><img src="img/graph.png" height="50" width="50" class="rounded-image" alt="Graph" title="Graph"></a>
+            <a href="about.html" style="margin-left: 8px;"><img src="img/icon2.png" height="50" width="50" class="rounded-image" alt="About" title="About"></a>
+            <a href="contact.html" style="margin-left: 8px;"><img src="img/contact.png" height="50" width="50" class="rounded-image" alt="Contact" title="Contact"></a>
+          </div>
         </div>
+      </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- Left Column: Network Graph -->
+          <div class="col">
+            <div class="section-header" style="margin:0; font-size:1.5rem; color: rgb(0, 7, 139);"><h4>Network Graph</h4></div>
+            <iframe id="network-iframe" src="mindmap.html"></iframe>
+          </div>
+          <!-- Right Column: Chatbox -->
+          <div class="col">
+            <div class="section-header" style="margin:0; font-size:1.5rem; color: rgb(0, 7, 139);"><h4>Ask Questions</h4></div>
+            <iframe src="chatbox.html"></iframe>
+          </div>
+        </div>
+      </div>
     </div>
-
-
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <strong><p style="color: black;">&copy; <span id="currentYear"></span> All rights reserved.</p></strong>
-                </div>
-            </div>
-        </div>
-    </footer>
     
-
-
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-                $(this).toggleClass('active');
-            });
-        });
+    <!-- Footer -->
+    <footer>
+      &copy; <span id="currentYear"></span> All rights reserved. <br>
+    </footer>
+  </div>
+  
+  <!-- jQuery, Popper, and Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+          integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+          crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" 
+          integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" 
+          crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" 
+          integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" 
+          crossorigin="anonymous"></script>
+  
+  <script>
+    // Set current year in footer
     document.getElementById("currentYear").textContent = new Date().getFullYear();
-    </script>
-  
-    <!-- <script>
-        function refreshIframe() {
-        var iframe = document.getElementById("network-iframe");
-        // Append a unique query string using current timestamp
+    
+    // SSE refresh for mindmap.html within the iframe
+    const evtSource = new EventSource("/file_updates");
+    evtSource.onmessage = function(event) {
+      console.log("SSE event received:", event.data);
+      if (event.data.trim() === "changed") {
+        const iframe = document.getElementById("network-iframe");
+        // Use a cache-buster query parameter
         iframe.src = "mindmap.html?t=" + new Date().getTime();
-        }
-        
-        // Example: Use an interval to check for changes and refresh if needed
-        setInterval(refreshIframe, 10000); // refresh every 10 seconds
-    </script> -->
-  
-    <script>
-        // Open an SSE connection to the Flask endpoint
-        const evtSource = new EventSource("/file_updates");
-        evtSource.onmessage = function(event) {
-        console.log("SSE event received:", event.data);
-        if (event.data === "changed") {
-            // Refresh the iframe by updating its source with a cache-buster to ensure a new request is made.
-            var iframe = document.getElementById("network-iframe");
-            iframe.src = "mindmap.html?t=" + new Date().getTime();
-        }
-        };
-
-        evtSource.onerror = function(event) {
-        console.error("SSE error:", event);
-        };
-    </script>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: row; /* Arrange sections side by side */
-            justify-content: space-between; /* Space out sections */
-            align-items: flex-start; /* Align items at the top */
-            gap: 10px; /* Space between sections */
-            padding: 0px;
-            /* margin:0px; */
-            height: 80%; /* Ensure the container fills the height of the viewport */
-            width: 100%; /* Ensure the container spans the full width of the viewport */
-            box-sizing: border-box; /* Include padding in width calculations */
-        }
-
-
-        
-
-        .section.network-graph {
-            flex: 5; /* Allocate more space to the Network Graph section */
-            max-width: 50%; /* Limit maximum width to 70% of the container */
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            background-color: #ffffff;
-            overflow: hidden;
-        }
-
-        .section.chatbox {
-            flex:4; /* Allocate less space to the Chatbox section */
-            max-width: 50%; /* Limit maximum width to 30% of the container */
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            background-color: #ffffff;
-            overflow: hidden;
-        }
-
-        .header {
-            color: darkblue;
-            text-align: center;
-            margin: 16px 0;
-        }
-
-        footer .container {
-            display: block; /* Reset display to block for footer */
-            text-align: center; /* Center-align text */
-        }
-
-        iframe {
-            width: 100%;
-            height: 600px; /* Set a consistent height for both sections */
-            border: none;
-        }
-
-        .legend {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-    </style>
-
+      }
+    };
+    evtSource.onerror = function(event) {
+      console.error("SSE error:", event);
+    };
+  </script>
 </body>
-
 </html>
