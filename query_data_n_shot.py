@@ -5,6 +5,7 @@ from langchain.prompts import ChatPromptTemplate
 from langchain_community.llms.ollama import Ollama
 
 from get_embedding_function import get_embedding_function
+from get_embedding_function import ensure_model_installed
 
 CHROMA_PATH = "chroma"
 OUTPUT_DIR = "output/n-shot"
@@ -81,6 +82,7 @@ def query_rag(query_text: str, model_name: str):
     prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
     prompt = prompt_template.format(context=context_text, question=query_text)
 
+    ensure_model_installed(model_name)
     model = Ollama(model=model_name)
     response_text = model.invoke(prompt)
 

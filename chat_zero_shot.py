@@ -4,6 +4,7 @@ from langchain.prompts import ChatPromptTemplate
 from langchain_ollama import OllamaEmbeddings, OllamaLLM
 from langchain_chroma import Chroma
 from get_embedding_function import get_embedding_function
+from get_embedding_function import ensure_model_installed
 from sentence_transformers import SentenceTransformer, util
 import pandas as pd
 import numpy as np
@@ -108,6 +109,7 @@ def chat():
     
     model_name = allowable_models[model_choice]
     print(f"Using model: {model_name}\n")
+    ensure_model_installed(model_name)
     
     while True:
         user_input = input("You: ")

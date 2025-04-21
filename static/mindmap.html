@@ -38,10 +38,10 @@
     <div id="mynetwork"></div>
     <script>
         // Deep copy of original data
-        const originalData = JSON.parse(JSON.stringify({"edges": [{"color": "#898980", "from": "root", "to": "node_0", "weight": 1}, {"color": "#898980", "from": "root", "to": "node_1", "weight": 1}, {"color": "#898980", "from": "root", "to": "node_2", "weight": 1}, {"color": "#898980", "from": "root", "to": "node_3", "weight": 1}, {"color": "#898980", "from": "root", "to": "node_4", "weight": 1}, {"color": "#898980", "from": "root", "to": "node_5", "weight": 1}, {"color": "#898980", "from": "root", "to": "node_6", "weight": 1}], "nodes": [{"color": "#ffd700", "id": "root", "label": "Dataset Comparison: EMBED vs VinDr-Mammo", "shape": "box"}, {"color": "#87CEEB", "id": "node_0", "label": "EMBED", "shape": "box"}, {"color": "#87CEEB", "id": "node_1", "label": "VinDr-Mammo", "shape": "box"}, {"color": "#87CEEB", "id": "node_2", "label": "Total Images: 3,383,659 (EMBED) vs 20,000 (VinDr-Mammo)", "shape": "box"}, {"color": "#87CEEB", "id": "node_3", "label": "Views per Exam: 2D and C-view (EMBED) vs 4-view (VinDr-Mammo)", "shape": "box"}, {"color": "#87CEEB", "id": "node_4", "label": "Exams/Findings: Not specified (EMBED) vs 5,000 exams with 241 findings (VinDr-Mammo)", "shape": "box"}, {"color": "#87CEEB", "id": "node_5", "label": "Published Year: 1994 (EMBED) vs 2023 (VinDr-Mammo)", "shape": "box"}, {"color": "#87CEEB", "id": "node_6", "label": "Country of Origin: UK (EMBED) vs Vietnam (VinDr-Mammo)", "shape": "box"}]}));
+        const originalData = JSON.parse(JSON.stringify({"edges": [{"color": "#898980", "from": "root", "to": "node_0"}, {"color": "#898980", "from": "root", "to": "node_1"}, {"color": "#898980", "from": "node_0", "to": "node_2"}, {"color": "#898980", "from": "node_0", "to": "node_3"}, {"color": "#898980", "from": "node_1", "to": "node_4"}, {"color": "#898980", "from": "node_1", "to": "node_5"}, {"color": "#898980", "from": "node_0", "to": "node_6"}, {"color": "#898980", "from": "node_1", "to": "node_7"}, {"color": "#898980", "from": "node_0", "to": "node_8"}, {"color": "#898980", "from": "node_1", "to": "node_9"}, {"color": "#898980", "from": "node_0", "to": "node_10"}, {"color": "#898980", "from": "node_1", "to": "node_11"}], "nodes": [{"color": "#ffd700", "id": "root", "label": "Datasets", "shape": "box"}, {"color": "#87CEEB", "id": "node_0", "label": "EMBED", "shape": "box"}, {"color": "#87CEEB", "id": "node_1", "label": "VinDr-Mammo", "shape": "box"}, {"color": "#87CEEB", "id": "node_2", "label": "3,383,659 Images (EMBED)", "shape": "box"}, {"color": "#87CEEB", "id": "node_3", "label": "115,910 Patients (EMBED)", "shape": "box"}, {"color": "#87CEEB", "id": "node_4", "label": "20,000 Images (VinDr-Mammo)", "shape": "box"}, {"color": "#87CEEB", "id": "node_5", "label": "5,000 Patients (VinDr-Mammo)", "shape": "box"}, {"color": "#87CEEB", "id": "node_6", "label": "USA (EMBED)", "shape": "box"}, {"color": "#87CEEB", "id": "node_7", "label": "Vietnam (VinDr-Mammo)", "shape": "box"}, {"color": "#87CEEB", "id": "node_8", "label": "DICOM (EMBED)", "shape": "box"}, {"color": "#87CEEB", "id": "node_9", "label": "DCM, PNG, CSV (VinDr-Mammo)", "shape": "box"}, {"color": "#87CEEB", "id": "node_10", "label": "Screening/Diagnostic Mammograms (EMBED)", "shape": "box"}, {"color": "#87CEEB", "id": "node_11", "label": "Full-field Digital Mammography (VinDr-Mammo)", "shape": "box"}]}));
         const container = document.getElementById('mynetwork');
 
-        // Physics to prevent overlap
+        // Shared physics to prevent overlap
         const overlapPhysics = {
             enabled: true,
             solver: 'repulsion',
@@ -68,7 +68,7 @@
                 const row = Math.floor(i / cols), col = i % cols;
                 n.x = col * spacing;
                 n.y = row * spacing;
-                n.fixed = true;
+                n.fixed = false;
             });
             network.setData({ nodes, edges: originalData.edges });
             network.setOptions({ physics: overlapPhysics, layout: { hierarchical: false } });
@@ -83,33 +83,28 @@
                 const theta = i * angleStep;
                 n.x = cx + radius * Math.cos(theta);
                 n.y = cy + radius * Math.sin(theta);
-                n.fixed = true;
+                n.fixed = false;
             });
             network.setData({ nodes, edges: originalData.edges });
             network.setOptions({ physics: overlapPhysics, layout: { hierarchical: false } });
         }
 
         function applyHierarchical(dir) {
-            // Clone and clear positions & levels
+            // Clone nodes and reset any positions
             const nodes = originalData.nodes.map(n => ({ ...n }));
-            nodes.forEach(n => { delete n.x; delete n.y; delete n.fixed; delete n.level; });
-            // Anchor root by its id and color
-            const rootIdx = nodes.findIndex(n => n.id === 'root' && n.color && n.color.background === '#ffd700');
-            if (rootIdx !== -1) {
-                nodes[rootIdx].level = 0;
-            }
+            nodes.forEach(n => { delete n.x; delete n.y; delete n.fixed; });
+            // Anchor true root by ID/color at level 0
+            const root = nodes.find(n => n.id === 'root' && n.color && n.color.background === '#ffd700');
+            if (root) { root.level = 0; }
             network.setData({ nodes, edges: originalData.edges });
             network.setOptions({
-                physics: {
-                    enabled: true,
-                    solver: 'hierarchicalRepulsion',
-                    hierarchicalRepulsion: { nodeDistance: 200, centralGravity: 0.0, springConstant: 0.01, damping: 0.09 }
-                },
+                physics: overlapPhysics,
                 layout: {
                     hierarchical: {
                         enabled: true,
                         direction: dir,
                         sortMethod: 'directed',
+                        physics: true,
                         levelSeparation: 150,
                         nodeSpacing: 150,
                         treeSpacing: 200,

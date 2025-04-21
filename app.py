@@ -223,7 +223,7 @@ def generate_graph(response, model_name):
         const originalData = JSON.parse(JSON.stringify({{ mindmap|tojson }}));
         const container = document.getElementById('mynetwork');
 
-        // Physics to prevent overlap
+        // Shared physics to prevent overlap
         const overlapPhysics = {
             enabled: true,
             solver: 'repulsion',
@@ -250,7 +250,7 @@ def generate_graph(response, model_name):
                 const row = Math.floor(i / cols), col = i % cols;
                 n.x = col * spacing;
                 n.y = row * spacing;
-                n.fixed = true;
+                n.fixed = false;
             });
             network.setData({ nodes, edges: originalData.edges });
             network.setOptions({ physics: overlapPhysics, layout: { hierarchical: false } });
@@ -265,33 +265,28 @@ def generate_graph(response, model_name):
                 const theta = i * angleStep;
                 n.x = cx + radius * Math.cos(theta);
                 n.y = cy + radius * Math.sin(theta);
-                n.fixed = true;
+                n.fixed = false;
             });
             network.setData({ nodes, edges: originalData.edges });
             network.setOptions({ physics: overlapPhysics, layout: { hierarchical: false } });
         }
 
         function applyHierarchical(dir) {
-            // Clone and clear positions & levels
+            // Clone nodes and reset any positions
             const nodes = originalData.nodes.map(n => ({ ...n }));
-            nodes.forEach(n => { delete n.x; delete n.y; delete n.fixed; delete n.level; });
-            // Anchor root by its id and color
-            const rootIdx = nodes.findIndex(n => n.id === 'root' && n.color && n.color.background === '#ffd700');
-            if (rootIdx !== -1) {
-                nodes[rootIdx].level = 0;
-            }
+            nodes.forEach(n => { delete n.x; delete n.y; delete n.fixed; });
+            // Anchor true root by ID/color at level 0
+            const root = nodes.find(n => n.id === 'root' && n.color && n.color.background === '#ffd700');
+            if (root) { root.level = 0; }
             network.setData({ nodes, edges: originalData.edges });
             network.setOptions({
-                physics: {
-                    enabled: true,
-                    solver: 'hierarchicalRepulsion',
-                    hierarchicalRepulsion: { nodeDistance: 200, centralGravity: 0.0, springConstant: 0.01, damping: 0.09 }
-                },
+                physics: overlapPhysics,
                 layout: {
                     hierarchical: {
                         enabled: true,
                         direction: dir,
                         sortMethod: 'directed',
+                        physics: true,
                         levelSeparation: 150,
                         nodeSpacing: 150,
                         treeSpacing: 200,
@@ -417,3 +412,4 @@ if __name__ == "__main__":
     threading.Timer(1, open_browser).start()
     # Disable the reloader to prevent duplicate tabs (if using debug mode).
     app.run(debug=True, host='127.0.0.1', port=8080, threaded=True, use_reloader=False)
+    # app.run(debug=True, host='127.0.0.1', port=8080, threaded=True)
