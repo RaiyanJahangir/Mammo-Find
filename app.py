@@ -187,13 +187,16 @@ def generate_graph(response, model_name):
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mindmap Display</title>
-    <!-- Vis-Network CSS and JS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.css"
+
+    <!-- Vis‑Network CSS & JS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.css"
           integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+          crossorigin="anonymous" referrerpolicy="no-referrer">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js"
             integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <style>
         html, body { height: 100%; margin: 0; padding: 0; }
         #mynetwork { width: 100vw; height: 100vh; border: 1px solid lightgray; }
@@ -205,111 +208,161 @@ def generate_graph(response, model_name):
     </style>
 </head>
 <body>
-    <div id="controls">
-        <label for="layoutSelect">Layout:</label>
-        <select id="layoutSelect">
-            <option value="default">Force-Directed (Default)</option>
-            <option value="grid">Grid</option>
-            <option value="circle">Circle</option>
-            <option value="hierarchicalUD">Hierarchical (Up–Down)</option>
-            <option value="hierarchicalLR">Hierarchical (Left–Right)</option>
-            <option value="hierarchicalDU">Hierarchical (Down–Up)</option>
-            <option value="hierarchicalRL">Hierarchical (Right–Left)</option>
-        </select>
-    </div>
-    <div id="mynetwork"></div>
-    <script>
-        // Deep copy of original data
-        const originalData = JSON.parse(JSON.stringify({{ mindmap|tojson }}));
-        const container = document.getElementById('mynetwork');
+<div id="controls">
+    <label for="layoutSelect">Layout:</label>
+    <select id="layoutSelect">
+        <!-- Make hierarchical Up‑Down the pre‑selected option -->
+        <option value="hierarchicalLR" selected>Hierarchical (Left–Right)</option>
+        <option value="hierarchicalUD">Hierarchical (Up–Down)</option>
+        <option value="hierarchicalDU">Hierarchical (Down–Up)</option>
+        <option value="hierarchicalRL">Hierarchical (Right–Left)</option>
+        <option value="default">Force‑Directed</option>
+        <option value="grid">Grid</option>
+        <option value="circle">Circle</option>
+    </select>
+</div>
 
-        // Shared physics to prevent overlap
-        const overlapPhysics = {
-            enabled: true,
-            solver: 'repulsion',
-            repulsion: { centralGravity: 0.2, nodeDistance: 200, springLength: 100, springConstant: 0.01 }
-        };
+<div id="mynetwork"></div>
 
-        // Initialize network
-        let network = new vis.Network(container, originalData, {
-            physics: overlapPhysics,
-            layout: { hierarchical: false },
-            interaction: { hover: true }
+<script>
+    // Deep copy of original data coming from your Flask/Jinja template
+    const originalData = JSON.parse(JSON.stringify({{ mindmap|tojson }}));
+    const container     = document.getElementById('mynetwork');
+
+    /* ---------- Shared physics so nodes repel one another ---------- */
+    const overlapPhysics = {
+        enabled   : true,
+        solver    : 'repulsion',
+        repulsion : {
+            centralGravity : 0.2,
+            nodeDistance   : 200,
+            springLength   : 100,
+            springConstant : 0.01
+        }
+    };
+
+    /* ---------- Build nodes for the initial hierarchical view ---------- */
+    const nodesInit = originalData.nodes.map(n => ({ ...n }));
+    const root = nodesInit.find(
+        n => n.id === 'root' && n.color && n.color.background === '#ffd700'
+    );
+    if (root) root.level = 0;          // anchor true root at level 0
+
+    const dataInit = { nodes: nodesInit, edges: originalData.edges };
+
+    const hierarchicalOptions = {
+        physics: overlapPhysics,
+        layout : {
+            hierarchical: {
+                enabled            : true,
+                direction          : 'LR',    // Left-Right
+                sortMethod         : 'directed',
+                physics            : true,
+                levelSeparation    : 150,
+                nodeSpacing        : 150,
+                treeSpacing        : 200,
+                blockShifting      : true,
+                edgeMinimization   : true,
+                parentCentralization: true
+            }
+        },
+        interaction: { hover: true }
+    };
+
+    /* ---------- Initialize network (hierarchical by default) ---------- */
+    let network = new vis.Network(container, dataInit, hierarchicalOptions);
+    
+    
+    // --- NEW: show/hide loading indicator ---
+    function showLoading() {
+      const loadingEl = document.createElement('div');
+      loadingEl.id = 'loadingIndicator';
+      loadingEl.classList.add('message', 'bot');
+      loadingEl.textContent = '⏳ Generating model response…';
+      chatDisplay.appendChild(loadingEl);
+      scrollToBottom();
+    }
+
+    function hideLoading() {
+      const loadingEl = document.getElementById('loadingIndicator');
+      if (loadingEl) loadingEl.remove();
+    }
+    // -----------------------------------------
+    
+
+    /* ---------- Layout‑switcher helpers ---------- */
+    function applyDefault() {                    // now restores hierarchical UD
+        applyHierarchical('UD');
+        document.getElementById('layoutSelect').value = 'hierarchicalUD';
+    }
+
+    function applyGrid() {
+        const nodes = originalData.nodes.map(n => ({ ...n }));
+        const cols  = Math.ceil(Math.sqrt(nodes.length));
+        const step  = 150;
+        nodes.forEach((n, i) => {
+            n.x = (i % cols) * step;
+            n.y = Math.floor(i / cols) * step;
+            n.fixed = false;
         });
+        network.setData({ nodes, edges: originalData.edges });
+        network.setOptions({ physics: overlapPhysics, layout: { hierarchical: false } });
+    }
 
-        function applyDefault() {
-            network.setData(originalData);
-            network.setOptions({ physics: overlapPhysics, layout: { hierarchical: false } });
-        }
+    function applyCircle() {
+        const nodes = originalData.nodes.map(n => ({ ...n }));
+        const radius = Math.min(container.clientWidth, container.clientHeight) / 2.5;
+        const cx = container.clientWidth / 2, cy = container.clientHeight / 2;
+        const angleStep = (2 * Math.PI) / nodes.length;
+        nodes.forEach((n, i) => {
+            n.x = cx + radius * Math.cos(i * angleStep);
+            n.y = cy + radius * Math.sin(i * angleStep);
+            n.fixed = false;
+        });
+        network.setData({ nodes, edges: originalData.edges });
+        network.setOptions({ physics: overlapPhysics, layout: { hierarchical: false } });
+    }
 
-        function applyGrid() {
-            const nodes = originalData.nodes.map(n => ({ ...n }));
-            const cols = Math.ceil(Math.sqrt(nodes.length));
-            const spacing = 150;
-            nodes.forEach((n, i) => {
-                const row = Math.floor(i / cols), col = i % cols;
-                n.x = col * spacing;
-                n.y = row * spacing;
-                n.fixed = false;
-            });
-            network.setData({ nodes, edges: originalData.edges });
-            network.setOptions({ physics: overlapPhysics, layout: { hierarchical: false } });
-        }
-
-        function applyCircle() {
-            const nodes = originalData.nodes.map(n => ({ ...n }));
-            const radius = Math.min(container.clientWidth, container.clientHeight) / 2.5;
-            const cx = container.clientWidth / 2, cy = container.clientHeight / 2;
-            const angleStep = (2 * Math.PI) / nodes.length;
-            nodes.forEach((n, i) => {
-                const theta = i * angleStep;
-                n.x = cx + radius * Math.cos(theta);
-                n.y = cy + radius * Math.sin(theta);
-                n.fixed = false;
-            });
-            network.setData({ nodes, edges: originalData.edges });
-            network.setOptions({ physics: overlapPhysics, layout: { hierarchical: false } });
-        }
-
-        function applyHierarchical(dir) {
-            // Clone nodes and reset any positions
-            const nodes = originalData.nodes.map(n => ({ ...n }));
-            nodes.forEach(n => { delete n.x; delete n.y; delete n.fixed; });
-            // Anchor true root by ID/color at level 0
-            const root = nodes.find(n => n.id === 'root' && n.color && n.color.background === '#ffd700');
-            if (root) { root.level = 0; }
-            network.setData({ nodes, edges: originalData.edges });
-            network.setOptions({
-                physics: overlapPhysics,
-                layout: {
-                    hierarchical: {
-                        enabled: true,
-                        direction: dir,
-                        sortMethod: 'directed',
-                        physics: true,
-                        levelSeparation: 150,
-                        nodeSpacing: 150,
-                        treeSpacing: 200,
-                        blockShifting: true,
-                        edgeMinimization: true,
-                        parentCentralization: true
-                    }
+    function applyHierarchical(dir) {
+        const nodes = originalData.nodes.map(n => ({ ...n }));
+        nodes.forEach(n => { delete n.x; delete n.y; delete n.fixed; });
+        const root = nodes.find(
+            n => n.id === 'root' && n.color && n.color.background === '#ffd700'
+        );
+        if (root) root.level = 0;
+        network.setData({ nodes, edges: originalData.edges });
+        network.setOptions({
+            physics: overlapPhysics,
+            layout : {
+                hierarchical: {
+                    enabled            : true,
+                    direction          : dir,
+                    sortMethod         : 'directed',
+                    physics            : true,
+                    levelSeparation    : 150,
+                    nodeSpacing        : 150,
+                    treeSpacing        : 200,
+                    blockShifting      : true,
+                    edgeMinimization   : true,
+                    parentCentralization: true
                 }
-            });
-        }
-
-        document.getElementById('layoutSelect').addEventListener('change', e => {
-            switch (e.target.value) {
-                case 'default': applyDefault(); break;
-                case 'grid': applyGrid(); break;
-                case 'circle': applyCircle(); break;
-                case 'hierarchicalUD': applyHierarchical('UD'); break;
-                case 'hierarchicalLR': applyHierarchical('LR'); break;
-                case 'hierarchicalDU': applyHierarchical('DU'); break;
-                case 'hierarchicalRL': applyHierarchical('RL'); break;
             }
         });
-    </script>
+    }
+
+    /* ---------- Wire up the dropdown ---------- */
+    document.getElementById('layoutSelect').addEventListener('change', e => {
+        switch (e.target.value) {
+            case 'default':         applyDefault(); break;      // still available
+            case 'grid':            applyGrid();   break;
+            case 'circle':          applyCircle(); break;
+            case 'hierarchicalUD':  applyHierarchical('UD'); break;
+            case 'hierarchicalLR':  applyHierarchical('LR'); break;
+            case 'hierarchicalDU':  applyHierarchical('DU'); break;
+            case 'hierarchicalRL':  applyHierarchical('RL'); break;
+        }
+    });
+</script>
 </body>
 </html>
 

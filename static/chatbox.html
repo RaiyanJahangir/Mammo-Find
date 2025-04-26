@@ -137,12 +137,12 @@
   <script>
     const chatDisplay = document.getElementById('chatDisplay');
 
-    // Scroll function for chat display
+    // Scroll function
     function scrollToBottom() {
       chatDisplay.scrollTop = chatDisplay.scrollHeight;
     }
 
-    // Function to add messages to chat display
+    // Add a normal message
     function addMessage(message, sender) {
       const messageElement = document.createElement('div');
       messageElement.classList.add('message', sender);
@@ -151,7 +151,22 @@
       scrollToBottom();
     }
 
-    // Listen for Enter key on input box
+    // --- NEW: show/hide loading indicator ---
+    function showLoading() {
+      const loadingEl = document.createElement('div');
+      loadingEl.id = 'loadingIndicator';
+      loadingEl.classList.add('message', 'bot');
+      loadingEl.textContent = '⏳ Generating model response…';
+      chatDisplay.appendChild(loadingEl);
+      scrollToBottom();
+    }
+
+    function hideLoading() {
+      const loadingEl = document.getElementById('loadingIndicator');
+      if (loadingEl) loadingEl.remove();
+    }
+    // -----------------------------------------
+
     document.addEventListener('DOMContentLoaded', () => {
       const inputBox = document.getElementById('userInput');
       inputBox.addEventListener('keydown', (event) => {
@@ -166,41 +181,40 @@
       const inputBox = document.getElementById('userInput');
       const userMessage = inputBox.value.trim();
       if (!userMessage) return;
-  
-      // Add user message to chat display
+
+      // show user’s own message
       addMessage(userMessage, 'user');
       inputBox.value = '';
-  
-      // Retrieve the selected LLM model from the dropdown
-      const llmSelect = document.getElementById('llmSelect');
-      const selectedModel = llmSelect.value;
-  
-      // Retrieve the selected prompt type from the new dropdown
-      const promptTypeSelect = document.getElementById('promptTypeSelect');
-      const selectedPromptType = promptTypeSelect.value;
-  
+
+      // now show loading…
+      showLoading();
+
+      const selectedModel       = document.getElementById('llmSelect').value;
+      const selectedPromptType  = document.getElementById('promptTypeSelect').value;
+
       try {
-        // Send the user's message along with model and prompt type to the Flask server
         const response = await fetch('http://127.0.0.1:8080/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            prompt: userMessage,
-            model: selectedModel,
+            prompt:      userMessage,
+            model:       selectedModel,
             prompt_type: selectedPromptType
           })
         });
-  
+
+        hideLoading();  // remove the spinner as soon as we have any reply
+
         if (response.ok) {
           const data = await response.json();
-          const botResponse = data.response;
-          addMessage(botResponse, 'bot');
+          addMessage(data.response, 'bot');
         } else {
-          throw new Error(`Server responded with status ${response.status}`);
+          addMessage(`Error: ${response.status}`, 'bot');
         }
       } catch (error) {
+        hideLoading();
         addMessage('Server not active', 'bot');
-        console.error('Error:', error);
+        console.error(error);
       }
     }
   </script>
