@@ -119,7 +119,7 @@ For Linux
 python3 query_data_n_shot.py
 ```
 
-Check the output folder to see models' responses
+Check the output folder to see the models' responses
 
 ## 10) Record performance
 ### 10a) Zero-shot prompting
@@ -144,7 +144,7 @@ For Linux
 python3 evaluate_model_n_shot.py
 ```
 
-Check the evaluation folder to see models' performances
+Check the evaluation folder to see the models' performances
 
 ## 11) Deactivate Virtual Environment and wrap up
 ```
