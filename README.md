@@ -146,7 +146,19 @@ python3 evaluate_model_n_shot.py
 
 Check the evaluation folder to see the models' performances
 
-## 11) Deactivate Virtual Environment and wrap up
+## 11) Optional
+To chat with a model in the terminal
+For Windows
+```
+python chat_zero_shot.py
+```
+
+For Linux
+```
+python3 chat_zero_shot.py
+```
+
+## 12) Deactivate Virtual Environment and wrap up
 ```
 deactivate
 ```
