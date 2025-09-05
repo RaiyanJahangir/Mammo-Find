@@ -147,7 +147,7 @@ python3 evaluate_model_n_shot.py
 Check the evaluation folder to see the models' performances
 
 ## 11) Optional
-To chat with a model in the terminal
+### To chat with a model in the terminal
 For Windows
 ```
 python chat_zero_shot.py
