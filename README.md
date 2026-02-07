@@ -29,7 +29,7 @@ The other models are:
   
 ## 2) Clone the git repository
 ```
-git clone https://github.com/RaiyanJahangir/Dataset-Recommender.git
+git clone https://github.com/RaiyanJahangir/Mammo-Find.git
 ```
 
 ## 3) Go to the root directory of the project
