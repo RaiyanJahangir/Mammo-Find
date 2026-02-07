@@ -34,7 +34,7 @@ git clone https://github.com/RaiyanJahangir/Mammo-Find.git
 
 ## 3) Go to the root directory of the project
 ```
-cd Dataset-Recommender
+cd Mammo-Find
 ```
 
 ## 4) Create a virtual environment 
